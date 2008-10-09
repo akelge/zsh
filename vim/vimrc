@@ -1,0 +1,92 @@
+set nocompatible	" Use Vim defaults (much better!)
+set backspace=indent,eol,start		" allow backspacing over everything
+set noautoindent
+set textwidth=78
+set backup
+set viminfo='20,\"50,f10
+set history=50
+set nohlsearch
+
+set ruler
+set cmdheight=1
+set laststatus=2
+set shiftwidth=2
+set foldcolumn=1
+" tab management
+set tabstop=4
+set softtabstop=4
+set expandtab
+
+set background=dark
+"set title Uncomment with new version of iTerm
+set title 
+
+set browsedir=current
+set cpoptions=aAcF$
+set modeline
+set modelines=1
+set encoding=iso-8859-1
+set listchars=tab:->,trail:.,eol:$
+"set paste
+set smartcase
+set errorbells
+"set visualbell
+set showcmd		" Show (partial) command in status line.
+set showmatch		" Show matching brackets.
+"set ignorecase		" Do case insensitive matching
+set incsearch		" Incremental search
+set autowrite		" Automatically save before commands like :next and :make
+set statusline=%<%f\ %H%m%r%=%-14.(%l,%c%)\ %P\ Buf.%n
+set backupcopy=yes
+set fileformats=unix,mac,dos
+set fileformat=unix
+" COMPLETION
+"set completeopt=longest,menuone
+"set completeopt=longest,menuone,preview
+inoremap <expr> <cr> pumvisible() ? "<c-y>" : "<c-g>u<cr>"
+inoremap <expr> <c-n> pumvisible() ? "<c-n>" : "<c-n><c-r>=pumvisible() ? "<down>" : "<cr>"
+inoremap <expr> <m-;> pumvisible() ? "<c-n>" : "<c-x><c-o><c-n><c-p><c-r>=pumvisible() ? "<down>" : "<cr>"
+"
+
+
+
+set mouse=a
+
+" Suffixes that get lower priority when doing tab completion for filenames.
+"" These are files we are not likely to want to edit or read.
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+
+colorscheme torte
+
+" TagLIST support
+let Tlist_Ctags_Cmd="ctags"
+"let Tlist_Use_Right_Window = 0
+"let Tlist_Display_Prototype = 1
+let Tlist_Exit_OnlyWindow = 1
+"let Tlist_Compact_Format = 1
+let Tlist_File_Fold_Auto_Close = 1
+"let Tlist_Use_SingleClick = 0 "Do not use yet
+
+" Map keys to functions
+nnoremap <silent> <F8> :Tlist<CR>
+nnoremap <silent> ,l :set list!<CR>
+
+" Vim5 comes with syntaxhighlighting. If you want to enable syntaxhightlighting
+" by default uncomment the next three lines. 
+if has("syntax")
+  syntax on		" Default to no syntax highlightning 
+endif
+
+if has("autocmd")
+	filetype plugin indent on
+	filetype plugin on
+endif " has ("autocmd")
+
+" Let's go to where we left
+if has("autocmd")
+	" When editing a file, always jump to the last cursor position
+	autocmd BufReadPost *
+		\ if line("'\"") > 0 && line ("'\"") <= line("$") |
+		\   exe "normal g'\"" |
+		\ endif
+endif

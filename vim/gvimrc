@@ -1,0 +1,27 @@
+set guifont=Monaco:h12
+"set guifont=ProFontWindows:h9
+set anti
+set lines=50
+"set lines=70
+set columns=132
+set nomousefocus
+set ruler
+set errorbells
+set visualbell
+set foldmethod=expr
+
+if exists('&macatsui')
+	set nomacatsui
+endif
+
+
+"colorscheme zenburn
+"colorscheme freya
+colorscheme moria
+
+
+
+" Let's do Ctrl-W work as expected, Gvim thinks we use a QZERTY Keyboard
+nnoremap <silent> <C-Z> <C-W>
+nnoremap <silent> <D-+> :call Zoom()<CR>
+nnoremap <silent> <C-S> :set list!<CR>
