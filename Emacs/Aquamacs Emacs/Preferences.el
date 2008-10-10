@@ -1,11 +1,3 @@
-;-*- coding: latin-1 -*-
-;Copyright (c)2008 CUBE S.p.A. 
-; 
-; Author: Andrea Mistrali <andre@cubeholding.com> 
-; Description: Aquamacs Setup file
-;
-; $Id: AquaMacs.pref.el,v 1.6 2008-10-09 12:55:23 andre Exp $ 
-
 ;; -----------------------------
 ;; Aquamacs ONLY customizations
 ;; -----------------------------
