@@ -1,13 +1,12 @@
 /*
 -*- coding: latin-1 -*-
 
-Copyright by Andrea Mistrali <am@am.cx>.
-First version: <crdate>
-Last modified: <lmdate>
+ Copyright by @@LONGNAME@@ <@@EMAIL@@>
+ First version: @@crdate@@
+ Last modified: @@lmdate@@
 
-Synopsis: <description>
+ Synopsis: @@DESCR@@
 
-$Id$
 
 */
 
@@ -15,5 +14,5 @@ $Id$
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-	return 0
+    return 0
 }

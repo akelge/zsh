@@ -2,6 +2,7 @@
 " General Setup
 "
 " $Id$
+"
 
 set nocompatible                    " Use Vim defaults (much better!)
 set backspace=indent,eol,start      " allow backspacing over everything
@@ -45,6 +46,12 @@ set fileformats=unix,mac,dos
 set fileformat=unix
 set mouse=a
 colorscheme inkpot
+
+" """""""""
+" User Info
+" """""""""
+let g:fullname = 'Andrea Mistrali'
+let g:email    = 'am@am.cx'
 
 
 " """""""""""""""""""""""""

@@ -3,18 +3,18 @@
 
 """
 
- Copyright by Andrea Mistrali <am@am.cx>.
- First version: <crdate>
- Last modified: <lmdate>
+ Copyright by @@LONGNAME@@ <@@EMAIL@@>
+ First version: @@crdate@@
+ Last modified: @@lmdate@@
 
- Synopsis: <description>
+ Synopsis: @@DESCR@@
 
  $Id$
 
 """
 
 __version__ ='0.1'
-__author__ ='Andrea Mistrali <am@am.cx>'
+__author__ ='@@LONGNAME@@ <@@EMAIL@@>'
 
 
 def main():
