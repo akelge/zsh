@@ -49,7 +49,7 @@ alias ptr='host -t ptr'
 
 alias vi=vim
 
-# Start autocoplete
+# Start autocomplete
 autoload -U compinit; compinit
 
 if [ `uname -s` = "Darwin" ]; then
