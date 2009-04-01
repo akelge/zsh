@@ -1,27 +1,29 @@
-set guifont=Monaco:h12
-"set guifont=ProFontWindows:h9
+"
+" GVIMRC - for GUI Vim Version (gvim, MacVim)
+"
+set guifont=Monaco:h13
 set anti
-set lines=50
-"set lines=70
-set columns=132
+set lines=65
+set columns=150
 set nomousefocus
 set ruler
 set errorbells
 set visualbell
-set foldmethod=expr
+set showtabline=2
+set guicursor=a:blinkon0
+set fuoptions=maxvert,maxhorz
 
-if exists('&macatsui')
-	set nomacatsui
+set guioptions-=T
+set guioptions+=a
+if &background == "dark"
+    hi normal guibg=black
+    set transp=8
 endif
-
 
 "colorscheme zenburn
 "colorscheme freya
-colorscheme moria
-
-
-
-" Let's do Ctrl-W work as expected, Gvim thinks we use a QZERTY Keyboard
-nnoremap <silent> <C-Z> <C-W>
-nnoremap <silent> <D-+> :call Zoom()<CR>
-nnoremap <silent> <C-S> :set list!<CR>
+"colorscheme moria
+"colorscheme morning
+"colorscheme desert
+"colorscheme macvim
+colorscheme inkpot

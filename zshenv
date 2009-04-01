@@ -54,7 +54,7 @@ autoload -U compinit; compinit
 
 if [ `uname -s` = "Darwin" ]; then
   # Alias for editors on OSX
-  alias vim='/Applications/Vim.app/Contents/MacOS/Vim'
+  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
   alias aquamacs='open -a Aquamacs\ Emacs'
   alias ldd='otool -L'
   alias ls='ls -F -G'
