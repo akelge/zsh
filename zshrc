@@ -55,7 +55,7 @@ bindkey "" vi-backward-kill-word
 ulimit -c 0
 
 # PROMPT
-if [ ${TERM} = "xterm-color" ] || [ ${TERM} = "rxvt" ] || [ ${TERM} = "xterm-new" ]; then
+if [ ${TERM[0,5]} = "xterm" ] || [ ${TERM} = "rxvt" ]; then
   # We are on xterminal
   PS1="%{]2;%n@%m:%.%}%{]1; %m:%. %}%B<%l> %~ %#%b "
 else
