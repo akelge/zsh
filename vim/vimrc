@@ -1,10 +1,9 @@
 "
 " General Setup
 "
-" $Id$
 
-set nocompatible	" Use Vim defaults (much better!)
-set backspace=indent,eol,start		" allow backspacing over everything
+set nocompatible                    " Use Vim defaults (much better!)
+set backspace=indent,eol,start      " allow backspacing over everything
 set noautoindent
 set textwidth=78
 set backup
@@ -23,7 +22,7 @@ set softtabstop=4
 set expandtab
 
 set background=dark
-set title 
+set title
 
 set browsedir=buffer
 set cpoptions=aAcF$
@@ -34,17 +33,18 @@ set listchars=tab:->,trail:.,eol:$
 set smartcase
 set errorbells
 "set visualbell
-set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-set incsearch		" Incremental search
-set autowrite		" Automatically save before commands like :next and :make
-set statusline=%<%f\ %H%m%r%=%-14.(%l,%c%)\ %P\ Buf.%n
+set showcmd         " Show (partial) command in status line.
+set showmatch       " Show matching brackets.
+set ignorecase      " Do case insensitive matching
+set incsearch       " Incremental search
+set autowrite       " Automatically save before commands like :next and :make
+"set statusline=%<%f\ %H%m%r%=%-14.(%l,%c%)\ %P\ Buf.%n
 set backupcopy=yes
 set fileformats=unix,mac,dos
 set fileformat=unix
 set mouse=a
-colorscheme torte
+colorscheme inkpot
+
 
 " """""""""""""""""""""""""
 " COMPLETION & INDENTATION
@@ -100,17 +100,109 @@ nnoremap <silent> <Leader>b :HSBufExplorer<CR>
 map      <silent> <Leader>c <plug>NERDCommenterToggle
 
 " Vim5 comes with syntaxhighlighting. If you want to enable syntaxhightlighting
-" by default uncomment the next three lines. 
+" by default uncomment the next three lines.
 if has("syntax")
-  syntax on		" Default to no syntax highlightning 
+  syntax on		" Default to no syntax highlightning
 endif " has("syntax")
 
 if has("autocmd")
-	filetype plugin indent on
-	filetype plugin on
-	" When editing a file, always jump to the last cursor position
-	autocmd BufReadPost *
-		\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-		\   exe "normal g'\"" |
-		\ endif
+  filetype indent on
+  filetype plugin on
+  " When editing a file, always jump to the last cursor position
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+        \   exe "normal g'\"" |
+        \ endif
 endif
+
+
+"recalculate the trailing whitespace warning when idle, and after saving
+autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+
+"return '[\s]' if trailing white space is detected
+"return '' otherwise
+function! StatuslineTrailingSpaceWarning()
+    if !exists("b:statusline_trailing_space_warning")
+        if search('\s\+$', 'nw') != 0
+            let b:statusline_trailing_space_warning = '[\s]'
+        else
+            let b:statusline_trailing_space_warning = ''
+        endif
+    endif
+    return b:statusline_trailing_space_warning
+endfunction
+
+
+" """"""""""""
+" Status Line
+" """"""""""""
+
+" Some useful functions
+"return the syntax highlight group under the cursor ''
+function! StatuslineCurrentHighlight()
+    let name = synIDattr(synID(line('.'),col('.'),1),'name')
+    if name == ''
+        return ''
+    else
+        return '[' . name . ']'
+    endif
+endfunction
+
+"recalculate the tab warning flag when idle and after writing
+autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+
+"return '[&et]' if &et is set wrong
+"return '[mixed-indenting]' if spaces and tabs are used to indent
+"return an empty string if everything is fine
+function! StatuslineTabWarning()
+    if !exists("b:statusline_tab_warning")
+        let tabs = search('^\t', 'nw') != 0
+        let spaces = search('^ ', 'nw') != 0
+
+        if tabs && spaces
+            let b:statusline_tab_warning = '[mixed-indenting]'
+        elseif (spaces && !&et) || (tabs && &et)
+            let b:statusline_tab_warning = '[&et]'
+        else
+            let b:statusline_tab_warning = ''
+        endif
+    endif
+    return b:statusline_tab_warning
+endfunction
+
+" Real Status line definition
+set statusline=%f\  "tail of the filename
+
+"display a warning if fileformat isnt unix
+set statusline+=%#warningmsg#
+set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+set statusline+=%*
+
+"display a warning if file encoding isnt utf-8
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+set statusline+=%*
+
+set statusline+=%h "help file flag
+set statusline+=%y "filetype
+set statusline+=%r "read only flag
+set statusline+=%m "modified flag
+
+"display a warning if &et is wrong, or we have mixed-indenting
+set statusline+=%#error#
+set statusline+=%{StatuslineTabWarning()}
+set statusline+=%*
+
+set statusline+=%{StatuslineTrailingSpaceWarning()}
+
+"display a warning if &paste is set
+set statusline+=%#error#
+set statusline+=%{&paste?'[paste]':'[nopaste]'}
+set statusline+=%*
+
+set statusline+=%= "left/right separator
+set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
+set statusline+=%02c, "cursor column
+set statusline+=%03l/%03L "cursor line/total lines
+set statusline+=\ hex:\ 0x%02B
+set statusline+=\ %P "percent through file
