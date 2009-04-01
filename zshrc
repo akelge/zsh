@@ -5,6 +5,7 @@
 # options, key bindings, etc.
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
+# $Id$
 
 setopt ALWAYS_TO_END
 setopt APPEND_HISTORY
