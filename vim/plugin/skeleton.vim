@@ -16,7 +16,7 @@
 "   @@EMAIL@@    - replaced by g:email
 "   @@DESCR@@    - Synopsis of file (asked by this plugin
 "   @@crdate@@   - replaced by creation date
-"   2009-04-01T17:03:00 CEST   - replaced by last modification date
+"   @@lmdate@@   - replaced by last modification date
 
 " Define template directory
 let g:skeletons = '~/.vim/templates'
