@@ -4,7 +4,7 @@
 #  Author: Andrea Mistrali <andre@cubeholding.com> 
 #  Description: Zsh Environment setup
 # 
-#  $Id: zshenv,v 1.8 2008-10-09 12:55:23 andre Exp $ 
+#  $Id$ 
 
 . /etc/environment
 

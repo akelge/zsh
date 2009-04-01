@@ -4,7 +4,7 @@
 #  Author: Andrea Mistrali <andre@cubeholding.com> 
 #  Description: Environment variables definition
 # 
-#  $Id: environment,v 1.6 2008-10-09 12:55:23 andre Exp $ 
+#  $Id$ 
 
 LESS="-c -x2 -R -MM -PMFile\:?f%f:STDIN. Size\:?B%B:Unknown. Pos\:?pb%pb\%:Unknown. File No.\:%i/%m"
 
