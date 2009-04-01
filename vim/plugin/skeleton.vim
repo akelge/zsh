@@ -1,5 +1,3 @@
-" TEMPLATE SYSTEM FOR VIM
-"
 " Preserve template files
 augroup newfiles
 	" First we load templates for the file type
@@ -18,7 +16,7 @@ augroup newfiles
 	endif
 
 	" Set up python support
-	au FileType python source ~/.vim/addon/python.vim 
+	"au FileType python source ~/.vim/addon/python.vim 
 augroup END
 
 
