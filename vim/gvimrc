@@ -1,6 +1,7 @@
 "
 " GVIMRC - for GUI Vim Version (gvim, MacVim)
 "
+" $Id$
 set guifont=Monaco:h13
 set anti
 set lines=65
