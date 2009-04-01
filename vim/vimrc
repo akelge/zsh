@@ -1,6 +1,7 @@
 "
 " General Setup
 "
+" $Id$
 
 set nocompatible                    " Use Vim defaults (much better!)
 set backspace=indent,eol,start      " allow backspacing over everything
