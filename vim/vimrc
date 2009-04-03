@@ -1,28 +1,30 @@
 "
 " General Setup
 "
-" $Id$
-"
 
 set nocompatible                    " Use Vim defaults (much better!)
 set backspace=indent,eol,start      " allow backspacing over everything
-set noautoindent
 set textwidth=78
 set backup
 set viminfo='20,\"50,f10
 set history=50
 set nohlsearch
-set paste
+"set paste
 
 set ruler
 set cmdheight=1
 set laststatus=2
-set shiftwidth=2
-set nofoldenable
+" Following are good for python
 set tabstop=4
-set softtabstop=4
+set shiftwidth=4
+set smarttab
 set expandtab
+set softtabstop=4
+set autoindent
+set smartindent
+" End Python settings
 
+set nofoldenable
 set background=dark
 set title
 
@@ -50,25 +52,35 @@ colorscheme inkpot
 " """""""""
 " User Info
 " """""""""
-let g:fullname = 'Andrea Mistrali'
-let g:email    = 'am@am.cx'
-
+let g:shortname = 'andre'
+let g:fullname  = 'Andrea Mistrali'
+let g:email     = 'am@am.cx'
 
 " """""""""""""""""""""""""
 " COMPLETION & INDENTATION
 " """""""""""""""""""""""""
-set completeopt=longest,menu
-" Map C-Tab to complete
-inoremap <silent> <C-tab> ^N
+
+" Function that returns tab if called on an "empty" line
+" C-N elsewhere
+function! CleverTab()
+  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    return "\<Tab>"
+  else
+    return "\<C-N>"
+  endfunction
+" map the function to Tab
+" inoremap <C-\> <C-R>=CleverTab()<CR>
+inoremap <C-\> <C-N>
+
 
 " Emacs like indenting. Pressing Tab indents line
-set indentkeys==0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
-set cinkeys==0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
+" Not in python, there it is managed by GetPythonIndent
+set indentkeys=0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
+set cinkeys=0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
 
 " Suffixes that get lower priority when doing tab completion for filenames.
-"" These are files we are not likely to want to edit or read.
+" These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-
 
 " """""""""""""""
 " TagLIST support
@@ -93,10 +105,15 @@ let NERDTreeShowBookmarks=1
 let g:bufExplorerSplitBelow=1
 let g:bufExplorerResize=1
 
+" """"""""""""""
+" NERD Commenter
+" """"""""""""""
+let NERDSpaceDelims=1
+let NERDCreateDefaultMappings=1
 
-" """""""""""""""""""""
-" Map keys to functions
-" """""""""""""""""""""
+" """""""""""
+" Keymappings
+" """""""""""
 let mapleader = "\\"
 "let mapleader = ","
 nnoremap <silent> <Leader>l :set list!<CR>
@@ -214,3 +231,9 @@ set statusline+=%02c, "cursor column
 set statusline+=%03l/%03L "cursor line/total lines
 set statusline+=\ hex:\ 0x%02B
 set statusline+=\ %P "percent through file
+
+" User customizations are held in file ~/.vim/vimrc.local
+if filereadable($HOME."/.vim/vimrc.local")
+    source $HOME/.vim/vimrc.local
+endif
+

@@ -4,8 +4,6 @@
 "
 " Synopsis: Templating system for vim
 " 
-" $Id$
-"
 " Remember to define in your vimrc the following var
 " let g:fullname = 'Your Full Name'
 " let g:email = 'your.email@address'
@@ -16,10 +14,11 @@
 "   @@EMAIL@@    - replaced by g:email
 "   @@DESCR@@    - Synopsis of file (asked by this plugin
 "   @@crdate@@   - replaced by creation date
-"   @@lmdate@@   - replaced by last modification date
+"   2009-04-03T12:56 CEST (+0200)   - replaced by last modification date
 
 " Define template directory
 let g:skeletons = '~/.vim/templates'
+let s:timeFormat= "%FT%H:%M %Z (%z)"
 
 " Preserve template files
 augroup newfiles
@@ -51,8 +50,8 @@ function! LastMod()
   else
     let l = line("$")
   endif
-  execute "1," . l . "s/@@lmdate@@/" .
-        \ strftime("%FT%X %Z") . "/e"
+  execute "1," . l . "s/Last modified: .*/Last modified: " .
+        \ strftime(s:timeFormat) . "/e"
 endfunction
 
 " Function to open a file and set some defaults
@@ -71,7 +70,7 @@ function! OpenFile()
     execute "1," . l . "s/@@DESCR@@/" .
           \ s:syn
     execute "1," . l . "s/@@crdate@@/" .
-        \ strftime("%FT%X %Z") . "/e"
+        \ strftime(s:timeFormat) . "/e"
     execute "1," . l . "s/@@LONGNAME@@/" .
         \ g:fullname . "/e"
     execute "1," . l . "s/@@EMAIL@@/" .
