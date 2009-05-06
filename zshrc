@@ -66,7 +66,7 @@ PYTHONSTARTUP=~/.pythonrc.py
 MINICOM="-c on"
 
 function cdb {
-	cd `dirname $1`
+    cd `dirname $1`
 }
 
 alias ls='ls -F --color'
@@ -94,41 +94,6 @@ alias ptr='host -t ptr'
 alias vi=vim
 
 # Start autocoplete
-autoload -U compinit; compinit
-
-function cdb {
-	DIR=`dirname $1`
-	cd $DIR
-	unset DIR
-}
-
-alias ls='ls -F --color'
-alias la='ls -A'
-alias ll='ls -l'
-alias lla='la -l'
-alias dir='ls -l'
-
-alias cls='/usr/bin/clear'
-
-
-alias killall='killall -v'
-alias skill=killall
-alias dc=cd
-alias les=less
-
-alias mkdir='mkdir -p'
-alias zap='rm -rf'
-alias ftail='tail -f'
-alias grep='grep --colour'
-
-alias ns='host -t ns'
-alias mx='host -t mx'
-alias soa='host -t soa'
-alias ptr='host -t ptr'
-
-alias vi=vim
-
-# Start autocomplete
 autoload -U compinit; compinit
 compctl -g "*(-/)" + -g ".*(-/)" cd
 #
@@ -194,3 +159,10 @@ if [ `uname -s` = "Darwin" ]; then
   fi
 fi
 
+# Process Local file
+for localDir in /etc/zsh /etc /usr/local/etc /usr/local/etc/zsh; do
+    if [ -f ${localDir}/zshrc.local ]; then
+        . ${localDir}/zshrc.local
+    fi
+done
+unset localDir
