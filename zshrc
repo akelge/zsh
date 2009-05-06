@@ -53,6 +53,7 @@ LESS="-c -x2 -R -MM -PMFile\:?f%f:STDIN. Size\:?B%B:Unknown. Pos\:?pb%pb\%:Unkno
 LESSCHARSET=utf-8
 READNULLCMD=/usr/bin/less
 PAGER=/usr/bin/less
+EDITOR=vi
 
 PS1="%B%m:%n:%~ %#%b "
 
