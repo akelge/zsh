@@ -148,6 +148,8 @@ if has("autocmd")
         \ if line("'\"") > 0 && line ("'\"") <= line("$") |
         \   exe "normal g'\"" |
         \ endif
+  " Mako
+  au BufNewFile,BufRead *.mako setf mako
 endif
 
 
