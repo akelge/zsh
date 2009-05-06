@@ -3,12 +3,13 @@
 
  Copyright by @@LONGNAME@@ <@@EMAIL@@>
  First version: @@crdate@@
- Last modified: 2009-04-03T13:01 CEST (+0200)
+ Last modified: @@lmdate@@
 
  Synopsis: @@DESCR@@
 
  $Id$
- 
+
+
 */
 
 #include <stdio.h>

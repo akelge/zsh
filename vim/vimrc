@@ -1,14 +1,16 @@
 "
 " General Setup
 "
+" $Id$
 
 set nocompatible                    " Use Vim defaults (much better!)
 set backspace=indent,eol,start      " allow backspacing over everything
-set textwidth=78
+set textwidth=0
 set backup
 set viminfo='20,\"50,f10
 set history=50
 set nohlsearch
+set nostartofline
 "set paste
 
 set ruler
@@ -70,7 +72,7 @@ function! CleverTab()
   endfunction
 " map the function to Tab
 " inoremap <C-\> <C-R>=CleverTab()<CR>
-inoremap <C-\> <C-N>
+set completeopt=longest
 
 
 " Emacs like indenting. Pressing Tab indents line
@@ -123,6 +125,14 @@ nnoremap <silent> <Leader>t :Tlist<CR>
 nnoremap <silent> <Leader>N :set number!<CR>
 nnoremap <silent> <Leader>b :HSBufExplorer<CR>
 map      <silent> <Leader>c <plug>NERDCommenterToggle
+inoremap <silent> <C-\> <C-N>
+inoremap <silent> <C-Tab> <C-N>
+
+" Visual mode selection
+nnoremap <silent> <S-Down> V
+nnoremap <silent> <S-Up> V
+vnoremap <silent> <S-Down> j
+vnoremap <silent> <S-Up> k
 
 " Vim5 comes with syntaxhighlighting. If you want to enable syntaxhightlighting
 " by default uncomment the next three lines.

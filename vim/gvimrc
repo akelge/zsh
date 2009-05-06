@@ -17,17 +17,17 @@ set guioptions-=T
 set guioptions+=a
 if &background == "dark"
     hi normal guibg=black
-    set transp=8
+    set transparency=4
 endif
 
-"colorscheme zenburn
-"colorscheme freya
-"colorscheme moria
-"colorscheme morning
-"colorscheme desert
-"colorscheme macvim
-colorscheme inkpot
+" colorscheme zenburn
+" colorscheme freya
+" colorscheme moria
+" colorscheme morning
+" colorscheme desert
+colorscheme macvim
+" colorscheme inkpot
 
 " Emacs like indenting. Pressing Tab indents line
-" set indentkeys=0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
-" set cinkeys=0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
+set indentkeys=0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
+set cinkeys=0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F

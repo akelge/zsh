@@ -1,6 +1,6 @@
 " Copyright by Andrea Mistrali <am@am.cx>
 " First version: Who knows?
-" Last modified: 2009-04-01T16:55:05 CEST
+" Last modified: 2009-04-28T17:26 CEST (+0200)
 "
 " Synopsis: Templating system for vim
 " 
@@ -60,21 +60,25 @@ function! OpenFile()
   let l:ext=fnamemodify(s:filename, ":e")
   let l:skel = g:skeletons."/skeleton.".l:ext
   if filereadable(fnamemodify(l:skel,":p"))
-    execute "0r" l:skel
-    let s:syn=input("Synopsis: ")
-    if line("$") > 20
-      let l = 20
-    else
-      let l = line("$")
-    endif
-    execute "1," . l . "s/@@DESCR@@/" .
-          \ s:syn
-    execute "1," . l . "s/@@crdate@@/" .
-        \ strftime(s:timeFormat) . "/e"
-    execute "1," . l . "s/@@LONGNAME@@/" .
-        \ g:fullname . "/e"
-    execute "1," . l . "s/@@EMAIL@@/" .
-        \ g:email . "/e"
+      let s:doit=input("Perform auto insert (y/n)? ")
+      if s:doit == 'n' || s:doit == 'N'
+          return
+      endif
+      execute "0r" l:skel
+      let s:syn=input("Synopsis: ")
+      if line("$") > 20
+          let l = 20
+      else
+          let l = line("$")
+      endif
+      execute "1," . l . "s/@@DESCR@@/" .
+                  \ s:syn
+      execute "1," . l . "s/@@crdate@@/" .
+                  \ strftime(s:timeFormat) . "/e"
+      execute "1," . l . "s/@@LONGNAME@@/" .
+                  \ g:fullname . "/e"
+      execute "1," . l . "s/@@EMAIL@@/" .
+                  \ g:email . "/e"
   endif
 endfunction
 
