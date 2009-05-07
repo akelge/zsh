@@ -49,7 +49,7 @@ MIBS=all
 [ -z "$PS1" ] && return
 
 ## Vars only for interactive sessions
-LESS="-c -x2 -R -MM -PMFile\:?f%f:STDIN. Size\:?B%B:Unknown. Pos\:?pb%pb\%:Unknown. File No.\:%i/%m"
+LESS="-c -x4 -R -MM -PMFile\:?f%f:STDIN. ?BSize\:?B%B:Unk.?B\:?pb%pb\%:Unk.?B\:%i/%m"
 LESSCHARSET=utf-8
 READNULLCMD=/usr/bin/less
 PAGER=/usr/bin/less
@@ -109,13 +109,13 @@ done
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
 #
 ## make less colourful
-LESS_TERMCAP_mb=$'\E[01;31m'
-LESS_TERMCAP_md=$'\E[01;31m'
-LESS_TERMCAP_me=$'\E[0m'
-LESS_TERMCAP_se=$'\E[0m'
-LESS_TERMCAP_so=$'\E[01;44;33m'
-LESS_TERMCAP_ue=$'\E[0m'
-LESS_TERMCAP_us=$'\E[01;32m'
+LESS_TERMCAP_mb=$'\E[01;34m'     # begin blinking
+LESS_TERMCAP_md=$'\E[01;36m'     # begin bold
+LESS_TERMCAP_me=$'\E[0m'         # end mode
+LESS_TERMCAP_so=$'\E[01;47;34m'  # begin standout-mode - info box
+LESS_TERMCAP_se=$'\E[0m'         # end standout-mode
+LESS_TERMCAP_us=$'\E[04;32m'     # begin underline
+LESS_TERMCAP_ue=$'\E[0m'         # end underline
 
 # Useful under iTerm
 bindkey  "-e" 
