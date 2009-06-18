@@ -154,6 +154,8 @@ if [ `uname -s` = "Darwin" ]; then
   alias ldd='otool -L'
   alias ls='ls -F -G'
   alias skill=killall
+  alias lsrebuild='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user'
+
   if [ -f /opt/local/etc/init.sh ]; then
       source /opt/local/etc/init.sh
   fi
