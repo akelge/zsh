@@ -6,6 +6,7 @@
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
 # $Id$
+# $HeadURL$
 
 setopt ALWAYS_TO_END
 setopt APPEND_HISTORY
@@ -149,11 +150,12 @@ fi
 if [ `uname -s` = "Darwin" ]; then
   export LSCOLORS="GxgxcxdxCxegedabagacad"
   # Alias for editors on OSX
-  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-  alias aquamacs='open -a Aquamacs\ Emacs'
-  alias ldd='otool -L'
-  alias ls='ls -F -G'
-  alias skill=killall
+  alias mvim = 'mvim --remote-tab-silent'
+  alias vim = mvim
+  alias aquamacs = 'open -a Aquamacs\ Emacs'
+  alias ldd = 'otool -L'
+  alias ls = 'ls -F -G'
+  alias skill = killall
   alias lsrebuild='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user'
 
   if [ -f /opt/local/etc/init.sh ]; then
