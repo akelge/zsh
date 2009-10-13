@@ -54,12 +54,6 @@ LESS="-c -x4 -R -MM -PMFile\:?f%f:STDIN. ?BSize\:?B%B:Unk.?B\:?pb%pb\%:Unk.?B\:%
 LESSCHARSET=utf-8
 READNULLCMD=/usr/bin/less
 PAGER=/usr/bin/less
-if [ -x =lesspipe ]; then
-    eval `lesspipe`
-fi
-if [ -x =lesspipe.sh ]; then
-    eval `lesspipe.sh`
-fi
 
 
 EDITOR=vi
@@ -158,17 +152,26 @@ fi
 if [ `uname -s` = "Darwin" ]; then
   export LSCOLORS="GxgxcxdxCxegedabagacad"
   # Alias for editors on OSX
-  alias mvim = 'mvim --remote-tab-silent'
-  alias vim = mvim
-  alias aquamacs = 'open -a Aquamacs\ Emacs'
-  alias ldd = 'otool -L'
-  alias ls = 'ls -F -G'
-  alias skill = killall
+  alias mvim='mvim --remote-tab-silent'
+  alias vim=mvim
+  alias aquamacs='open -a Aquamacs\ Emacs'
+  alias ldd='otool -L'
+  alias ls='ls -F -G'
+  alias skill=killall
   alias lsrebuild='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user'
 
   if [ -f /opt/local/etc/init.sh ]; then
       source /opt/local/etc/init.sh
   fi
+fi
+
+LESSPIPE=`which lesspipe`
+if [ $? -eq 0 ]; then
+    eval `$LESSPIPE`
+fi
+LESSPIPE=`which lesspipe.sh`
+if [ $? -eq 0 ]; then
+    eval `$LESSPIPE`
 fi
 
 # Process Local file
