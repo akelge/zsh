@@ -54,6 +54,10 @@ LESS="-c -x4 -R -MM -PMFile\:?f%f:STDIN. ?BSize\:?B%B:Unk.?B\:?pb%pb\%:Unk.?B\:%
 LESSCHARSET=utf-8
 READNULLCMD=/usr/bin/less
 PAGER=/usr/bin/less
+if [ -x =lesspipe ]; then
+    eval `lesspipe`
+fi
+
 EDITOR=vi
 
 PS1="%B%m:%n:%~ %#%b "
