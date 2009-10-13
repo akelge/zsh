@@ -57,6 +57,10 @@ PAGER=/usr/bin/less
 if [ -x =lesspipe ]; then
     eval `lesspipe`
 fi
+if [ -x =lesspipe.sh ]; then
+    eval `lesspipe.sh`
+fi
+
 
 EDITOR=vi
 
