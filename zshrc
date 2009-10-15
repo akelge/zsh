@@ -151,7 +151,7 @@ fi
 
 if [ `uname -s` = "Darwin" ]; then
   export LSCOLORS="GxgxcxdxCxegedabagacad"
-  # Alias for editors on OSX
+  # Alias for editors on OSX, a bit hard, to be fixed
   alias vim="mvim "
   alias tvim="mvim --remote-tab-silent "
   alias aquamacs='open -a Aquamacs\ Emacs'
