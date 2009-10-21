@@ -38,6 +38,7 @@ augroup newfiles
   if has("gui_running")
     autocmd BufWritePost ~/.gvimrc   so ~/.gvimrc
   endif
+  autocmd BufRead,BufNewFile *.mako set ft=mako
 
   " Set up python support
 augroup END
