@@ -156,10 +156,14 @@ if [ `uname -s` = "Darwin" ]; then
 
   if [ "x$SSH_CLIENT" = "x" ]; then
       vim_args="mvim --servername VIM"
+      local_vim=1
+  else
+      vim_args="/usr/bin/vim"
+      local_vim=0
   fi
 
   while [ $# -gt 0 ]; do
-      if [ ${1[0,1]} != '-' ]; then
+      if [ ${1[0,1]} != '-' -a $local_vim -eq 1 ]; then
           vim_args="$vim_args --remote-tab-silent $1"
       else
           vim_args="$vim_args $1"
@@ -169,6 +173,7 @@ if [ `uname -s` = "Darwin" ]; then
 
   `echo ${vim_args}`
   unset vim_args
+  unset local_vim
   }
 
   # Alias for editors on OSX, a bit hard, to be fixed
