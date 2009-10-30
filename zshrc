@@ -151,9 +151,28 @@ fi
 
 if [ `uname -s` = "Darwin" ]; then
   export LSCOLORS="GxgxcxdxCxegedabagacad"
+# Function for Vim
+  function vimFunc {
+
+  if [ "x$SSH_CLIENT" = "x" ]; then
+      vim_args="mvim --servername VIM"
+  fi
+
+  while [ $# -gt 0 ]; do
+      if [ ${1[0,1]} != '-' ]; then
+          vim_args="$vim_args --remote-tab-silent $1"
+      else
+          vim_args="$vim_args $1"
+      fi
+      shift
+  done
+
+  `echo ${vim_args}`
+  unset vim_args
+  }
+
   # Alias for editors on OSX, a bit hard, to be fixed
-  alias vim="mvim "
-  alias tvim="mvim --remote-tab-silent "
+  alias vim="vimFunc "
   alias aquamacs='open -a Aquamacs\ Emacs'
   alias ldd='otool -L'
   alias ls='ls -F -G'
