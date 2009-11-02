@@ -151,14 +151,15 @@ fi
 
 if [ `uname -s` = "Darwin" ]; then
   export LSCOLORS="GxgxcxdxCxegedabagacad"
+
 # Function for Vim
   function vimFunc {
 
   if [ "x$SSH_CLIENT" = "x" ]; then
-      vim_args="mvim --servername VIM"
+      vim_args="`echo =mvim` --servername VIM"
       local_vim=1
   else
-      vim_args="/usr/bin/vim"
+      vim_args="`echo =vim`"
       local_vim=0
   fi
 
@@ -174,6 +175,8 @@ if [ `uname -s` = "Darwin" ]; then
   `echo ${vim_args}`
   unset vim_args
   unset local_vim
+  echo $?
+  return 0
   }
 
   # Alias for editors on OSX, a bit hard, to be fixed
