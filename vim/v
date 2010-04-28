@@ -1,0 +1,12 @@
+addon/
+autoload/
+colors/
+doc/
+ftplugin/
+gvimrc
+indent/
+plugin/
+syntax/
+templates/
+v
+vimrc
