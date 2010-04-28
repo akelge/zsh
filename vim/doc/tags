@@ -57,10 +57,6 @@
 'Tlist_WinWidth'	taglist.txt	/*'Tlist_WinWidth'*
 'loaded_nerd_comments'	NERD_commenter.txt	/*'loaded_nerd_comments'*
 'loaded_nerd_tree'	NERD_tree.txt	/*'loaded_nerd_tree'*
-:AlignCenter	textformat.txt	/*:AlignCenter*
-:AlignJustify	textformat.txt	/*:AlignJustify*
-:AlignLeft	textformat.txt	/*:AlignLeft*
-:AlignRight	textformat.txt	/*:AlignRight*
 :CVSEdit	vcscommand.txt	/*:CVSEdit*
 :CVSEditors	vcscommand.txt	/*:CVSEditors*
 :CVSUnedit	vcscommand.txt	/*:CVSUnedit*
@@ -193,6 +189,8 @@ NERDTreeOptionSummary	NERD_tree.txt	/*NERDTreeOptionSummary*
 NERDTreeOptions	NERD_tree.txt	/*NERDTreeOptions*
 NERD_commenter.txt	NERD_commenter.txt	/*NERD_commenter.txt*
 NERD_tree.txt	NERD_tree.txt	/*NERD_tree.txt*
+OpenFilemanager	open_terminal.txt	/*OpenFilemanager*
+OpenTerminal	open_terminal.txt	/*OpenTerminal*
 Tlist_Get_Tag_Prototype_By_Line()	taglist.txt	/*Tlist_Get_Tag_Prototype_By_Line()*
 Tlist_Get_Tagname_By_Line()	taglist.txt	/*Tlist_Get_Tagname_By_Line()*
 Tlist_Set_App()	taglist.txt	/*Tlist_Set_App()*
@@ -242,6 +240,13 @@ g:bufExplorerSortBy	bufexplorer.txt	/*g:bufExplorerSortBy*
 g:bufExplorerSplitBelow	bufexplorer.txt	/*g:bufExplorerSplitBelow*
 g:bufExplorerSplitOutPathName	bufexplorer.txt	/*g:bufExplorerSplitOutPathName*
 g:bufExplorerSplitRight	bufexplorer.txt	/*g:bufExplorerSplitRight*
+open-terminal	open_terminal.txt	/*open-terminal*
+open-terminal-about	open_terminal.txt	/*open-terminal-about*
+open-terminal-changelog	open_terminal.txt	/*open-terminal-changelog*
+open-terminal-commands	open_terminal.txt	/*open-terminal-commands*
+open-terminal-introduction	open_terminal.txt	/*open-terminal-introduction*
+open-terminal-keymap	open_terminal.txt	/*open-terminal-keymap*
+open-terminal-requires	open_terminal.txt	/*open-terminal-requires*
 taglist-commands	taglist.txt	/*taglist-commands*
 taglist-debug	taglist.txt	/*taglist-debug*
 taglist-extend	taglist.txt	/*taglist-extend*
@@ -259,12 +264,6 @@ taglist-session	taglist.txt	/*taglist-session*
 taglist-todo	taglist.txt	/*taglist-todo*
 taglist-using	taglist.txt	/*taglist-using*
 taglist.txt	taglist.txt	/*taglist.txt*
-textformat-commands	textformat.txt	/*textformat-commands*
-textformat-config	textformat.txt	/*textformat-config*
-textformat-history	textformat.txt	/*textformat-history*
-textformat-keymap	textformat.txt	/*textformat-keymap*
-textformat-start	textformat.txt	/*textformat-start*
-textformat.txt	textformat.txt	/*textformat.txt*
 vcscommand	vcscommand.txt	/*vcscommand*
 vcscommand-buffer-management	vcscommand.txt	/*vcscommand-buffer-management*
 vcscommand-buffer-variables	vcscommand.txt	/*vcscommand-buffer-variables*
