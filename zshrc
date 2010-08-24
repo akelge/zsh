@@ -6,7 +6,6 @@
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
 # $Id$
-# $HeadURL$
 
 setopt ALWAYS_TO_END
 setopt APPEND_HISTORY
@@ -34,7 +33,7 @@ setopt NOTIFY
 setopt PATH_DIRS
 setopt SHORT_LOOPS
 
-umask 022
+umask 002
 
 ## Vars used always
 #
@@ -50,12 +49,13 @@ MIBS=all
 [ -z "$PS1" ] && return
 
 ## Vars only for interactive sessions
-LESS="-c -x4 -R -MM -PMFile\:?f%f:STDIN. ?BSize\:?B%B:Unk.?B\:?pb%pb\%:Unk.?B\:%i/%m"
+LESS="-c -x2 -R -MM -PMFile\:?f%f:STDIN. Size\:?B%B:Unknown. Pos\:?pb%pb\%:Unknown. File No.\:%i/%m"
 LESSCHARSET=utf-8
 READNULLCMD=/usr/bin/less
 PAGER=/usr/bin/less
-
-
+if [ -x =lesspipe ]; then
+    eval `lesspipe`
+fi
 EDITOR=vi
 
 PS1="%B%m:%n:%~ %#%b "
@@ -94,9 +94,9 @@ alias mx='host -t mx'
 alias soa='host -t soa'
 alias ptr='host -t ptr'
 
-alias vi="vim "
+alias vi=vim
 
-# Start autocomplete
+# Start autocoplete
 autoload -U compinit; compinit
 compctl -g "*(-/)" + -g ".*(-/)" cd
 #
@@ -112,16 +112,16 @@ done
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
 #
 ## make less colourful
-LESS_TERMCAP_mb=$'\E[01;34m'     # begin blinking
-LESS_TERMCAP_md=$'\E[01;36m'     # begin bold
-LESS_TERMCAP_me=$'\E[0m'         # end mode
-LESS_TERMCAP_so=$'\E[01;47;34m'  # begin standout-mode - info box
-LESS_TERMCAP_se=$'\E[0m'         # end standout-mode
-LESS_TERMCAP_us=$'\E[04;32m'     # begin underline
-LESS_TERMCAP_ue=$'\E[0m'         # end underline
+LESS_TERMCAP_mb=$'\E[01;31m'
+LESS_TERMCAP_md=$'\E[01;31m'
+LESS_TERMCAP_me=$'\E[0m'
+LESS_TERMCAP_se=$'\E[0m'
+LESS_TERMCAP_so=$'\E[01;44;33m'
+LESS_TERMCAP_ue=$'\E[0m'
+LESS_TERMCAP_us=$'\E[01;32m'
 
 # Useful under iTerm
-bindkey  "-e" 
+bindkey  "-e"
 bindkey  "\e[1~" beginning-of-line
 bindkey  "\e[4~" end-of-line
 bindkey  "\e[3~" delete-char
@@ -145,60 +145,25 @@ else
 fi
 
 if [ `uname -s` = "Linux" ]; then
-  eval `dircolors`
+    if [ -f /etc/dir_colors ]; then
+        eval `dircolors /etc/dir_colors`
+    else
+        eval `dircolors`
+    fi
 fi
 
 
 if [ `uname -s` = "Darwin" ]; then
   export LSCOLORS="GxgxcxdxCxegedabagacad"
-
-# Function for Vim
-  function vimFunc {
-
-  if [ "x$SSH_CLIENT" = "x" ]; then
-      vim_args="`echo =mvim` --servername VIM"
-      local_vim=1
-  else
-      vim_args="`echo =vim`"
-      local_vim=0
-  fi
-
-  while [ $# -gt 0 ]; do
-      if [ ${1[0,1]} != '-' -a $local_vim -eq 1 ]; then
-          vim_args="$vim_args --remote-tab-silent $1"
-      else
-          vim_args="$vim_args $1"
-      fi
-      shift
-  done
-
-  `echo ${vim_args}`
-  unset vim_args
-  unset local_vim
-  echo $?
-  return 0
-  }
-
-  # Alias for editors on OSX, a bit hard, to be fixed
-  alias vim="vimFunc "
+  # Alias for editors on OSX
+  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
   alias aquamacs='open -a Aquamacs\ Emacs'
   alias ldd='otool -L'
   alias ls='ls -F -G'
   alias skill=killall
-  alias lsrebuild='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user'
-
   if [ -f /opt/local/etc/init.sh ]; then
       source /opt/local/etc/init.sh
   fi
-fi
-
-LESSPIPE=`which lesspipe`
-if [ $? -eq 0 ]; then
-    eval `$LESSPIPE`
-fi
-LESSPIPE=`which lesspipe.sh`
-if [ $? -eq 0 ]; then
-    eval `$LESSPIPE`
 fi
 
 # Process Local file
