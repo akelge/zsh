@@ -153,7 +153,8 @@ if [ `uname -s` = "Linux" ]; then
 fi
 
 # Darwin/OSX
-if [ `uname -s` = "Darwin" ]; then
+# if [ `uname -s` = "Darwin" ]; then
+if [ -d /Network/Library/zsh.d ]; then
     for zshFile in /Network/Library/zsh.d/*; do
         . $zshFile
     done
