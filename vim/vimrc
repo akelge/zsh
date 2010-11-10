@@ -43,6 +43,7 @@ set background=dark
 set title
 
 set browsedir=buffer
+" set autochdir
 set cpoptions=aAcF$
 set modeline
 set modelines=1
@@ -134,11 +135,14 @@ let mapleader = "\\"
 "let mapleader = ","
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>f :set fullscreen!<CR>
+nnoremap <silent> <Leader>x :set paste!<CR>
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>t :Tlist<CR>
 nnoremap <silent> <Leader>N :set number!<CR>
 nnoremap <silent> <Leader>b :HSBufExplorer<CR>
-map      <silent> <Leader>c <plug>NERDCommenterToggle
+map <silent> <Leader>c <plug>NERDCommenterToggle
+
+nnoremap <silent> Y         y$
 inoremap <silent> <C-\> <C-N>
 inoremap <silent> <C-Tab> <C-N>
 
@@ -187,4 +191,4 @@ if filereadable($HOME."/.vim/vimrc.local")
     source $HOME/.vim/vimrc.local
 endif
 
-" vim: set ts=4 sw=4 tw=0 ft=vim : 
+" vim: set ts=4 sw=4 tw=0 ft=vim :

@@ -57,6 +57,10 @@
 'Tlist_WinWidth'	taglist.txt	/*'Tlist_WinWidth'*
 'loaded_nerd_comments'	NERD_commenter.txt	/*'loaded_nerd_comments'*
 'loaded_nerd_tree'	NERD_tree.txt	/*'loaded_nerd_tree'*
+:AlignCenter	textformat.txt	/*:AlignCenter*
+:AlignJustify	textformat.txt	/*:AlignJustify*
+:AlignLeft	textformat.txt	/*:AlignLeft*
+:AlignRight	textformat.txt	/*:AlignRight*
 :CVSEdit	vcscommand.txt	/*:CVSEdit*
 :CVSEditors	vcscommand.txt	/*:CVSEditors*
 :CVSUnedit	vcscommand.txt	/*:CVSUnedit*
@@ -264,6 +268,12 @@ taglist-session	taglist.txt	/*taglist-session*
 taglist-todo	taglist.txt	/*taglist-todo*
 taglist-using	taglist.txt	/*taglist-using*
 taglist.txt	taglist.txt	/*taglist.txt*
+textformat-commands	textformat.txt	/*textformat-commands*
+textformat-config	textformat.txt	/*textformat-config*
+textformat-history	textformat.txt	/*textformat-history*
+textformat-keymap	textformat.txt	/*textformat-keymap*
+textformat-start	textformat.txt	/*textformat-start*
+textformat.txt	textformat.txt	/*textformat.txt*
 vcscommand	vcscommand.txt	/*vcscommand*
 vcscommand-buffer-management	vcscommand.txt	/*vcscommand-buffer-management*
 vcscommand-buffer-variables	vcscommand.txt	/*vcscommand-buffer-variables*
