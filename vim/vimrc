@@ -142,7 +142,7 @@ nnoremap <silent> <Leader>N :set number!<CR>
 nnoremap <silent> <Leader>b :HSBufExplorer<CR>
 map <silent> <Leader>c <plug>NERDCommenterToggle
 
-nnoremap <silent> Y         y$
+" nnoremap <silent> Y         y$
 inoremap <silent> <C-\> <C-N>
 inoremap <silent> <C-Tab> <C-N>
 
