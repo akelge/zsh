@@ -34,3 +34,8 @@ colorscheme freya
 " Emacs like indenting. Pressing Tab indents line
 set indentkeys=0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
 set cinkeys=0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
+
+" User customizations are held in file ~/.vim/gvimrc.local
+if filereadable($HOME."/.vim/gvimrc.local")
+    source $HOME/.vim/gvimrc.local
+endif

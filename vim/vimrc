@@ -69,9 +69,10 @@ colorscheme wombat256
 " """""""""
 " User Info
 " """""""""
-let g:shortname = 'andre'
-let g:fullname  = 'Andrea Mistrali'
-let g:email     = 'am@am.cx'
+" PLEASE DEFINE THESE IN vimrc.local
+" let g:shortname = 'login'
+" let g:fullname  = 'Full Name'
+" let g:email     = 'email address'
 
 " """""""""""""""""""""""""
 " COMPLETION & INDENTATION
@@ -79,12 +80,12 @@ let g:email     = 'am@am.cx'
 
 " Function that returns tab if called on an "empty" line
 " C-N elsewhere
-function! CleverTab()
-  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    return "\<Tab>"
-  else
-    return "\<C-N>"
-  endfunction
+" function! CleverTab()
+  " if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    " return "\<Tab>"
+  " else
+    " return "\<C-N>"
+  " endfunction
 " map the function to Tab
 " inoremap <C-\> <C-R>=CleverTab()<CR>
 set completeopt=longest
@@ -131,8 +132,7 @@ let NERDCreateDefaultMappings=1
 " """""""""""
 " Keymappings
 " """""""""""
-let mapleader = "\\"
-"let mapleader = ","
+let g:mapleader = ","
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>f :set fullscreen!<CR>
 nnoremap <silent> <Leader>x :set paste!<CR>
