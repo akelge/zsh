@@ -1,0 +1,26 @@
+setopt ALWAYS_TO_END
+setopt APPEND_HISTORY
+setopt AUTO_CD
+setopt ALL_EXPORT
+setopt AUTO_MENU
+setopt AUTO_LIST
+setopt AUTONAMEDIRS
+setopt AUTO_PARAM_SLASH
+setopt AUTO_REMOVE_SLASH
+setopt AUTO_RESUME
+# setopt CDABLE_VARS
+setopt CORRECT
+setopt FUNCTION_ARGZERO
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_NO_STORE
+setopt HIST_REDUCE_BLANKS
+setopt LIST_TYPES
+setopt LONG_LIST_JOBS
+# setopt MENU_COMPLETE
+# setopt NO_AUTOLIST
+setopt NO_BEEP
+setopt NOHUP
+setopt NOTIFY
+setopt PATH_DIRS
+setopt SHORT_LOOPS
+# vim: set ts=4 sw=4 tw=0 ft=zsh : 

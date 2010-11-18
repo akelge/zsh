@@ -1,0 +1,11 @@
+#######################################################################################
+# Setup PROMPT
+if [ ${TERM[0,5]} = "xterm" ] || [ ${TERM} = "rxvt" ]; then
+  # We are on xterminal
+  PS1="%{]2;%n@%m:%.%}%{]1; %m:%. %}%B<%l> %~ %#%b "
+else
+  # We are not on xterminal
+  PS1="%B[%l] %n@%m:%~ %#%b "
+fi
+
+#  vim: set ts=4 sw=4 tw=0 ft=zsh : 

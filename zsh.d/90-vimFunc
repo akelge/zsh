@@ -1,6 +1,0 @@
-# Alias for editors on OSX, a bit hard, to be fixed
-# alias mvim="vimFunc "
-alias mvim="mvim --serverlist && mvim --remote-tab-silent "
-# alias vi="mvim "
-
-# vim: set ts=4 sw=4 tw=0 ft=sh :

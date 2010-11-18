@@ -1,0 +1,28 @@
+#######################################################################################
+# Aliases
+
+alias ls='ls -F --color'
+alias la='ls -A'
+alias ll='ls -l'
+alias dir='ls -l'
+alias lla='la -l'
+
+alias killall='killall -v'
+alias cls='clear'
+
+alias dc=cd
+alias les=less
+alias fu='sudo -s $( fc -ln -1)'
+
+alias mkdir='mkdir -p'
+alias zap='rm -rf'
+alias ftail='tail -f'
+alias grep='grep --colour'
+
+alias ns='host -t ns'
+alias mx='host -t mx'
+alias soa='host -t soa'
+alias ptr='host -t ptr'
+
+alias vi="vim "
+#  vim: set ts=4 sw=4 tw=0 ft=zsh : 
