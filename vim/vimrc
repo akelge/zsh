@@ -183,7 +183,13 @@ if has("autocmd")
         \   exe "normal g'\"" |
         \ endif
   " Mako
-  au BufNewFile,BufRead *.mako setf mako
+  autocmd BufNewFile,BufRead *.mako setf mako
+  " Plist
+  autocmd BufReadPre,FileReadPre *.plist set binary ft=plist syntax=xml
+  autocmd BufReadPost *.plist call MyBinaryPlistReadPost()
+  autocmd FileReadPost *.plist call MyBinaryPlistReadPost() | let b:saveAsBinaryPlist = 0
+  autocmd BufWritePre,FileWritePre *.plist call MyBinaryPlistWritePre()
+  autocmd BufWritePost,FileWritePost *.plist call MyBinaryPlistWritePost()
 endif
 
 " User customizations are held in file ~/.vim/vimrc.local
@@ -191,4 +197,4 @@ if filereadable($HOME."/.vim/vimrc.local")
     source $HOME/.vim/vimrc.local
 endif
 
-" vim: set ts=4 sw=4 tw=0 ft=vim :
+" vim: set ts=4 sw=4 tw=78 ft=vim : 
