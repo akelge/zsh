@@ -162,7 +162,7 @@ nnoremap <silent> <F10> :OpenFilemanager<CR><CR>
 
 " Conque setup
 let g:ConqueTerm_InsertOnEnter = 1
-let g:ConqueTerm_TERM = 'xterm'
+let g:ConqueTerm_TERM = 'xterm-256color'
 let g:ConqueTerm_CloseOnEnd = 1
 let g:ConqueTerm_SendVisKey = ',tp'
 
