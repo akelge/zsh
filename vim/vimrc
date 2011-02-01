@@ -137,9 +137,13 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>f :set fullscreen!<CR>
 nnoremap <silent> <Leader>x :set paste!<CR>
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>t :Tlist<CR>
+nnoremap <silent> <Leader>T :Tlist<CR>
 nnoremap <silent> <Leader>N :set number!<CR>
 nnoremap <silent> <Leader>b :HSBufExplorer<CR>
+
+nnoremap <silent> <Leader>ts :ConqueTermSplit zsh<CR>
+nnoremap <silent> <Leader>tt :ConqueTermTab zsh<CR>
+
 map <silent> <Leader>c <plug>NERDCommenterToggle
 
 " nnoremap <silent> Y         y$
@@ -153,8 +157,14 @@ vnoremap <silent> <S-Down> j
 vnoremap <silent> <S-Up> k
 
 " Terminal/Filemanager integration
-nnoremap <silent> <F9> :OpenTerminal<CR>
+" nnoremap <silent> <F9> :OpenTerminal<CR>
 nnoremap <silent> <F10> :OpenFilemanager<CR><CR>
+
+" Conque setup
+let g:ConqueTerm_InsertOnEnter = 1
+let g:ConqueTerm_TERM = 'xterm'
+let g:ConqueTerm_CloseOnEnd = 1
+let g:ConqueTerm_SendVisKey = ',tp'
 
 " Tab selection by number
 nnoremap <silent> <D-1> 1gt
