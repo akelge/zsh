@@ -25,6 +25,7 @@ endif
 
 " colorscheme zenburn
 colorscheme freya
+" colorscheme southwest-fog
 " colorscheme moria
 " colorscheme morning
 " colorscheme desert

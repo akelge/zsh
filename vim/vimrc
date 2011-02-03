@@ -12,6 +12,7 @@ set history=50
 set nohlsearch
 set nostartofline
 " set paste
+set autochdir
 
 set ruler
 set cmdheight=1
@@ -24,6 +25,7 @@ set expandtab
 set softtabstop=4
 set autoindent
 set smartindent
+
 " For highlighted numbers:
 let python_highlight_numbers = 1
 "
@@ -80,14 +82,15 @@ colorscheme wombat256
 
 " Function that returns tab if called on an "empty" line
 " C-N elsewhere
-" function! CleverTab()
-  " if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    " return "\<Tab>"
-  " else
-    " return "\<C-N>"
-  " endfunction
+function! CleverTab()
+  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    return "\<Tab>"
+  else
+    return "\<C-N>"
+  endfunction
 " map the function to Tab
 " inoremap <C-\> <C-R>=CleverTab()<CR>
+inoremap <Tab> <C-R>=CleverTab()<CR>
 set completeopt=longest
 
 
@@ -110,12 +113,14 @@ let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Use_Right_Window = 1
 let Tlist_Display_Prototype = 0
 let Tlist_Compact_Format = 1
+let Tlist_Show_Menu = 1
 
 " """"""""
 " NERDTree
 " """"""""
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc']
-let NERDTreeShowBookmarks=1
+let NERDTreeIgnore = ['\.vim$', '\~$', '\.pyc']
+let NERDTreeShowBookmarks = 1
+let NERDChristmasTree = 1
 
 " """""""""""
 " BufExplorer
@@ -143,7 +148,6 @@ nnoremap <silent> <Leader>b :HSBufExplorer<CR>
 
 nnoremap <silent> <Leader>ts :ConqueTermSplit zsh<CR>
 nnoremap <silent> <Leader>tt :ConqueTermTab zsh<CR>
-
 map <silent> <Leader>c <plug>NERDCommenterToggle
 
 " nnoremap <silent> Y         y$
@@ -181,8 +185,8 @@ nnoremap <silent> <D-0> 10gt
 " Vim5 comes with syntaxhighlighting. If you want to enable syntaxhightlighting
 " by default uncomment the next three lines.
 if has("syntax")
-  syntax on		" Default to no syntax highlightning
-endif " has("syntax")
+  syntax on		" Default to no syntax highlightningendif " has("syntax")
+endif
 
 if has("autocmd")
   filetype indent on
