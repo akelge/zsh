@@ -12,7 +12,7 @@ set history=50
 set nohlsearch
 set nostartofline
 " set paste
-set autochdir
+" set autochdir
 
 set ruler
 set cmdheight=1
@@ -146,8 +146,11 @@ nnoremap <silent> <Leader>T :Tlist<CR>
 nnoremap <silent> <Leader>N :set number!<CR>
 nnoremap <silent> <Leader>b :HSBufExplorer<CR>
 
+nnoremap <silent> da "_dd
+
 nnoremap <silent> <Leader>ts :ConqueTermSplit zsh<CR>
 nnoremap <silent> <Leader>tt :ConqueTermTab zsh<CR>
+
 map <silent> <Leader>c <plug>NERDCommenterToggle
 
 " nnoremap <silent> Y         y$
