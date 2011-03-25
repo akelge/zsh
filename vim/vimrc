@@ -23,8 +23,8 @@ set shiftwidth=4
 set smarttab
 set expandtab
 set softtabstop=4
-set autoindent
-set smartindent
+" set autoindent
+" set smartindent
 
 " For highlighted numbers:
 let python_highlight_numbers = 1
@@ -92,7 +92,6 @@ function! CleverTab()
 " inoremap <C-\> <C-R>=CleverTab()<CR>
 inoremap <Tab> <C-R>=CleverTab()<CR>
 set completeopt=longest
-
 
 " Emacs like indenting. Pressing Tab indents line
 " Not in python, there it is managed by GetPythonIndent
