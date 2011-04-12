@@ -133,6 +133,11 @@ let g:bufExplorerResize=1
 let NERDSpaceDelims=1
 let NERDCreateDefaultMappings=1
 
+" """"""""""""""""
+" Trac Server List
+" """"""""""""""""
+let g:tracServerList = {}
+
 " """""""""""
 " Keymappings
 " """""""""""
