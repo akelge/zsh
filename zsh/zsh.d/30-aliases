@@ -12,7 +12,7 @@ alias cls='clear'
 
 alias dc=cd
 alias les=less
-alias fu='sudo -s $( fc -ln -1)'
+alias fu='sudo $(fc -ln -1)'
 
 alias mkdir='mkdir -p'
 alias zap='rm -rf'

@@ -1,4 +1,8 @@
 # Linux
-eval `dircolors`
+if [ -f /etc/dir_colors ]; then
+    eval `dircolors /etc/dir_colors`
+else
+    eval `dircolors`
+fi
 
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
