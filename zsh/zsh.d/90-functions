@@ -10,7 +10,7 @@ function hist { grep -i $* $HISTFILE }
 # hdu - Human readable report of files and directories sizes
 #       *Same behaviour as du*
 function hdu () {
-    du -k $* | sort -nr | awk '{
+    du -kc $* | sort -nr | awk '{
         # Prepare human readable
         if($1>=1024*1024) { size=$1/1024/1024; unit="G" }
         else if($1>=1024) { size=$1/1024;      unit="M" }

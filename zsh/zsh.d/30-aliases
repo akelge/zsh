@@ -2,10 +2,10 @@
 # Aliases
 
 alias ls='ls -F --color'
+alias dir='ls -l'
 alias la='ls -A'
 alias ll='ls -l'
-alias dir='ls -l'
-alias lla='la -l'
+alias lla='ls -Al'
 
 alias killall='killall -v'
 alias cls='clear'
@@ -13,6 +13,7 @@ alias cls='clear'
 alias dc=cd
 alias les=less
 alias fu='sudo $(fc -ln -1)'
+alias sudo='sudo '
 
 alias mkdir='mkdir -p'
 alias zap='rm -rf'

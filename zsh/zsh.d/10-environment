@@ -21,4 +21,7 @@ LOGCHECK=30
 REPORTTIME=15
 WATCH=notme
 WATCHFMT="%n %a %l (%m) at %t."
+
+# Set umask to collaborative mode
+umask 002
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
