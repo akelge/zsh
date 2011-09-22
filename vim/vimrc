@@ -5,7 +5,7 @@
 
 set nocompatible                    " Use Vim defaults (much better!)
 set backspace=indent,eol,start      " allow backspacing over everything
-set textwidth=0
+set textwidth=79
 set backup
 set viminfo='20,\"50,f10
 set history=50
@@ -117,8 +117,8 @@ let NERDChristmasTree = 1
 " """""""""""
 " BufExplorer
 " """""""""""
-let g:bufExplorerSplitBelow=1
-let g:bufExplorerResize=1
+" let g:bufExplorerSplitBelow=1
+" let g:bufExplorerResize=1
 
 " """"""""""""""
 " NERD Commenter
@@ -141,7 +141,7 @@ nnoremap <silent> <Leader>x :set paste!<CR>
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>T :Tlist<CR>
 nnoremap <silent> <Leader>N :set number!<CR>
-nnoremap <silent> <Leader>b :HSBufExplorer<CR>
+" nnoremap <silent> <Leader>b :HSBufExplorer<CR>
 
 nnoremap <silent> da "_dd
 
@@ -204,6 +204,28 @@ if has("autocmd")
   autocmd FileReadPost *.plist call MyBinaryPlistReadPost() | let b:saveAsBinaryPlist = 0
   autocmd BufWritePre,FileWritePre *.plist call MyBinaryPlistWritePre()
   autocmd BufWritePost,FileWritePost *.plist call MyBinaryPlistWritePost()
+  " Plain text
+  autocmd BufNewFile,BufRead *.txt set ft=txt tw=78 pfn=:h10
+  
+
+endif
+
+""" iTerm 2 Custom cursor shape
+if $TERM_PROGRAM == 'iTerm.app'
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+if $TERM_PROGRAM == 'iTerm.app'
+    let &t_ti = &t_ti . "\e[?2004h"
+    let &t_te = "\e[?2004l" . &t_te
+    function XTermPasteBegin(ret)
+        set pastetoggle=<Esc>[201~
+        set paste
+        return a:ret
+    endfunction
+    map <expr> <Esc>[200~ XTermPasteBegin("i")
+    imap <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 
 " User customizations are held in file ~/.vim/vimrc.local
