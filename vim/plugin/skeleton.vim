@@ -12,9 +12,8 @@
 " 'vars':
 "   @@LONGNAME@@ - replaced by g:fullname
 "   @@EMAIL@@    - replaced by g:email
-"   @@DESCR@@    - Synopsis of file (asked by this plugin
+"   @@DESCR@@    - Synopsis of file (asked by this plugin)
 "   @@crdate@@   - replaced by creation date
-"   2009-04-03T12:56 CEST (+0200)   - replaced by last modification date
 
 " Define template directory
 let g:skeletons = '~/.vim/templates'
@@ -26,7 +25,7 @@ augroup newfiles
   autocmd BufNewFile  *	ks|call OpenFile()|'s
 
   " Update of "Last Modified" date on writing
-  autocmd BufWritePre,FileWritePre *   ks|call LastMod()|'s
+  " autocmd BufWritePre,FileWritePre *   ks|call LastMod()|'s
 
   " Protect templates and plugin, removing write commands
   autocmd BufRead,BufNewFile ~/.vim/templates/* au! newfiles

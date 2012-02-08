@@ -3,9 +3,9 @@
 "
 " $Id$
 
-set nocompatible                    " Use Vim defaults (much better!)
-set backspace=indent,eol,start      " allow backspacing over everything
-set textwidth=79
+set nocompatible                " Use Vim defaults (much better!)
+set backspace=indent,eol,start  " allow backspacing over everything
+set textwidth=0                 " Textwidth 0 usually, we set it to 79 later
 set backup
 set viminfo='20,\"50,f10
 set history=50
@@ -13,6 +13,9 @@ set nohlsearch
 set nostartofline
 " set paste
 " set autochdir
+
+" Let's go to 256 colors
+set t_Co=256
 
 set ruler
 set cmdheight=1
@@ -197,7 +200,9 @@ if has("autocmd")
         \   exe "normal g'\"" |
         \ endif
   " Mako
-  autocmd BufNewFile,BufRead *.mako setf mako
+  autocmd BufNewFile,BufRead *.mako setf mako tw=0
+  " Python
+  autocmd BufNewFile,BufRead *.py set textwidth=79
   " Plist
   autocmd BufReadPre,FileReadPre *.plist set binary ft=plist syntax=xml
   autocmd BufReadPost *.plist call MyBinaryPlistReadPost()
@@ -219,7 +224,7 @@ endif
 if $TERM_PROGRAM == 'iTerm.app'
     let &t_ti = &t_ti . "\e[?2004h"
     let &t_te = "\e[?2004l" . &t_te
-    function XTermPasteBegin(ret)
+    function! XTermPasteBegin(ret)
         set pastetoggle=<Esc>[201~
         set paste
         return a:ret
