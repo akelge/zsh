@@ -1,11 +1,10 @@
 #!/usr/bin/env python
-#-*- coding: latin-1 -*-
+#-*- coding: utf-8 -*-
 
 """
 
  Copyright by @@LONGNAME@@ <@@EMAIL@@>
  First version: @@crdate@@
- Last modified: 2009-10-07T14:17 CEST (+0200)
 
  Synopsis: @@DESCR@@
 
