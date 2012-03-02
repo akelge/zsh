@@ -1,11 +1,8 @@
 *akmap.txt* Andre Vim mappings
 
-
-
-Author: Andrea Mistrali $Author$
+Author: Andrea Mistrali
 Version: $Id$
 Last change: $Date$
-
 
 1. Overview             |akmap-intro|
 2. Toggles              |akmap-toggles|
