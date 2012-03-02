@@ -1,6 +1,9 @@
-*akmap.txt* Andre Vim mappings          $Id$
+*akmap.txt* Andre Vim mappings
 
-Author: Andrea Mistrali
+
+
+Author: Andrea Mistrali $Author$
+Version: $Id$
 Last change: $Date$
 
 
