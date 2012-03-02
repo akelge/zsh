@@ -1,0 +1,63 @@
+*akmap.txt* Andre Vim mappings          $Id$
+
+Author: Andrea Mistrali
+Last change: $Date$
+
+
+1. Overview             |akmap-intro|
+2. Toggles              |akmap-toggles|
+3. OS Interaction       |akmap-os|
+4. Developer            |akmap-dev|
+5. Commenter            |akmap-commenter|
+6. Text                 |akmap-text|
+7. Misc                 |akmap-misc|
+
+=============================================================================
+                                *akmap-intro*
+1. Overview~
+,hh - Show this file
+
+                                *akmap-toggles*
+2. Toggles~
+,l - Toggle list                     |list|
+,N - Toggle line numbers             |numbers|
+,x - Toggle paste                    |paste|
+,f - Toggle Full screen
+,n - Toggle NERD Tree (file browser) |NERDTree|
+,T - Toggle tags list                |taglist.txt|
+
+                                *akmap-os*
+3. OS interaction~
+,ts - Open terminal window, splitting |ConqueTerm|
+,tt - Open terminal window, new tab   |ConqueTerm|
+<F10> - Open Filemanager (Finder) in actual directory
+
+                                *akmap-dev*
+4. Developer~
+,ml - Append modeline
+,ff - Javascript beautifier
+,pw - PyDoc
+
+                                *akmap-commenter*
+5. Commenter~
+See |NERDCommenter|
+
+,cc - Comment
+,cu - Uncomment
+,ci - Invert comment status (decomment if commented, comment else)
+,cy - Yank and comment
+,ca - Alternate delimiters
+,cs - Sexy comments (nicer)
+
+                                *akmap-text*
+6. Text~
+See |textformat|
+
+,ac - Align center
+,aj - Align justify
+,al - Align left
+,ar - Align right
+
+                                *akmap-misc*
+7. Misc~
+Empty for now

@@ -216,7 +216,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.txt setf txt
   autocmd FileType txt set textwidth=78 printfont=:h10
   " Javascript
-  autocmd FileType javascript set sw=4 ts=4 sts=4 
+  autocmd FileType javascript set sw=4 ts=4 sts=4 smarttab expandtab
   autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 
