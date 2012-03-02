@@ -1,9 +1,5 @@
 *akmap.txt* Andre Vim mappings
 
-Author: Andrea Mistrali
-Version: $Id$
-Last change: $Date$
-
 1. Overview             |akmap-intro|
 2. Toggles              |akmap-toggles|
 3. OS Interaction       |akmap-os|
@@ -11,11 +7,13 @@ Last change: $Date$
 5. Commenter            |akmap-commenter|
 6. Text                 |akmap-text|
 7. Misc                 |akmap-misc|
+7. Version              |akmap-ver|
 
-=============================================================================
+======================================================================
+
                                 *akmap-intro*
 1. Overview~
-,hh - Show this file
+<,hh> - Show this file
 
                                 *akmap-toggles*
 2. Toggles~
@@ -61,3 +59,11 @@ See |textformat|
                                 *akmap-misc*
 7. Misc~
 Empty for now
+
+                                *akmap-ver*
+8. Version~
+Author: Andrea Mistrali
+Version: $Id$
+Last change: $Date$
+
+ vim:tw=78:ts=8:ft=help:norl:

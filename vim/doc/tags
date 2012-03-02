@@ -285,9 +285,11 @@ VCSCommandVCSTypeOverride	vcscommand.txt	/*VCSCommandVCSTypeOverride*
 akmap-commenter	akmap.txt	/*akmap-commenter*
 akmap-dev	akmap.txt	/*akmap-dev*
 akmap-intro	akmap.txt	/*akmap-intro*
+akmap-misc	akmap.txt	/*akmap-misc*
 akmap-os	akmap.txt	/*akmap-os*
 akmap-text	akmap.txt	/*akmap-text*
 akmap-toggles	akmap.txt	/*akmap-toggles*
+akmap-ver	akmap.txt	/*akmap-ver*
 akmap.txt	akmap.txt	/*akmap.txt*
 align	Align.txt	/*align*
 align-align	Align.txt	/*align-align*
