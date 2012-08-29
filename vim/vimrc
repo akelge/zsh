@@ -29,6 +29,7 @@ set expandtab
 set softtabstop=4
 " set autoindent
 " set smartindent
+
 " Highlightinh in python:
 let python_highlight_numbers = 1
 let python_highlight_builtins = 1
@@ -62,7 +63,8 @@ set fileformats=unix,mac,dos
 set fileformat=unix
 set mouse=a
 set printfont=Monaco:h14
-colorscheme wombat256
+" colorscheme wombat256
+colorscheme railscasts
 
 " """""""""
 " User Info
@@ -101,7 +103,8 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 " """""""""""""""
 " TagLIST support
 " """""""""""""""
-let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
+" Defined in vimrc.local
+" let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_File_Fold_Auto_Close = 1
 "let Tlist_Use_SingleClick = 0 "Do not use yet

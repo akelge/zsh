@@ -2,6 +2,8 @@
 " GVIMRC - for GUI Vim Version (gvim, MacVim)
 "
 " $Id$
+"
+
 set guifont=Monaco:h13
 set anti
 set lines=50
@@ -23,6 +25,7 @@ if &background == "dark"
     set transparency=4
 endif
 
+" colorscheme railscasts
 " colorscheme zenburn
 colorscheme freya
 " colorscheme southwest-fog
