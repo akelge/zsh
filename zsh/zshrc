@@ -7,7 +7,7 @@
 # Global Order: zshenv, zprofile, zshrc, zlogin
 #
 KERNEL=`uname -s`
-LIBRARY="/Network/Library/zsh.d"
+LIBRARY="/etc/zsh.d"
 KERNLIB="${LIBRARY}/${KERNEL}"
 
 function loadRC {
