@@ -1,0 +1,13 @@
+"
+" Local configuration per user and per host
+" You can customize everything, expecially
+"
+" ctags path
+" let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
+"
+" skeleton variables:
+" let g:fullname = 'Your Full Name'
+" let g:email = 'your.email@address'
+"
+" $Id$
+"
