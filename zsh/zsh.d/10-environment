@@ -15,12 +15,15 @@ LOGD=/var/log
 [ -z "$PS1" ] && return
 
 ## Vars only for interactive sessions
-EDITOR=vi
 PYTHONSTARTUP=~/.pythonrc.py
 LOGCHECK=30
 REPORTTIME=15
 WATCH=notme
 WATCHFMT="%n %a %l (%m) at %t."
+
+# Hack for svn
+EDITOR=vim
+VISUAL=vim
 
 # Set umask to collaborative mode
 umask 002
