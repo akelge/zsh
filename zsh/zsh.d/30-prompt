@@ -2,7 +2,12 @@
 # Setup PROMPT
 if [ ${TERM[0,5]} = "xterm" ] || [ ${TERM} = "rxvt" ]; then
   # We are on xterminal
-  PS1="%{]2;%n@%m:%.%}%{]1; %m:%. %}%B<%l> %~ %#%b "
+  W="%{]2;::: %n at %m in %. :::%}"
+  I="%{]1;%m::%.%}"
+  L="%B${PR_BLUE}%3~ %#%b "
+  PS1="$W$I$L"
+  unset W I L
+
 else
   # We are not on xterminal
   PS1="%B[%l] %n@%m:%~ %#%b "

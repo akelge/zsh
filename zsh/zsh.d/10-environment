@@ -3,9 +3,6 @@
 
 ## Vars used always
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin:."
-SAVEHIST=500
-HISTFILE=~/.history
-HISTSIZE=10000
 LANG="it_IT.UTF-8"
 TZ='Europe/Rome'
 MIBS=all
@@ -15,15 +12,21 @@ LOGD=/var/log
 [ -z "$PS1" ] && return
 
 ## Vars only for interactive sessions
+SAVEHIST=500
+HISTFILE=~/.history
+HISTSIZE=10000
+
 PYTHONSTARTUP=~/.pythonrc.py
 LOGCHECK=30
 REPORTTIME=15
 WATCH=notme
 WATCHFMT="%n %a %l (%m) at %t."
 
-# Hack for svn
 EDITOR=vim
 VISUAL=vim
+#
+# Hack for svn
+# export SVN_EDITOR=${VISUAL}
 
 # Set umask to collaborative mode
 umask 002
