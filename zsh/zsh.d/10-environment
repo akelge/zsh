@@ -26,7 +26,7 @@ EDITOR=vim
 VISUAL=vim
 #
 # Hack for svn
-# export SVN_EDITOR=${VISUAL}
+export SVN_EDITOR=${VISUAL}
 
 # Set umask to collaborative mode
 umask 002
