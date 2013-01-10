@@ -4,7 +4,7 @@ if [ ${TERM[0,5]} = "xterm" ] || [ ${TERM} = "rxvt" ]; then
   # We are on xterminal
   W="%{]2;::: %n at %m in %. :::%}"
   I="%{]1;%m::%.%}"
-  L="%B%K{blue}%F{white} %m::%2~ %f%k
+  L="%B%K{blue}%F{white}@%m::%2~ %f%k
 %F{yellow}%#%f "
   PS1="$W$I$L"
   unset W I L
