@@ -5,7 +5,7 @@ if [ ${TERM[0,5]} = "xterm" ] || [ ${TERM} = "rxvt" ]; then
   W="%{]2;::: %n at %m in %. :::%}"
   I="%{]1;%m::%.%}"
   L="%B%K{blue}%F{white}@%m::%2~ %f%k
-%F{yellow}%#%f "
+%F{yellow}%#%f%b "
   PS1="$W$I$L"
   unset W I L
 
