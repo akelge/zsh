@@ -1,6 +1,6 @@
 #######################################################################################
 # Start autocomplete
-autoload -U compinit; compinit
+autoload -U compinit; compinit -u
 autoload -U compsys;
 compctl -g "*(-/)" + -g ".*(-/)" cd
 

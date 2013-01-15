@@ -11,6 +11,10 @@ LIBRARY="/etc/zsh.d"
 KERNLIB="${LIBRARY}/${KERNEL}"
 
 function loadRC {
+    if [ -d $1/zshfunctions ]; then
+        fpath=($1/zshfunctions $fpath)
+    fi
+
     if [ -d $1 ]; then
         # for zshFile in $1/*[^~]; do
         for zshFile in $1/*[^off\|~]; do

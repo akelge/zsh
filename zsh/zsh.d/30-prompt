@@ -1,17 +1,29 @@
 #######################################################################################
-# Setup PROMPT
-if [ ${TERM[0,5]} = "xterm" ] || [ ${TERM} = "rxvt" ]; then
-  # We are on xterminal
-  W="%{]2;::: %n at %m in %. :::%}"
-  I="%{]1;%m::%.%}"
-  L="%B%K{blue}%F{white}@%m::%2~ %f%k
-%F{yellow}%#%f%b "
-  PS1="$W$I$L"
-  unset W I L
 
-else
-  # We are not on xterminal
-  PS1="%B[%l] %n@%m:%~ %#%b "
-fi
+# prompt_akel_setup() {
+    # precmd () {
 
+        # # Setup PROMPT
+        # if [ ${TERM[0,5]} = "xterm" ] || [ ${TERM} = "rxvt" ]; then
+            # # We are on xterminal
+            # W="%{]2;::: %n at %m in %. :::%}"
+            # I="%{]1;%m::%.%}"
+            # L="%B%K{blue}%F{white}@%m::%2~ %f%k
+# %F{yellow}%#%f%b "
+            # PS1="$W$I$L"
+            # unset W I L
+
+        # else
+            # # We are not on xterminal
+            # PS1="%B[%l] %n@%m:%~ %#%b "
+        # fi
+    # }
+
+    # preexec () { }
+
+# }
+
+# prompt_akel_setup
+autoload -U promptinit;promptinit
+prompt akel1
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
