@@ -6,21 +6,28 @@
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
 #
+
+# Determine zsh conf file position. On Debian/Ubuntu is /etc/zsh, on other should be /etc
+[ -d /etc/zsh ] && BASE="/etc/zsh" || BASE="/etc"
+
 KERNEL=`uname -s`
-LIBRARY="/etc/zsh.d"
-KERNLIB="${LIBRARY}/${KERNEL}"
+LIBRARY=${BASE}/zsh.d
+KERNLIB=${LIBRARY}/${KERNEL}
 
 function loadRC {
+    # [ -d $1 ] && cd $1 || exit 1
+
     if [ -d $1/zshfunctions ]; then
         fpath=($1/zshfunctions $fpath)
     fi
 
-    if [ -d $1 ]; then
-        # for zshFile in $1/*[^~]; do
-        for zshFile in $1/*[^off\|~]; do
-            . $zshFile
-        done
-    fi
+    # Add local customization file, svn ignored
+    [ -f $1/99-local ] || echo "# Local customizations" > $1/99-local
+
+    for zshFile in $1/[0-9]*[^off\|~]; do
+        . $zshFile
+    done
+
     unset zshFile
 }
 
@@ -32,7 +39,7 @@ unset LIBRARY
 unset KERNLIB
 
 # Local (per Host) customizations
-for localDir in /etc/zsh /etc /usr/local/etc /usr/local/etc/zsh; do
+for localDir in ${LIBRARY} /etc/zsh /etc /usr/local/etc /usr/local/etc/zsh; do
     if [ -f ${localDir}/zshrc.local ]; then
         . ${localDir}/zshrc.local
     fi
