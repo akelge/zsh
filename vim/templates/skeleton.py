@@ -17,8 +17,8 @@ __author__ ='@@LONGNAME@@ <@@EMAIL@@>'
 
 
 def main():
-  pass
+    pass
 
 # If we have been called as 'python <script>' let's call main function
 if __name__ == "__main__":
-  main()
+    main()

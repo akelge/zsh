@@ -13,6 +13,7 @@ set nohlsearch
 set nostartofline
 " set paste
 set autochdir
+set clipboard=unnamed
 
 " Let's go to 256 colors
 set t_Co=256
@@ -166,6 +167,16 @@ nnoremap <silent> <S-Up> V
 vnoremap <silent> <S-Down> j
 vnoremap <silent> <S-Up> k
 
+" Line/block move up/down
+nnoremap <CS-Down> :m .+1<CR>==
+nnoremap <CS-Up> :m .-2<CR>==
+
+inoremap <CS-Down> <Esc>:m .+1<CR>==gi
+inoremap <CS-Up> <Esc>:m .-2<CR>==gi
+
+vnoremap <CS-Down> :m '>+1<CR>gv=gv
+vnoremap <CS-Up> :m '<-2<CR>gv=gv
+
 " Terminal/Filemanager integration
 " nnoremap <silent> <F9> :OpenTerminal<CR>
 nnoremap <silent> <F10> :OpenFilemanager<CR><CR>
@@ -187,6 +198,9 @@ nnoremap <silent> <D-7> 7gt
 nnoremap <silent> <D-8> 8gt
 nnoremap <silent> <D-9> 9gt
 nnoremap <silent> <D-0> 10gt
+
+" <Leader>hh opens my help file
+nnoremap <silent> <Leader>hh :help akmap<CR>
 
 " Vim5 comes with syntaxhighlighting. If you want to enable syntaxhightlighting
 " by default uncomment the next three lines.

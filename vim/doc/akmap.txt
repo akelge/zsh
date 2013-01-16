@@ -58,7 +58,15 @@ See |textformat|
 
                                 *akmap-misc*
 7. Misc~
-Empty for now
+
+In command or insertion mode:
+<Shift-Ctrl-Up>   - Move line up
+<Shift-Ctrl-Down> - Move line down
+
+In Visual mode:
+<Shift-Ctrl-Up>   - Move block up
+<Shift-Ctrl-Down> - Move block down
+
 
                                 *akmap-ver*
 8. Version~
@@ -66,4 +74,4 @@ Author: Andrea Mistrali
 Version: $Id$
 Last change: $Date$
 
- vim:tw=78:ts=8:ft=help:norl:
+vim:tw=78:ts=8:ft=help:norl:
