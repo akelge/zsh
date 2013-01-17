@@ -31,15 +31,6 @@ augroup newfiles
   autocmd BufRead,BufNewFile ~/.vim/templates/* au! newfiles
   autocmd BufRead,BufNewFile */skeleton.vim au! newfiles
   autocmd BufWritePre,FileWritePre */skeleton.vim au! newfiles
-
-  " Reload .vimrc, after modifications
-  autocmd BufWritePost ~/.vimrc   so ~/.vimrc
-  if has("gui_running")
-    autocmd BufWritePost ~/.gvimrc   so ~/.gvimrc
-  endif
-  autocmd BufRead,BufNewFile *.mako set ft=mako
-
-  " Set up python support
 augroup END
 
 

@@ -6,6 +6,11 @@ function! AppendModeline()
   $put =substitute(&commentstring, '%s', append, '')
   call setpos('.', save_cursor)
 endfunction
+
+" Define as a command
+command! -nargs=0 -bar AppendModeline call AppendModeline()
+
+" Map to <Leader>ml
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " vim: set ts=4 sw=4 tw=78 ft=vim : 

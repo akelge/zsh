@@ -28,7 +28,7 @@
 3. OS interaction~
 ,ts - Open terminal window, splitting |ConqueTerm|
 ,tt - Open terminal window, new tab   |ConqueTerm|
-<F10> - Open Filemanager (Finder) in actual directory
+,of - Open Filemanager (Finder) in actual directory
 
                                 *akmap-dev*
 4. Developer~

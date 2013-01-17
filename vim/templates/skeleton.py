@@ -22,3 +22,5 @@ def main():
 # If we have been called as 'python <script>' let's call main function
 if __name__ == "__main__":
     main()
+
+# vim: set ts=4 sw=4 tw=79 ft=python : 

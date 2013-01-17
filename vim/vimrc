@@ -133,11 +133,6 @@ let NERDChristmasTree = 1
 let NERDSpaceDelims=1
 let NERDCreateDefaultMappings=1
 
-" """"""""""""""""
-" Trac Server List
-" """"""""""""""""
-let g:tracServerList = {}
-
 " """""""""""
 " Keymappings
 " """""""""""
@@ -177,12 +172,14 @@ inoremap <CS-Up> <Esc>:m .-2<CR>==gi
 vnoremap <CS-Down> :m '>+1<CR>gv=gv
 vnoremap <CS-Up> :m '<-2<CR>gv=gv
 
-" Terminal/Filemanager integration
+" Terminal/Filemanager 
 " nnoremap <silent> <F9> :OpenTerminal<CR>
-nnoremap <silent> <F10> :OpenFilemanager<CR><CR>
+" nnoremap <silent> <F10> :OpenFilemanager<CR><CR>
+nnoremap <silent> <Leader>of :OpenFilemanager<CR>
 
-" Conque setup
+" Conque Term
 let g:ConqueTerm_InsertOnEnter = 1
+let g:ConqueTerm_CWInsert = 1
 let g:ConqueTerm_TERM = 'xterm-256color'
 let g:ConqueTerm_CloseOnEnd = 1
 let g:ConqueTerm_SendVisKey = ',tp'
@@ -219,9 +216,11 @@ if has("autocmd")
   " Mako
   autocmd BufNewFile,BufRead *.mako setf mako
   autocmd FileType *.mako set textwidth=0
+  
   " Python
   autocmd FileType python set textwidth=79
   autocmd FileType python set omnifunc=pythoncomplete#Complete
+
   " Plist
   autocmd BufReadPre,FileReadPre *.plist setf plist
   autocmd FileType plist set binary syntax=xml
@@ -229,12 +228,20 @@ if has("autocmd")
   autocmd FileReadPost *.plist call MyBinaryPlistReadPost() | let b:saveAsBinaryPlist = 0
   autocmd BufWritePre,FileWritePre *.plist call MyBinaryPlistWritePre()
   autocmd BufWritePost,FileWritePost *.plist call MyBinaryPlistWritePost()
+
   " Plain text
   autocmd BufNewFile,BufRead *.txt setf txt
   autocmd FileType txt set textwidth=78 printfont=:h10
+
   " Javascript
   autocmd FileType javascript set sw=4 ts=4 sts=4 smarttab expandtab
   autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  "
+  " Reload .vimrc, after modifications
+  autocmd BufWritePost ~/.vimrc   so ~/.vimrc
+  if has("gui_running")
+    autocmd BufWritePost ~/.gvimrc   so ~/.gvimrc
+  endif
 
 
   " Transparent editing of gpg encrypted files.
@@ -277,9 +284,7 @@ endif
 if $TERM_PROGRAM == 'iTerm.app'
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
 
-if $TERM_PROGRAM == 'iTerm.app'
     let &t_ti = &t_ti . "\e[?2004h"
     let &t_te = "\e[?2004l" . &t_te
     function! XTermPasteBegin(ret)
