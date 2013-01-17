@@ -133,6 +133,10 @@ let NERDChristmasTree = 1
 let NERDSpaceDelims=1
 let NERDCreateDefaultMappings=1
 
+" """"""""""""""
+" GetLastestScript
+" """"""""""""""
+
 " """""""""""
 " Keymappings
 " """""""""""
@@ -148,7 +152,7 @@ nnoremap <silent> <Leader>N :set number!<CR>
 nnoremap <silent> da "_dd
 
 nnoremap <silent> <Leader>ts :ConqueTermSplit zsh<CR>
-nnoremap <silent> <Leader>tt :ConqueTermTab zsh<CR>
+nnoremap <silent> <Leader>tT :ConqueTermTab zsh<CR>
 
 map <silent> <Leader>c <plug>NERDCommenterToggle
 

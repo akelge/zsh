@@ -2,10 +2,9 @@
 "
 " Mercurial extension for VCSCommand.
 "
-" Version:       VCS development
 " Maintainer:    Bob Hiestand <bob.hiestand@gmail.com>
 " License:
-" Copyright (c) 2009 Bob Hiestand
+" Copyright (c) Bob Hiestand
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
 " of this software and associated documentation files (the "Software"), to
@@ -51,7 +50,9 @@ if v:version < 700
 	finish
 endif
 
-runtime plugin/vcscommand.vim
+if !exists('g:loaded_VCSCommand')
+	runtime plugin/vcscommand.vim
+endif
 
 if !executable(VCSCommandGetOption('VCSCommandHGExec', 'hg'))
 	" HG is not installed
@@ -71,7 +72,7 @@ let s:hgFunctions = {}
 " Returns the executable used to invoke hg suitable for use in a shell
 " command.
 function! s:Executable()
-	return shellescape(VCSCommandGetOption('VCSCommandHGExec', 'hg'))
+	return VCSCommandGetOption('VCSCommandHGExec', 'hg')
 endfunction
 
 " Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
@@ -105,16 +106,16 @@ endfunction
 
 " Function: s:hgFunctions.Add() {{{2
 function! s:hgFunctions.Add(argList)
-	return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '), {})
+	return s:DoCommand(join(['add -v'] + a:argList, ' '), 'add', join(a:argList, ' '), {})
 endfunction
 
 " Function: s:hgFunctions.Annotate(argList) {{{2
 function! s:hgFunctions.Annotate(argList)
 	if len(a:argList) == 0
-		if &filetype == 'HGAnnotate'
+		if &filetype ==? 'hgannotate'
 			" Perform annotation of the version indicated by the current line.
-			let caption = matchstr(getline('.'),'\v^\s+\zs\d+')
-			let options = ' -r' . caption
+			let caption = matchstr(getline('.'),'\v^\s*\w+\s+\zs\d+')
+			let options = ' -un -r' . caption
 		else
 			let caption = ''
 			let options = ' -un'
@@ -127,19 +128,16 @@ function! s:hgFunctions.Annotate(argList)
 		let options = ' ' . caption
 	endif
 
-	let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption, {})
-	if resultBuffer > 0
-		set filetype=HGAnnotate
-	endif
-	return resultBuffer
+	return s:DoCommand('blame' . options, 'annotate', caption, {})
 endfunction
 
 " Function: s:hgFunctions.Commit(argList) {{{2
 function! s:hgFunctions.Commit(argList)
-	let resultBuffer = s:DoCommand('commit -l "' . a:argList[0] . '"', 'commit', '', {})
-	if resultBuffer == 0
+	try
+		return s:DoCommand('commit -v -l "' . a:argList[0] . '"', 'commit', '', {})
+	catch /Version control command failed.*nothing changed/
 		echomsg 'No commit needed.'
-	endif
+	endtry
 endfunction
 
 " Function: s:hgFunctions.Delete() {{{2
@@ -175,15 +173,7 @@ function! s:hgFunctions.Diff(argList)
 		let diffOptions = ['-x -' . hgDiffOpt]
 	endif
 
-	let resultBuffer = s:DoCommand(join(['diff'] + diffExt + diffOptions + revOptions), 'diff', caption, {})
-	if resultBuffer > 0
-		set filetype=diff
-	else
-		if hgDiffExt == ''
-			echomsg 'No differences found'
-		endif
-	endif
-	return resultBuffer
+	return s:DoCommand(join(['diff'] + diffExt + diffOptions + revOptions), 'diff', caption, {})
 endfunction
 
 " Function: s:hgFunctions.Info(argList) {{{2
@@ -259,18 +249,13 @@ function! s:hgFunctions.Review(argList)
 		let versionOption = ' -r ' . versiontag . ' '
 	endif
 
-"	let resultBuffer = s:DoCommand('cat --non-interactive' . versionOption, 'review', versiontag, {})
-	let resultBuffer = s:DoCommand('cat' . versionOption, 'review', versiontag, {})
-	if resultBuffer > 0
-		let &filetype = getbufvar(b:VCSCommandOriginalBuffer, '&filetype')
-	endif
-	return resultBuffer
+	return s:DoCommand('cat' . versionOption, 'review', versiontag, {})
 endfunction
 
 " Function: s:hgFunctions.Status(argList) {{{2
 function! s:hgFunctions.Status(argList)
-	let options = ['-u', '-v']
-	if len(a:argList) == 0
+	let options = ['-A', '-v']
+	if len(a:argList) != 0
 		let options = a:argList
 	endif
 	return s:DoCommand(join(['status'] + options, ' '), 'status', join(options, ' '), {})

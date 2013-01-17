@@ -2,10 +2,9 @@
 "
 " BZR extension for VCSCommand.
 "
-" Version:       VCS development
 " Maintainer:    Bob Hiestand <bob.hiestand@gmail.com>
 " License:
-" Copyright (c) 2009 Bob Hiestand
+" Copyright (c) Bob Hiestand
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
 " of this software and associated documentation files (the "Software"), to
@@ -44,7 +43,9 @@ if v:version < 700
   finish
 endif
 
-runtime plugin/vcscommand.vim
+if !exists('g:loaded_VCSCommand')
+	runtime plugin/vcscommand.vim
+endif
 
 if !executable(VCSCommandGetOption('VCSCommandBZRExec', 'bzr'))
   " BZR is not installed
@@ -64,7 +65,7 @@ let s:bzrFunctions = {}
 " Returns the executable used to invoke bzr suitable for use in a shell
 " command.
 function! s:Executable()
-	return shellescape(VCSCommandGetOption('VCSCommandBZRExec', 'bzr'))
+	return VCSCommandGetOption('VCSCommandBZRExec', 'bzr')
 endfunction
 
 " Function: s:DoCommand(cmd, cmdName, statusText) {{{2
@@ -84,7 +85,13 @@ endfunction
 " Function: s:bzrFunctions.Identify(buffer) {{{2
 function! s:bzrFunctions.Identify(buffer)
   let fileName = resolve(bufname(a:buffer))
-  let statusText = s:VCSCommandUtility.system(s:Executable() . ' info -- "' . fileName . '"')
+  let l:save_bzr_log=$BZR_LOG
+  try
+    let $BZR_LOG=has("win32") || has("win95") || has("win64") || has("win16") ? "nul" : "/dev/null"
+    let statusText = s:VCSCommandUtility.system(s:Executable() . ' info -- "' . fileName . '"')
+  finally
+    let $BZR_LOG=l:save_bzr_log
+  endtry
   if(v:shell_error)
     return 0
   else
@@ -100,7 +107,7 @@ endfunction
 " Function: s:bzrFunctions.Annotate(argList) {{{2
 function! s:bzrFunctions.Annotate(argList)
   if len(a:argList) == 0
-    if &filetype == 'BZRAnnotate'
+    if &filetype ==? 'bzrannotate'
       " Perform annotation of the version indicated by the current line.
       let caption = matchstr(getline('.'),'\v^\s+\zs\d+')
       let options = ' -r' . caption
@@ -118,8 +125,7 @@ function! s:bzrFunctions.Annotate(argList)
 
   let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption, {})
   if resultBuffer > 0
-    normal 1G2dd
-    set filetype=BZRAnnotate
+    normal! 1G2dd
   endif
   return resultBuffer
 endfunction
@@ -151,13 +157,7 @@ function! s:bzrFunctions.Diff(argList)
     let revOptions = a:argList
   endif
 
-  let resultBuffer = s:DoCommand(join(['diff'] + revOptions), 'diff', caption, {'allowNonZeroExit': 1})
-  if resultBuffer > 0
-    set filetype=diff
-  else
-    echomsg 'No differences found'
-  endif
-  return resultBuffer
+  return s:DoCommand(join(['diff'] + revOptions), 'diff', caption, {'allowNonZeroExit': 1})
 endfunction
 
 " Function: s:bzrFunctions.GetBufferInfo() {{{2
@@ -234,17 +234,13 @@ function! s:bzrFunctions.Review(argList)
     let versionOption = ' -r ' . versiontag . ' '
   endif
 
-  let resultBuffer = s:DoCommand('cat' . versionOption, 'review', versiontag, {})
-  if resultBuffer > 0
-    let &filetype=getbufvar(b:VCSCommandOriginalBuffer, '&filetype')
-  endif
-  return resultBuffer
+  return s:DoCommand('cat' . versionOption, 'review', versiontag, {})
 endfunction
 
 " Function: s:bzrFunctions.Status(argList) {{{2
 function! s:bzrFunctions.Status(argList)
   let options = ['-S']
-  if len(a:argList) == 0
+  if len(a:argList) != 0
     let options = a:argList
   endif
   return s:DoCommand(join(['status'] + options, ' '), 'status', join(options, ' '), {})
