@@ -23,9 +23,10 @@ function loadRC {
     fi
 
     # Add local customization file, svn ignored
-    [ -f $1/99-local ] || echo "# Local customizations" > $1/99-local
+    [ -f $1/99-local.zsh ] || echo "# Local customizations" > $1/99-local.zsh
 
-    for zshFile in $1/[0-9]*[^off\|~]; do
+    # Process all .zsh files
+    for zshFile in $1/[0-9]*.zsh; do
         . $zshFile
     done
 
