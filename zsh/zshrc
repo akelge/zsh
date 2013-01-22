@@ -22,6 +22,10 @@ function loadRC {
         fpath=($1/zshfunctions $fpath)
     fi
 
+    if [ -d $1/completions ]; then
+        fpath=($1/completions $fpath)
+    fi
+
     # Add local customization file, svn ignored
     [ -f $1/99-local.zsh ] || echo "# Local customizations" > $1/99-local.zsh
 
