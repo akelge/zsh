@@ -1,7 +1,12 @@
 function venv {
 
-    export WORKON_HOME=$HOME/Src/virtualenvs
-    export PROJECT_HOME=$HOME/Src/projects
+    # export WORKON_HOME=$HOME/Src/virtualenvs
+    # export PROJECT_HOME=$HOME/Src/projects
+    if [ -z $WORKON_HOME ] || [ -z $PROJECT_HOME ]; then
+        echo "Please, set WORKON_HOME and PROJECT_HOME first."
+        echo "Better place to set them is 99-local.zsh"
+        return
+    fi
 
     VIRTUALENV_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 
