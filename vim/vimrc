@@ -234,8 +234,8 @@ if has("autocmd")
   autocmd BufWritePost,FileWritePost *.plist call MyBinaryPlistWritePost()
 
   " Plain text
-  autocmd BufNewFile,BufRead *.txt setf txt
-  autocmd FileType txt set textwidth=78 printfont=:h10
+  autocmd BufNewFile,BufRead *.txt setf text
+  autocmd FileType text set textwidth=78 printfont=:h10
 
   " Javascript
   autocmd FileType javascript set sw=4 ts=4 sts=4 smarttab expandtab
