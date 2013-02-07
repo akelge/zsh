@@ -14,7 +14,7 @@ LESS="-c -x4 -R -MM -PMFile\:?f%f:STDIN. ?BSize\:?B%B:Unk.?B\:?pb%pb\%:Unk.?B\:%
 LESSCHARSET=utf-8
 READNULLCMD=/usr/bin/less
 PAGER=/usr/bin/less
-LESSOPEN="|lesspipe.sh %s"; export LESSOPEN
 
 export LESS
+export PAGER
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 

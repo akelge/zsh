@@ -20,7 +20,7 @@ function venv {
     echo "PROJECT_HOME: $PROJECT_HOME"
     echo
     echo "Virtualenvs:"
-    lsvirtualenv
+    lsvirtualenv -b
     echo
 }
 

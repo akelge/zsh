@@ -1,4 +1,4 @@
-#setopt ALL_EXPORT
+# setopt ALL_EXPORT
 
 setopt ALWAYS_TO_END
 setopt APPEND_HISTORY
