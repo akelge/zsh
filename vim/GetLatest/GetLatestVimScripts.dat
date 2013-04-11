@@ -2,7 +2,7 @@ ScriptID SourceID Filename
 --------------------------
 910 18164 :AutoInstall: pydoc.vim
 2771 16279 :AutoInstall: conque_term.vim
-294 18148 :AutoInstall: Align.vim
+294 19633 :AutoInstall: Align.vim
 1066 7618 :AutoInstall: cecutil.vim
 642 15781 :AutoInstall: getscript.vim
 2324 9247 :AutoInstall: TextFormat

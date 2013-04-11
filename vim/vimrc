@@ -13,7 +13,7 @@ set nohlsearch
 set nostartofline
 " set paste
 set autochdir
-set clipboard=unnamed
+" set clipboard=unnamed
 
 " Let's go to 256 colors
 set t_Co=256
@@ -49,16 +49,16 @@ set modeline
 set modelines=1
 set encoding=utf-8
 set listchars=tab:->,trail:.,eol:$,extends:>,precedes:<
-set smartcase
+set ignorecase      " Do case insensitive matching
+set smartcase       " But with style
 set errorbells
 " set visualbell
 set showcmd         " Show (partial) command in status line.
 set showmatch       " Show matching brackets.
-set ignorecase      " Do case insensitive matching
 set incsearch       " Incremental search
 set autowrite       " Automatically save before commands like :next and :make
 " set statusline=%<%f\ %H%m%r%=%-14.(%l,%c%)\ %P\ Buf.%n
-set showtabline=0
+set showtabline=1
 set backupcopy=yes
 set fileformats=unix,mac,dos
 set fileformat=unix
@@ -151,6 +151,10 @@ nnoremap <silent> <Leader>N :set number!<CR>
 
 nnoremap <silent> da "_dd
 
+" Standard Unix Home/End
+" nnoremap <Home> ^
+" nnoremap <End> $
+
 nnoremap <silent> <Leader>ts :ConqueTermSplit zsh<CR>
 nnoremap <silent> <Leader>tT :ConqueTermTab zsh<CR>
 
@@ -210,16 +214,16 @@ if has("syntax")
 endif
 
 if has("autocmd")
-  filetype indent on
-  filetype plugin on
+  filetype plugin indent on
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
         \ if line("'\"") > 0 && line ("'\"") <= line("$") |
         \   exe "normal g'\"" |
         \ endif
   " Mako
-  autocmd BufNewFile,BufRead *.mako setf mako
-  autocmd FileType *.mako set textwidth=0
+  autocmd! BufRead,BufNewFile *.mako       setfiletype mako
+  autocmd BufWinEnter *.mako setfiletype mako
+  autocmd FileType mako set textwidth=0
   
   " Python
   autocmd FileType python set textwidth=79

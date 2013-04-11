@@ -59,7 +59,9 @@
 'Tlist_WinWidth'	taglist.txt	/*'Tlist_WinWidth'*
 'loaded_nerd_comments'	NERD_commenter.txt	/*'loaded_nerd_comments'*
 'loaded_nerd_tree'	NERD_tree.txt	/*'loaded_nerd_tree'*
+:Align	Align.txt	/*:Align*
 :AlignCenter	textformat.txt	/*:AlignCenter*
+:AlignCtrl	Align.txt	/*:AlignCtrl*
 :AlignJustify	textformat.txt	/*:AlignJustify*
 :AlignLeft	textformat.txt	/*:AlignLeft*
 :AlignMapsClean	Align.txt	/*:AlignMapsClean*
