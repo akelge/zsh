@@ -1,6 +1,8 @@
 #######################################################################################
 # Colorize terminal
 autoload colors zsh/terminfo
+zmodload zsh/terminfo
+
 if [[ "$terminfo[colors]" -ge 8 ]]; then
     colors
 fi
