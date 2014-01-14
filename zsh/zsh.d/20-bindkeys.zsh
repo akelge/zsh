@@ -1,4 +1,9 @@
 #######################################################################################
+#
+# Backward-kill-word stop on dir delimiter
+autoload -U select-word-style
+select-word-style bash
+
 # Useful under iTerm
 bindkey  "-e" 
 bindkey  "\e[1~" beginning-of-line
