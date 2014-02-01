@@ -4,10 +4,10 @@
 " $Id$
 "
 
-set guifont=Monaco:h13
+set guifont=Monaco\ 11
 set anti
 set lines=50
-set columns=132
+set columns=120
 set mousefocus
 set errorbells
 set visualbell
@@ -16,13 +16,17 @@ set guicursor=a:block-blinkon0
 set showtabline=2
 set guitablabel=%!GuiTabLabel()
 set guitabtooltip=%!GuiTabToolTip()
-set fuoptions=maxvert,maxhorz
+
+if has('mac') || has('macunix')
+    set guifont=Monaco:h11
+    set fuoptions=maxvert,maxhorz
+    set transparency=4
+endif
 
 set guioptions-=T
 set guioptions+=a
 if &background == "dark"
     hi normal guibg=black
-    set transparency=4
 endif
 
 " colorscheme railscasts

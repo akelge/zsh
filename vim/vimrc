@@ -2,7 +2,9 @@
 " General Setup
 "
 " $Id$
-
+"
+" First of all determine the OS we are on
+" Can be Linux or Darwin
 set nocompatible                " Use Vim defaults (much better!)
 set backspace=indent,eol,start  " allow backspacing over everything
 set textwidth=0                 " Textwidth 0 usually, we set it to 79 later
@@ -13,7 +15,7 @@ set nohlsearch
 set nostartofline
 " set paste
 set autochdir
-" set clipboard=unnamed
+set clipboard+=unnamed
 
 " Let's go to 256 colors
 set t_Co=256
@@ -43,7 +45,7 @@ set background=dark
 set title
 
 set browsedir=buffer
-" set autochdir
+set autochdir
 set cpoptions=aAcF$
 set modeline
 set modelines=1
@@ -58,12 +60,18 @@ set showmatch       " Show matching brackets.
 set incsearch       " Incremental search
 set autowrite       " Automatically save before commands like :next and :make
 " set statusline=%<%f\ %H%m%r%=%-14.(%l,%c%)\ %P\ Buf.%n
-set showtabline=1
+" set showtabline=2
 set backupcopy=yes
 set fileformats=unix,mac,dos
 set fileformat=unix
 set mouse=a
-set printfont=Monaco:h14
+
+if has('mac') || has('macunix')
+    set printfont=Monaco:h12
+else
+    set printfont=Monaco\ 12
+endif
+
 " colorscheme wombat256
 colorscheme railscasts
 
@@ -180,7 +188,7 @@ inoremap <CS-Up> <Esc>:m .-2<CR>==gi
 vnoremap <CS-Down> :m '>+1<CR>gv=gv
 vnoremap <CS-Up> :m '<-2<CR>gv=gv
 
-" Terminal/Filemanager 
+" Terminal/Filemanager
 " nnoremap <silent> <F9> :OpenTerminal<CR>
 " nnoremap <silent> <F10> :OpenFilemanager<CR><CR>
 nnoremap <silent> <Leader>of :OpenFilemanager<CR>
@@ -193,16 +201,35 @@ let g:ConqueTerm_CloseOnEnd = 1
 let g:ConqueTerm_SendVisKey = ',tp'
 
 " Tab selection by number
-nnoremap <silent> <D-1> 1gt
-nnoremap <silent> <D-2> 2gt
-nnoremap <silent> <D-3> 3gt
-nnoremap <silent> <D-4> 4gt
-nnoremap <silent> <D-5> 5gt
-nnoremap <silent> <D-6> 6gt
-nnoremap <silent> <D-7> 7gt
-nnoremap <silent> <D-8> 8gt
-nnoremap <silent> <D-9> 9gt
-nnoremap <silent> <D-0> 10gt
+if has('mac') || has('macunix')
+    nnoremap <silent> <D-1> 1gt
+    nnoremap <silent> <D-2> 2gt
+    nnoremap <silent> <D-3> 3gt
+    nnoremap <silent> <D-4> 4gt
+    nnoremap <silent> <D-5> 5gt
+    nnoremap <silent> <D-6> 6gt
+    nnoremap <silent> <D-7> 7gt
+    nnoremap <silent> <D-8> 8gt
+    nnoremap <silent> <D-9> 9gt
+    nnoremap <silent> <D-0> 10gt
+else
+    nnoremap <silent> <M-1> 1gt
+    nnoremap <silent> <M-2> 2gt
+    nnoremap <silent> <M-3> 3gt
+    nnoremap <silent> <M-4> 4gt
+    nnoremap <silent> <M-5> 5gt
+    nnoremap <silent> <M-6> 6gt
+    nnoremap <silent> <M-7> 7gt
+    nnoremap <silent> <M-8> 8gt
+    nnoremap <silent> <M-9> 9gt
+    nnoremap <silent> <M-0> 10gt
+endif
+
+" Map Ctrl-T to new tab and Ctrl-W to close tab
+if !(has('mac') || has('macunix'))
+    nnoremap <silent> <C-T> :tabnew<CR>
+    nnoremap <silent> <C-W> :tabclose<CR>
+endif
 
 " <Leader>hh opens my help file
 nnoremap <silent> <Leader>hh :help akmap<CR>
@@ -224,7 +251,7 @@ if has("autocmd")
   autocmd! BufRead,BufNewFile *.mako       setfiletype mako
   autocmd BufWinEnter *.mako setfiletype mako
   autocmd FileType mako set textwidth=0
-  
+
   " Python
   autocmd FileType python set textwidth=79
   autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -309,4 +336,4 @@ if filereadable($HOME."/.vim/vimrc.local")
     source $HOME/.vim/vimrc.local
 endif
 
-" vim: set ts=4 sw=4 tw=78 ft=vim : 
+" vim: set ts=4 sw=4 tw=78 ft=vim :
