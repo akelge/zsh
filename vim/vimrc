@@ -109,11 +109,19 @@ set cinkeys=0{,0},0),:,0#,!^F,o,O,e,!<Tab>,!^F
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 
+
 " """""""""""""""
 " TagLIST support
+" Below is a placeholder for ctags so vim does not complain if there is no
+" ctags installed on the computer
+" If you install ctags you can write the path into
+" vimrc.local.
+"     let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
+" If ctags is on your path you just need to
+"     unlet Tlist_Ctags_Cmd
 " """""""""""""""
-" Defined in vimrc.local
-" let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
+
+let Tlist_Ctags_Cmd="/bin/true"
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_File_Fold_Auto_Close = 1
 "let Tlist_Use_SingleClick = 0 "Do not use yet

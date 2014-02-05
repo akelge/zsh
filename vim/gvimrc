@@ -6,8 +6,8 @@
 
 set guifont=Monaco\ 11
 set anti
-set lines=50
-set columns=120
+set lines=45 " Change in vimrc.local
+set columns=90 " Change in vimrc.local
 set mousefocus
 set errorbells
 set visualbell
