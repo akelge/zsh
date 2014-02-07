@@ -81,11 +81,14 @@ set statusline+=%#error#
 set statusline+=%{&paste?'[paste]':'[nopaste]'}
 set statusline+=%*
 
+" set statusline+=%=
+
 set statusline+=%= "left/right separator
 set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
+set statusline+=\ tw%{&tw}\ 
 set statusline+=%02c, "cursor column
 set statusline+=%03l/%03L "cursor line/total lines
 set statusline+=\ hex:\ 0x%02B
 set statusline+=\ %P "percent through file
 
-" vim: set ts=4 sw=4 tw=78 ft=vim : 
+" vim: set ts=4 sw=4 tw=78 ft=vim :
