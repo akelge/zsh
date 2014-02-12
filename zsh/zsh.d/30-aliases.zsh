@@ -27,6 +27,8 @@ alias ptr='host -t ptr'
 
 alias vi="vim "
 
+alias du1="du -h --max-depth=1"
+
 # Global Aliases
 #
 alias -g L="|less"
