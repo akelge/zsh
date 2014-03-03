@@ -27,7 +27,9 @@ function loadRC {
     fi
 
     # Add local customization file, svn ignored
-    [ -f $1/99-local.zsh ] || echo "# Local customizations" > $1/99-local.zsh
+    if [ $EUID -eq 0 ]; then
+        [ -f $1/99-local.zsh ] || echo "# Local customizations" > $1/99-local.zsh
+    fi
 
     # Process all .zsh files
     for zshFile in $1/[0-9]*.zsh; do

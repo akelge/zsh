@@ -1,6 +1,6 @@
 function prompt_minimal_setup { 
 # Setup PROMPT
-if [ ${TERM[0,5]} = "xterm" ] || [ ${TERM} = "rxvt" ]; then
+if `fancyTerm`; then
     # We are on xterminal
     W="%n@%m:%."
     I="%m:%."

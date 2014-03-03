@@ -1,6 +1,5 @@
 function prompt_nice_setup {
-
-if [ ${TERM[0,5]} = "xterm" ] || [ ${TERM} = "rxvt" ]; then
+if `fancyTerm`; then
     W="::: %n at %m in %. :::"
     I="%m::%."
     L="%B%K{blue}%F{white}@%m::%2~ %f%k

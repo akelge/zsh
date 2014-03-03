@@ -15,5 +15,9 @@ autoload -U dust
 
 # bak - remove backup files
 autoload -U bak
+#
+# fancyTerm - returns true if we are on xterm/rxvt/screen, elsewhere false
+autoload -U fancyTerm
+
 
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
