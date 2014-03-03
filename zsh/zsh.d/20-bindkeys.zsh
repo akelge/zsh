@@ -5,8 +5,8 @@ autoload -U select-word-style
 select-word-style bash
 
 # Standard Linux
-"^[[1;5C" forward-word
-"^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 
 # Useful under iTerm
