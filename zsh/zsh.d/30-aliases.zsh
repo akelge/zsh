@@ -31,6 +31,7 @@ alias du1="du -h --max-depth=1"
 
 # Global Aliases
 #
+alias -g G="|grep "
 alias -g L="|less"
 alias -g NO="> /dev/null"
 alias -g NE="2> /dev/null"
