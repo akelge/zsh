@@ -90,11 +90,13 @@ colorscheme railscasts
 " Function that returns tab if called on an "empty" line
 " C-N elsewhere
 function! CleverTab()
-  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    return "\<Tab>"
-  else
-    return "\<C-N>"
-  endfunction
+    if &ft=="text"
+        return "\<Tab>"
+    elseif strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        return "\<C-N>"
+    endfunction
 " map the function to Tab
 " inoremap <C-\> <C-R>=CleverTab()<CR>
 inoremap <Tab> <C-R>=CleverTab()<CR>
@@ -234,9 +236,11 @@ else
 endif
 
 " Map Ctrl-T to new tab and Ctrl-W to close tab
+" Map Ctrl-S to save
 if !(has('mac') || has('macunix'))
     nnoremap <silent> <C-T> :tabnew<CR>
     nnoremap <silent> <C-W> :tabclose<CR>
+    nnoremap <silent> <C-S> :w<CR>
 endif
 
 " <Leader>hh opens my help file
@@ -245,7 +249,7 @@ nnoremap <silent> <Leader>hh :help akmap<CR>
 " Vim5 comes with syntaxhighlighting. If you want to enable syntaxhightlighting
 " by default uncomment the next three lines.
 if has("syntax")
-  syntax on		" Default to no syntax highlightningendif " has("syntax")
+    syntax on		" Default to no syntax highlightningendif " has("syntax")
 endif
 
 if has("autocmd")
