@@ -11,6 +11,8 @@ bindkey "^[[1;5D" backward-word
 
 # Useful under iTerm
 bindkey  "-e" 
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line      
 bindkey  "\e[1~" beginning-of-line
 bindkey  "\e[4~" end-of-line
 bindkey  "\e[3~" delete-char
