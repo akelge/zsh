@@ -1,9 +1,9 @@
-function prompt_nice_setup {
+function prompt_niceOld_setup {
 if `fancyTerm`; then
     W="::: %n at %m in %. :::"
     I="%m::%."
-    L="$FX[bold]$FX[italic]$BG[111]$FG[239]@%m::%2~ $BG[000]
-$FG[228]%#$FX[reset] "
+    L="%B%K{blue}%F{white}@%m::%2~ %f%k
+%F{yellow}%#%f%b "
     PS1="%{]2;$W%}%{]1;$I%}$L"
     unset W I L
 
@@ -13,6 +13,6 @@ else
 fi
 }
 
-prompt_nice_setup
+prompt_niceOld_setup
 
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
