@@ -1,1 +1,5 @@
-cd `dirname $1`
+if [ -d $1 ]; then
+    cd $1
+else
+    cd `dirname $1`
+fi
