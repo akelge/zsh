@@ -2,6 +2,6 @@ function repo_char {
 #    git branch > /dev/null 2> /dev/null && echo '±' && return
 #    svn info > /dev/null 2> /dev/null && echo '\u03a3' && return
 #    echo '\u25cb'
-    git branch > /dev/null 2> /dev/null && echo ' «git' && return
-    svn info > /dev/null 2> /dev/null && echo ' «svn' && return
+    git branch > /dev/null 2> /dev/null && echo 'git:' && return
+    svn info > /dev/null 2> /dev/null && echo 'svn:' && return
 }

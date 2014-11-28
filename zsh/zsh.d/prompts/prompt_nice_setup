@@ -4,8 +4,8 @@ if `fancyTerm`; then
     I="%m::%."
     # L="$FX[bold]$FX[italic]$BG[111]$FG[239]@%m::%2~ $BG[000]
 # $FG[228]%#$FX[reset] "
-L='$FX[bold]$FX[italic]$BG[062]@%m::%2~$(repo_char)$BG[000]
-$FG[220]%#$FX[reset] '
+L='$FX[bold]$FX[italic]$BG[062]@%m::%2~$BG[000]
+$(repo_char)$FG[220]%#$FX[reset] '
 PS1="%{]2;$W%}%{]1;$I%}$L"
     unset W I L
 
