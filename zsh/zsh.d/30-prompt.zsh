@@ -1,4 +1,4 @@
-fpath=(`dirname $0`/prompts $fpath)
+fpath=($0:h/prompts $fpath)
 
 autoload -U promptinit;promptinit
 

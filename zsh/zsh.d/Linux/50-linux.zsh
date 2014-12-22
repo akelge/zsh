@@ -1,8 +1,11 @@
 # Linux
-if [ -f /etc/dir_colors ]; then
-    eval `dircolors /etc/dir_colors`
-else
-    eval `dircolors`
+
+if which dircolors > /dev/null; then
+    if [ -f /etc/dir_colors ]; then
+        eval `dircolors /etc/dir_colors`
+    else
+        eval `dircolors`
+    fi
 fi
 
 alias ls='LANG=C ls -F --color=auto --group-directories-first'
