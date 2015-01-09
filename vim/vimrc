@@ -17,6 +17,24 @@ set nostartofline
 set autochdir
 set clipboard+=unnamed
 
+" Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'The-NERD-Commenter'
+Plugin 'The-NERD-Tree'
+Plugin 'open-terminal-filemanager'
+Plugin 'Conque-Shell'
+Plugin 'taglist-plus'
+Plugin 'vcscommand.vim'
+Plugin 'TextFormat'
+Plugin 'jsbeautify'
+Plugin 'aperezdc/vim-template.git'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " Let's go to 256 colors
 set t_Co=256
 
@@ -72,8 +90,7 @@ else
     set printfont=Monaco\ 12
 endif
 
-" colorscheme wombat256
-colorscheme railscasts
+colorscheme wombat256
 
 " """""""""
 " User Info
