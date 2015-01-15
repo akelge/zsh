@@ -9,7 +9,7 @@ set nocompatible                " Use Vim defaults (much better!)
 set backspace=indent,eol,start  " allow backspacing over everything
 set textwidth=0                 " Textwidth 0 usually, we set it to 79 later
 set backup
-set viminfo='20,\"50,f10
+set viminfo='20,\"50,f10,!,%
 set history=50
 set nohlsearch
 set nostartofline
@@ -31,6 +31,8 @@ Plugin 'vcscommand.vim'
 Plugin 'TextFormat'
 Plugin 'jsbeautify'
 Plugin 'aperezdc/vim-template.git'
+Plugin 'RecentFiles'
+Plugin 'scratch.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required

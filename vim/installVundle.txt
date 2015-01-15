@@ -1,0 +1,8 @@
+installVundle.txt
+
+:Author: Andrea Mistrali
+:Email: andrea.mistrali@gmail.com
+:Date: 2015-01-15 12:01
+
+~ $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+~ $ vim +PluginInstall +qall
