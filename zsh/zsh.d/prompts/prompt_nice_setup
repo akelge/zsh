@@ -2,11 +2,12 @@
 function prompt_nice_setup {
 if `fancyTerm`; then
     title="::: %n at %m in %. :::"
+    icon="%m::%."
     prompt_='$FX[bold]$FX[italic]$BG[062]@%m::%2~$FX[reset]
 $FX[bold]$(repo_char)$FG[220]%#$FX[reset] '
 
-    PS1="%{]2;$title%}$prompt_"
-    unset title prompt_
+    PS1="%{]2;$title%}%{]1;$icon%}$prompt_"
+    unset title icon prompt_
 
 else
     # We are not on xterminal
