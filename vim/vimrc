@@ -31,10 +31,13 @@ Plugin 'vcscommand.vim'
 Plugin 'TextFormat'
 Plugin 'jsbeautify'
 Plugin 'aperezdc/vim-template.git'
-Plugin 'RecentFiles'
 Plugin 'scratch.vim'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'bling/vim-airline'
 
 call vundle#end()            " required
+
 filetype plugin indent on    " required
 
 " Let's go to 256 colors
@@ -173,6 +176,16 @@ let NERDCreateDefaultMappings=1
 " """"""""""""""
 " GetLastestScript
 " """"""""""""""
+
+" """"""""""""""
+" Pandoc
+" """"""""""""""
+
+let g:pandoc#command#custom_open = "MyPandocOpen"
+
+function! MyPandocOpen(file)
+    return "open ". a:file
+endfunction
 
 " """""""""""
 " Keymappings
