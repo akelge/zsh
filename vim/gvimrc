@@ -16,6 +16,7 @@ set guicursor=a:block-blinkon0
 set showtabline=2
 set guitablabel=%!GuiTabLabel()
 set guitabtooltip=%!GuiTabToolTip()
+set background=dark
 
 if has('mac') || has('macunix')
     set guifont=Monaco:h11

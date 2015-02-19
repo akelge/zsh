@@ -35,6 +35,7 @@ Plugin 'scratch.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'bling/vim-airline'
+Plugin 'saltstack/salt-vim'
 
 call vundle#end()            " required
 
