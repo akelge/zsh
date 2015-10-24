@@ -4,6 +4,11 @@
 autoload -U select-word-style
 select-word-style bash
 
+# Command line editing in $EDITOR
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # Standard Linux
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
