@@ -4,7 +4,7 @@ if `fancyTerm`; then
     # We are on xterminal
     W="%n@%m:%."
     I="%m:%."
-    L="%B@%m %~ %#%b "
+    L="%B@%m %4(~:...:)%3~ %#%b "
     PS1="%{]2;$W%}%{]1;$I%}$L"
     unset W I L
 
