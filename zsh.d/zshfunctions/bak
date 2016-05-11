@@ -99,7 +99,7 @@ done
 
         if [ $vflag = yes ]; then
             # list files
-            echo "Deleted files:"
+            echo "files:"
             cat -n $TMP | sed 's/"//g'
             echo
         fi
@@ -111,7 +111,9 @@ done
 
         if [ $nflag = no ]; then
             cat $TMP | xargs rm -f #delete
-            echo -e "  ${esc_red}$FILES bak ${label_file}${esc_reset} deleted in ${esc_green}$directory${esc_reset}$andits"
+            if [ $? -eq 0 ]; then
+                echo -e "  ${esc_red}$FILES bak ${label_file}${esc_reset} deleted in ${esc_green}$directory${esc_reset}$andits"
+            fi
         else
             echo -e "  ${esc_green}$FILES bak ${label_file}${esc_reset} ${esc_red}listed${esc_reset} in ${esc_green}$directory${esc_reset}$andits"
         fi
