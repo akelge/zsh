@@ -1,6 +1,12 @@
 #######################################################################################
 # Start autocomplete
-autoload -U compinit; compinit -u
+# autoload -U compinit; compinit -u
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 autoload -U compsys;
 compctl -g "*(-/)" + -g ".*(-/)" cd
 

@@ -29,6 +29,7 @@ alias vi="vim "
 
 alias du1="du -h --max-depth=1"
 alias psg="ps ax|grep "
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # Global Aliases
 #
