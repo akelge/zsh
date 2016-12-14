@@ -17,8 +17,6 @@ KERNEL=`uname -s`
 LIBRARY=${BASE}/zsh.d
 KERNLIB=${LIBRARY}/${KERNEL}
 
-echo $KERNEL
-
 function loadRC {
     # [ -d $1 ] && cd $1 || exit 1
     #
