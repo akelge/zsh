@@ -31,6 +31,8 @@ alias du1="du -h --max-depth=1"
 alias psg="ps ax|grep "
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 
+alias delkey="ssh-keygen -R "
+
 # Global Aliases
 #
 alias -g G="|grep "
