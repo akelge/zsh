@@ -24,6 +24,8 @@ WATCHFMT="%n %a %l (%m) at %t."
 
 EDITOR=vim
 VISUAL=vim
+
+export QUOTING_STYLE=escape
 #
 # Hack for svn
 export SVN_EDITOR=${VISUAL}

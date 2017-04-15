@@ -1,6 +1,6 @@
 # Darwin/OSX
 # Environment and aliases for OSX
-export LSCOLORS="GxgxcxdxCxegedabagacad"
+export LSCOLORS="ExgxcxdxCxegedabagacad"
 alias ldd='otool -L'
 alias ls='ls -F -G'
 alias skill=killall
