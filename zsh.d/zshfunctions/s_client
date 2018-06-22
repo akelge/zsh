@@ -1,7 +1,0 @@
-server=$1
-host=$2
-if [ -z $host ]
-then
-    host=$server
-fi
-openssl s_client -connect $server:443 -servername $host
