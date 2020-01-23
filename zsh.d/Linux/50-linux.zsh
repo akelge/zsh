@@ -4,7 +4,7 @@ if which dircolors > /dev/null; then
     if [ -f /etc/dir_colors ]; then
         eval `dircolors /etc/dir_colors`
     else
-        eval `dircolors`
+        eval `dircolors $BASE/zsh.d/Linux/dircolors`
     fi
 fi
 
