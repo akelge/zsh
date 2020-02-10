@@ -1,14 +1,34 @@
 # Created by newuser for 5.7.1
 # 
-ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
-source ~/.zshdir/plugins.sh
 export DEFAULT_USER=$(whoami)
 # 
 export WORKON_HOME=$HOME/Src/virtualenvs
 export PROJECT_HOME=$HOME/Src/projects
 
+export SHOW_AWS_PROMPT=false
+
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+source ~/.zshdir/plugins.sh
+
 prompt_dir() {
     prompt_segment blue black ' %3~'
+}
+
+
+#AWS Profile:
+# - display current AWS_PROFILE name
+# - displays yellow on red if profile name contains 'production' or
+#   ends in '-prod'
+# - displays black on green otherwise
+prompt_aws_profile() {
+  local aws_profile="$AWS_PROFILE"
+  if [[ -n $aws_profile ]]; then
+    if [[ $aws_profile == "prod"* || $aws_profile == "production"* ]]; then
+      prompt_segment green yellow  " $aws_profile"
+    else
+      prompt_segment green black " $aws_profile" 
+    fi
+  fi
 }
 
 prompt_context() {
@@ -18,6 +38,17 @@ prompt_context() {
         prompt_segment $PRIMARY_FG default " %(!.%{%F{yellow}%}.)$user@%m "
     fi
     prompt_segment $PRIMARY_FG default "%{\e]2;%m:%.\a%}"
+    prompt_aws_profile
+}
+
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_virtualenv
+  prompt_aws_profile
+  prompt_context
+  # prompt_dir
+  prompt_git
 }
 
 cd
