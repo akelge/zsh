@@ -118,6 +118,24 @@ prompt_pure_set_colors() {
 	done
 }
 
+prompt_pure_set_aws() {
+    local _aws_prod_profile
+    prompt_pure_aws_prod=0
+    prompt_pure_aws=''
+
+    if [[ -n $AWS_PROFILE ]]; then
+        zstyle -g _aws_prod_profile ':awsprofile:prod' 'name'
+        if [[ -z $_aws_prod_profile ]]; then
+            _aws_prod_profile='prod'
+        fi
+
+        if [[ "$AWS_PROFILE" == "$_aws_prod_profile" ]]; then
+            prompt_pure_aws_prod=1
+        fi
+        prompt_pure_aws="$AWS_PROFILE>"
+    fi
+}
+
 prompt_pure_preprompt_render() {
 	setopt localoptions noshwordsplit
 
@@ -129,8 +147,16 @@ prompt_pure_preprompt_render() {
 	# Initialize the preprompt array.
 	local -a preprompt_parts
 
+    prompt_pure_set_aws
+    if [[ $prompt_pure_aws_prod -eq 1 ]];then
+        preprompt_parts+="%F{$prompt_pure_colors[aws:prod]}"'$prompt_pure_aws'
+    else
+        preprompt_parts+="%F{$prompt_pure_colors[aws]}"'$prompt_pure_aws'
+    fi
+
+
 	# Set the path.
-	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
+	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%3.%f')
 
 	# Add Git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
@@ -182,6 +208,8 @@ prompt_pure_preprompt_render() {
 		prompt_pure_reset_prompt
 	fi
 
+
+
 	typeset -g prompt_pure_last_prompt=$expanded_prompt
 }
 
@@ -213,10 +241,10 @@ prompt_pure_precmd() {
 		export VIRTUAL_ENV_DISABLE_PROMPT=12
 	fi
 
-    psvar[13]=
-    if [[ -n $AWS_PROFILE ]]; then
-        psvar[13]="|${AWS_PROFILE}|"
-    fi
+    # psvar[13]=
+    # if [[ -n $AWS_PROFILE ]]; then
+        # psvar[13]="|${AWS_PROFILE}|"
+    # fi
 
 	# Make sure VIM prompt is reset.
 	prompt_pure_reset_prompt_symbol
@@ -738,7 +766,9 @@ prompt_pure_setup() {
 		user                 242
 		user:root            default
 		virtualenv           242
-        aws                  blue
+        aws                  yellow
+        aws:prod             red
+
 	)
 	prompt_pure_colors=("${(@kv)prompt_pure_colors_default}")
 
@@ -757,7 +787,7 @@ prompt_pure_setup() {
 
 	# If a virtualenv is activated, display it in grey.
 	PROMPT='%(12V.%F{$prompt_pure_colors[virtualenv]}%12v%f .)'
-    PROMPT+='%(13V.%F{$prompt_pure_colors[aws]}%13v%f .)'
+    # PROMPT+='%(13V.%F{$prompt_pure_colors[aws]}%13v%f .)'
 
 	# Prompt turns red if the previous command didn't exit with 0.
 	local prompt_indicator='%(?.%F{$prompt_pure_colors[prompt:success]}.%F{$prompt_pure_colors[prompt:error]})${prompt_pure_state[prompt]}%f '
