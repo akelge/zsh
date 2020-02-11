@@ -121,7 +121,7 @@ prompt_pure_set_colors() {
 prompt_pure_set_aws() {
     local _aws_prod_profile
     prompt_pure_aws_prod=0
-    prompt_pure_aws=''
+    prompt_pure_aws=
 
     if [[ -n $AWS_PROFILE ]]; then
         zstyle -g _aws_prod_profile ':awsprofile:prod' 'name'
@@ -148,12 +148,13 @@ prompt_pure_preprompt_render() {
 	local -a preprompt_parts
 
     prompt_pure_set_aws
-    if [[ $prompt_pure_aws_prod -eq 1 ]];then
-        preprompt_parts+="%F{$prompt_pure_colors[aws:prod]}"'$prompt_pure_aws'
-    else
-        preprompt_parts+="%F{$prompt_pure_colors[aws]}"'$prompt_pure_aws'
+    if [[ ! -z $prompt_pure_aws ]]; then
+        if [[ $prompt_pure_aws_prod -eq 1 ]];then
+            preprompt_parts+="%F{$prompt_pure_colors[aws:prod]}"'$prompt_pure_aws'
+        else
+            preprompt_parts+="%F{$prompt_pure_colors[aws]}"'$prompt_pure_aws'
+        fi
     fi
-
 
 	# Set the path.
 	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%3.%f')
