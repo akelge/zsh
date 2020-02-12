@@ -1,9 +1,10 @@
 #######################################################################################
 # Start autocomplete
-# autoload -U compinit; compinit -u
-autoload -Uz compinit
+autoload -U compinit && compinit -u
+autoload bashcompinit && bashcompinit
+# autoload -Uz compinit
 #if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  compinit -C
+  # compinit -C
 # else
   # compinit -C
 # fi
