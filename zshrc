@@ -11,16 +11,10 @@
 #
 [ -d /etc/zsh ] && BASE="/etc/zsh" || BASE="/etc"
 
+# If there is a .zsh directory into user's home, use that one instead (local install)
 [ -d ~/.zsh ] && BASE=~/.zsh
 
-KERNEL=`uname -s`
-LIBRARY=${BASE}/zsh.d
-KERNLIB=${LIBRARY}/${KERNEL}
-
 function loadRC {
-    # [ -d $1 ] && cd $1 || exit 1
-    #
-
     if [ -d $1/zshfunctions ]; then
         fpath=($1/zshfunctions $fpath)
     fi
@@ -29,8 +23,7 @@ function loadRC {
         fpath=($1/completions $fpath)
     fi
 
-    # Add local customization file, svn ignored
-    # if [ $EUID -eq 0 ]; then
+    # Add local customization file
     if [ -w $1 ]; then
         [ -f $1/99-local.zsh ] || echo "# Local customizations" > $1/99-local.zsh
     fi
@@ -39,21 +32,11 @@ function loadRC {
     for zshFile in $1/[0-9]*.zsh; do
         . $zshFile
     done
-
-    unset zshFile
 }
+
+local KERNEL=`uname -s`
+local LIBRARY=${BASE}/zsh.d
+local KERNLIB=${LIBRARY}/${KERNEL}
 
 loadRC ${LIBRARY}
 loadRC ${KERNLIB}
-
-unset KERNEL
-unset LIBRARY
-unset KERNLIB
-
-# Local (per Host) customizations
-for localDir in ${LIBRARY} /etc/zsh /etc /usr/local/etc /usr/local/etc/zsh; do
-    if [ -f ${localDir}/zshrc.local ]; then
-        . ${localDir}/zshrc.local
-    fi
-done
-unset localDir

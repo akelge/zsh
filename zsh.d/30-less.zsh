@@ -17,4 +17,8 @@ PAGER=/usr/bin/less
 
 export LESS
 export PAGER
+
+LESSPIPE=`whence -p lesspipe || whence -p lesspipe.sh`
+eval `$LESSPIPE`
+
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
