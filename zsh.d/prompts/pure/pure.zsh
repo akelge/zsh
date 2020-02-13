@@ -149,7 +149,8 @@ prompt_pure_preprompt_render() {
 
   [[ $UID -eq 0 ]] && preprompt_parts+='%F{$prompt_pure_colors[user:root]}'"⚡"
 
-  [[ ! -z $SSH_CONNECTION ]] && preprompt_parts+='%F{$prompt_pure_colors[host]}'"@%m"
+  [[ -n $prompt_pure_state[username] ]] && preprompt_parts+='%F{$prompt_pure_colors[host]}'"@%m"
+  # [[ ! -z $SSH_CONNECTION ]] && preprompt_parts+='%F{$prompt_pure_colors[host]}'"@%m"
 
   prompt_pure_set_aws
   if [[ ! -z $prompt_pure_aws ]]; then
