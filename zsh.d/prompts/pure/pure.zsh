@@ -132,7 +132,7 @@ prompt_pure_set_aws() {
         if [[ "$AWS_PROFILE" == "$_aws_prod_profile" ]]; then
             prompt_pure_aws_prod=1
         fi
-        prompt_pure_aws="$AWS_PROFILE>"
+        prompt_pure_aws="/$AWS_PROFILE/"
     fi
 }
 
@@ -621,50 +621,6 @@ prompt_pure_reset_vim_prompt_widget() {
 }
 
 prompt_pure_state_setup() {
-  # setopt localoptions noshwordsplit
-
-  # # Check SSH_CONNECTION and the current state.
-  # local ssh_connection=${SSH_CONNECTION:-$PROMPT_PURE_SSH_CONNECTION}
-  # local username hostname
-  # if [[ -z $ssh_connection ]] && (( $+commands[who] )); then
-    # # When changing user on a remote system, the $SSH_CONNECTION
-    # # environment variable can be lost. Attempt detection via `who`.
-    # local who_out
-    # who_out=$(who -m 2>/dev/null)
-    # if (( $? )); then
-      # # Who am I not supported, fallback to plain who.
-      # local -a who_in
-      # who_in=( ${(f)"$(who 2>/dev/null)"} )
-      # who_out="${(M)who_in:#*[[:space:]]${TTY#/dev/}[[:space:]]*}"
-    # fi
-
-    # local reIPv6='(([0-9a-fA-F]+:)|:){2,}[0-9a-fA-F]+'  # Simplified, only checks partial pattern.
-    # local reIPv4='([0-9]{1,3}\.){3}[0-9]+'   # Simplified, allows invalid ranges.
-    # # Here we assume two non-consecutive periods represents a
-    # # hostname. This matches `foo.bar.baz`, but not `foo.bar`.
-    # local reHostname='([.][^. ]+){2}'
-
-    # # Usually the remote address is surrounded by parenthesis, but
-    # # not on all systems (e.g. busybox).
-    # local -H MATCH MBEGIN MEND
-    # if [[ $who_out =~ "\(?($reIPv4|$reIPv6|$reHostname)\)?\$" ]]; then
-      # ssh_connection=$MATCH
-
-      # # Export variable to allow detection propagation inside
-      # # shells spawned by this one (e.g. tmux does not always
-      # # inherit the same tty, which breaks detection).
-      # export PROMPT_PURE_SSH_CONNECTION=$ssh_connection
-    # fi
-    # unset MATCH MBEGIN MEND
-  # fi
-
-  # hostname='%F{$prompt_pure_colors[host]}@%m%f'
-  # # Show `username@host` if logged in through SSH.
-  # [[ -n $ssh_connection ]] && username='%F{$prompt_pure_colors[user]}%n%f'"$hostname"
-
-  # # Show `username@host` if root, with username in default color.
-  # [[ $UID -eq 0 ]] && username='%F{$prompt_pure_colors[user:root]}%n%f'"$hostname"
-
   typeset -gA prompt_pure_state
   prompt_pure_state[version]="1.11.0"
   prompt_pure_state+=(
@@ -707,22 +663,22 @@ prompt_pure_setup() {
   prompt_pure_colors_default=(
     execution_time       yellow
     git:arrow            cyan
-    git:branch           242
+    git:branch           246
     git:branch:cached    red
     git:action           242
-    git:dirty            218
-    host                 242
+    git:dirty            red
+    host                 015
     path                 blue
     prompt:error         red
     prompt:success       magenta
     prompt:continuation  242
     user                 242
-    user:root            default
+    user:root            190
     virtualenv           242
-    aws                  yellow
+    aws                  green
     aws:prod             red
-
   )
+
   prompt_pure_colors=("${(@kv)prompt_pure_colors_default}")
 
   add-zsh-hook precmd prompt_pure_precmd
