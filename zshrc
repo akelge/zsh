@@ -23,10 +23,10 @@ function loadRC {
         fpath=($1/completions $fpath)
     fi
 
-    # Add local customization file
-    if [ -w $1 ]; then
-        [ -f $1/99-local.zsh ] || echo "# Local customizations" > $1/99-local.zsh
-    fi
+    # # Add local customization file
+    # if [ -w $1 ]; then
+        # [ -f $1/99-local.zsh ] || echo "# Local customizations" > $1/99-local.zsh
+    # fi
 
     # Process all .zsh files
     for zshFile in $1/[0-9]*.zsh; do
@@ -40,3 +40,9 @@ local KERNLIB=${LIBRARY}/${KERNEL}
 
 loadRC ${LIBRARY}
 loadRC ${KERNLIB}
+
+# Add local customization file
+if [ -w $LIBRARY ]; then
+    [ -f $LIBRARY/99-local.zsh ] || echo "# Local customizations" > $LIBRARY/99-local.zsh
+fi
+
