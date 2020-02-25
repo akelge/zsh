@@ -119,21 +119,24 @@ prompt_pure_set_colors() {
 }
 
 prompt_pure_set_aws() {
-    local _aws_prod_profile
-    prompt_pure_aws_prod=0
-    prompt_pure_aws=
+  # YOu can change the pattern to match AWS prod profiles with
+  # zstyle :awsprofile:prod name pattern , e.g. ^prod
+  local _aws_prod_profile
+  prompt_pure_aws_prod=0
+  prompt_pure_aws=
 
-    if [[ -n $AWS_PROFILE ]]; then
-        zstyle -g _aws_prod_profile ':awsprofile:prod' 'name'
-        if [[ -z $_aws_prod_profile ]]; then
-            _aws_prod_profile='prod'
-        fi
-
-        if [[ "$AWS_PROFILE" == "$_aws_prod_profile" ]]; then
-            prompt_pure_aws_prod=1
-        fi
-        prompt_pure_aws="/$AWS_PROFILE/"
+  if [[ -n $AWS_PROFILE ]]; then
+    zstyle -g _aws_prod_profile ':awsprofile:prod' 'name'
+    if [[ -z $_aws_prod_profile ]]; then
+      #Default pattern if nome specified
+        _aws_prod_profile='^prod'
     fi
+
+    if [[ "$AWS_PROFILE" =~ "$_aws_prod_profile" ]]; then
+      prompt_pure_aws_prod=1
+    fi
+    prompt_pure_aws="/$AWS_PROFILE/"
+  fi
 }
 
 prompt_pure_preprompt_render() {
