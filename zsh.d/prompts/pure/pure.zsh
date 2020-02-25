@@ -186,6 +186,11 @@ prompt_pure_preprompt_render() {
   # Execution time.
   [[ -n $prompt_pure_cmd_exec_time ]] && preprompt_parts+=('%F{$prompt_pure_colors[execution_time]}${prompt_pure_cmd_exec_time}%f')
 
+  jobno=$(jobs|wc -l)
+  # [[ $jobno -ne 0 ]] && preprompt_parts+='%F{$prompt_pure_colors[bgjobs]}'"$jobno☢"
+  [[ $jobno -ne 0 ]] && preprompt_parts+='%F{$prompt_pure_colors[bgjobs]}'"☢"
+  # [[ $jobno -ne 0 ]] && preprompt_parts+='%F{$prompt_pure_colors[bgjobs]}'"!"
+
   local cleaned_ps1=$PROMPT
   local -H MATCH MBEGIN MEND
   if [[ $PROMPT = *$prompt_newline* ]]; then
@@ -724,6 +729,7 @@ prompt_pure_setup() {
     user                 242
     user:root            190
     virtualenv           242
+    bgjobs               cyan
     aws                  green
     aws:prod             red
   )
