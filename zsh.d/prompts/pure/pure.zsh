@@ -629,6 +629,11 @@ prompt_pure_reset_vim_prompt_widget() {
   # removes the prompt marks inserted by macOS Terminal.
 }
 
+iterm2_prompt_mark() {
+  # Declare here iterm2_prompt_mark, to have it even before sourcing shell integration
+	printf "\033]133;A\007"
+}
+
 prompt_pure_state_setup() {
 	setopt localoptions noshwordsplit
 
@@ -752,10 +757,9 @@ prompt_pure_setup() {
   # If a virtualenv is activated, display it
   PROMPT='%(12V.%F{$prompt_pure_colors[virtualenv]}%12v%f.)'
 
-  # Add iterm2 mark (if iterm integration is on)
-  if typeset -f iterm2_prompt_mark > /dev/null; then
-    PROMPT+=%{$(iterm2_prompt_mark)%}
-  fi
+  # Add iterm2 mark 
+  PROMPT+=%{$(iterm2_prompt_mark)%}
+
   # Prompt turns red if the previous command didn't exit with 0.
   local prompt_indicator='%(?.%F{$prompt_pure_colors[prompt:success]}.%F{$prompt_pure_colors[prompt:error]})${prompt_pure_state[prompt]}%f '
   PROMPT+=$prompt_indicator
