@@ -726,12 +726,12 @@ prompt_pure_setup() {
     git:branch:cached    red
     git:action           242
     git:dirty            red
-    host                 015
+    host                 white
     path                 blue
     prompt:error         red
-    prompt:success       magenta
+    prompt:success       yellow
     prompt:continuation  242
-    user                 242
+    user                 white
     user:root            190
     virtualenv           242
     bgjobs               cyan
