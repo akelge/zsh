@@ -12,9 +12,10 @@ LOGD=/var/log
 [ -z "$PS1" ] && return
 
 ## Vars only for interactive sessions
-SAVEHIST=500
+SAVEHIST=10000000
 HISTFILE=~/.history
-HISTSIZE=10000
+HISTFILESIZE=10000000
+HISTSIZE=10000000
 
 PYTHONSTARTUP=~/.pythonrc.py
 LOGCHECK=30

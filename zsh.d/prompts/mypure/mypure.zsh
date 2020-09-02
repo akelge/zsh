@@ -486,6 +486,8 @@ prompt_mypure_async_callback() {
   local job=$1 code=$2 output=$3 exec_time=$4 next_pending=$6
   local do_render=0
 
+  [[ -n $5 ]] && print "\nERROR($1): $5\n"
+
   case $job in
     \[async])
       # Code is 1 for corrupted worker output and 2 for dead worker.
