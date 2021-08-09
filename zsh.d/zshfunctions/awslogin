@@ -4,8 +4,8 @@ then
   echo AWS profile cleared.
   return
 fi
-saml2aws login -a $1 -p $1 
-eval $(saml2aws script -a $1 -p $1 --skip-prompt)
+#saml2aws login -a $1 -p $1 
+#eval $(saml2aws script -a $1 -p $1 --skip-prompt)
 export AWS_DEFAULT_PROFILE=$1
 export AWS_PROFILE=$1
 export AWS_EB_PROFILE=$1

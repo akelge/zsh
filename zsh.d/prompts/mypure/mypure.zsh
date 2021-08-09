@@ -165,7 +165,7 @@ prompt_mypure_preprompt_render() {
   fi
 
   # Set the path.
-  preprompt_parts+=('%F{${prompt_mypure_colors[path]}}%3.%f')
+  preprompt_parts+=('%F{${prompt_mypure_colors[path]}}%~%f')
 
   # Add Git branch and dirty status info.
   typeset -gA prompt_mypure_vcs_info

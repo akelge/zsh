@@ -13,6 +13,9 @@ bindkey "^X^E" edit-command-line
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+bindkey "^S" kill-line
+bindkey "^U" backward-kill-line
+
 
 # Useful under iTerm
 bindkey  "-e" 
