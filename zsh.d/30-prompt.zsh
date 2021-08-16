@@ -6,6 +6,7 @@ autoload -U promptinit;promptinit
 
 zstyle :prompt:pure:user color white
 zstyle :prompt:pure:host color white
+zstyle :prompt:pure:prompt:success color  yellow
 
 PURE_CMD_MAX_EXEC_TIME=30
 
