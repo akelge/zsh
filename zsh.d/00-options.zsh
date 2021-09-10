@@ -24,13 +24,15 @@ setopt NO_HIST_BEEP
 setopt LIST_TYPES
 setopt LONG_LIST_JOBS
 
+setopt no_CLOBBER
+
 setopt no_BEEP
 setopt no_HUP
 setopt NOTIFY
 setopt PATH_DIRS
 setopt SHORT_LOOPS
 
-setopt prompt_subst
+setopt PROMPT_SUBST
 
 setopt AUTO_CD
 setopt AUTO_MENU
