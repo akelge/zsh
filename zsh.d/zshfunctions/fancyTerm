@@ -1,0 +1,11 @@
+fancyterms=('xterm' 'rxvt' 'screen')	
+
+for t in $fancyterms; do	
+if [ "${TERM#${t}}" != "$TERM" ]; then	
+    unset fancyterms	
+    return 0	
+fi	
+done	
+
+unset fancyterms	
+return 1
