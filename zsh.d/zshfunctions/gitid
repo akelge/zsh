@@ -1,0 +1,3 @@
+local _temp_gitid=$(git rev-parse HEAD|cut -c1-8)
+echo $_temp_gitid
+which pbcopy > /dev/null && echo $_temp_gitid|tr -d '\n'|pbcopy

@@ -18,11 +18,13 @@ PAGER=/usr/bin/less
 export LESS
 export PAGER
 
-LESSOPEN_SCRIPT=$(whence lesspipe lesspipe.sh)
-LESSOPEN="|${LESSOPEN_SCRIPT} %s"
-LESS_ADVANCED_PREPROCESSOR=1
+local LESSOPEN_SCRIPT=$(whence lesspipe lesspipe.sh)
+if [ $LESSOPEN_SCRIPT ]; then
+    LESSOPEN="|${LESSOPEN_SCRIPT} %s"
+    LESS_ADVANCED_PREPROCESSOR=1
 
-export LESSOPEN
-export LESS_ADVANCED_PREPROCESSOR
+    export LESSOPEN
+    export LESS_ADVANCED_PREPROCESSOR
+fi
 
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
