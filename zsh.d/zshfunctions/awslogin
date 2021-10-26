@@ -1,11 +1,13 @@
-if [[ -z "$1" ]]
-then
+if [ $1 ]; then
+  export AWS_DEFAULT_PROFILE=$1
+  export AWS_PROFILE=$1
+  export AWS_EB_PROFILE=$1
+  return
+elif [ $AWS_PROFILE ]; then
   unset AWS_DEFAULT_PROFILE AWS_PROFILE AWS_EB_PROFILE
   echo AWS profile cleared.
   return
 fi
-#saml2aws login -a $1 -p $1 
-#eval $(saml2aws script -a $1 -p $1 --skip-prompt)
-export AWS_DEFAULT_PROFILE=$1
-export AWS_PROFILE=$1
-export AWS_EB_PROFILE=$1
+
+echo "Available profiles"
+grep profile ~/.aws/config|awk '{print $2}' | sed 's/]//g'
