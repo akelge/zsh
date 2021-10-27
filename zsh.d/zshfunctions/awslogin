@@ -1,8 +1,17 @@
-if [ $1 ]; then
-  export AWS_DEFAULT_PROFILE=$1
-  export AWS_PROFILE=$1
-  export AWS_EB_PROFILE=$1
-  return
+profile=$1
+
+if [ $profile ]; then
+  match=$(grep $profile ~/.aws/config | sed -E 's/\[profile (.+)\]/\1/')
+  if [ $match ]; then
+    echo "Activating $match"
+    export AWS_DEFAULT_PROFILE=$match
+    export AWS_PROFILE=$match
+    export AWS_EB_PROFILE=$match
+    return
+  else
+    echo "No match for $profile"
+    return
+  fi
 elif [ $AWS_PROFILE ]; then
   unset AWS_DEFAULT_PROFILE AWS_PROFILE AWS_EB_PROFILE
   echo AWS profile cleared.
