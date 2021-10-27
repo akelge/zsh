@@ -1,16 +1,17 @@
 profile=$1
 
 if [ $profile ]; then # We got a profile pattern, look for a match
-  match=$(grep -E "\[profile .*$profile.*" ~/.aws/config | sed -E 's/\[profile (.+)\]/\1/')
-  match_no=$(echo $match|wc -l)
+  match=$(grep -E "\[profile .*$profile.*" ~/.aws/config | sed -E 's/\[profile (.+)\]/\1/') # Array of matching profiles
+  match_no=$(echo $match|wc -l) # Number of profile matching
+
   if [ $match_no -gt 1 ]; then # more than one match
-    echo "Multiple matches:"
+    echo "Multiple profile match:"
     echo $match
     return
   fi
 
   if [ $match ]; then # Single match, setting profile
-    echo "Activating $match"
+    echo "Activating profile $match"
     export AWS_DEFAULT_PROFILE=$match
     export AWS_PROFILE=$match
     export AWS_EB_PROFILE=$match
@@ -19,6 +20,7 @@ if [ $profile ]; then # We got a profile pattern, look for a match
     echo "No match for $profile"
     return
   fi
+
 elif [ $AWS_PROFILE ]; then # no profile passed, clean up current one, logout
   unset AWS_DEFAULT_PROFILE AWS_PROFILE AWS_EB_PROFILE
   echo profile cleared.
