@@ -10,4 +10,4 @@ elif [ $AWS_PROFILE ]; then
 fi
 
 echo "Available profiles"
-grep profile ~/.aws/config|awk '{print $2}' | sed 's/]//g'
+grep profile ~/.aws/config | sed -E 's/\[profile (.+)\]/\1/'
