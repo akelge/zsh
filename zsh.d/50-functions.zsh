@@ -24,6 +24,6 @@ autoload -U fancyTerm
 
 autoload -U x509
 
-autoload -U awslogin
+autoload -U awsprofile
 
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
