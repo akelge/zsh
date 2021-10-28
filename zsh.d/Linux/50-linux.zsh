@@ -8,7 +8,7 @@ if which dircolors > /dev/null; then
     fi
 fi
 
-alias ls='LANG=C ls -F --color=auto --group-directories-first'
+alias ls='LC_ALL=C ls -F --color=auto --group-directories-first'
 alias open='xdg-open '
 
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
