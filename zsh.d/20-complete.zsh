@@ -2,14 +2,6 @@
 # Start autocomplete
 autoload -U compinit && compinit -u
 autoload bashcompinit && bashcompinit
-# autoload -Uz compinit
-#if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  # compinit -C
-# else
-  # compinit -C
-# fi
-autoload -U compsys;
-compctl -g "*(-/)" + -g ".*(-/)" cd
 
 # allow approximate
 zstyle ':completion:*' completer _complete _match _approximate
@@ -23,6 +15,4 @@ zstyle ':completion:*:kill:*' force-list always
 # # cd not select parent dir
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
-# compctl -g "*(-/)" + -g ".*(-/)" cd
-#
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
