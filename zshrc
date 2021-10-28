@@ -38,8 +38,8 @@ local KERNEL=`uname -s`
 local LIBRARY=${BASE}/zsh.d
 local KERNLIB=${LIBRARY}/${KERNEL}
 
-loadRC ${LIBRARY}
 loadRC ${KERNLIB}
+loadRC ${LIBRARY}
 
 # Add local customization file
 if [ -w $LIBRARY ]; then

@@ -1,7 +1,7 @@
 #######################################################################################
 # Aliases
 
-alias ls='ls -F --color'
+# alias ls='ls -F --color'
 alias dir='ls -l'
 alias la='ls -A'
 alias ll='ls -l'
