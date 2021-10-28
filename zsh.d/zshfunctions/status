@@ -1,9 +1,23 @@
 echo
 print -P "$FX[bold]Kernel:$FX[reset] $KERNEL"
 print -P "$FX[bold]Library:$FX[reset] $LIBRARY"
-echo 
 
-print -P "$FX[italic]$FX[underline]Utils$FX[reset]\n"
+print -nP "\n$FX[bold]z plugin: "
+if [ -e $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ]; then
+  print -P "$FG[002]present$FX[reset]"
+else
+    print -P "$FG[001]absent$FX[reset]"
+fi
+
+print -nP "$FX[bold]iTerm2 integration: "
+if [ -e $HOME/.iterm2_shell_integration.zsh ]; then
+  print -P "$FG[002]present$FX[reset]"
+else
+    print -P "$FG[001]absent$FX[reset]"
+fi
+
+echo
+
 for plugin in thefuck pyenv kubectl aws; do
   print -nP "$FX[bold]$plugin: "
   if type $plugin > /dev/null; then
@@ -13,19 +27,6 @@ for plugin in thefuck pyenv kubectl aws; do
   fi
 done
 
-print -nP "\n$FX[bold]z plugin: "
-if [ -e $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ]; then
-  print -P "$FG[002]present$FX[reset]"
-else
-    print -P "$FG[001]absent$FX[reset]"
-fi
-
-print -nP "\n$FX[bold]iTerm2 integration: "
-if [ -e $HOME/.iterm2_shell_integration.zsh ]; then
-  print -P "$FG[002]present$FX[reset]"
-else
-    print -P "$FG[001]absent$FX[reset]"
-fi
 
 echo
 
