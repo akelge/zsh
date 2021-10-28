@@ -27,4 +27,6 @@ else
     print -P "$FG[001]absent$FX[reset]"
 fi
 
+echo
+
 # vim: set ts=2 sw=2 tw=0 ft=sh :
