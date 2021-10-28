@@ -6,9 +6,8 @@ alias ls='ls -F -G'
 alias skill=killall
 alias lsrebuild='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user'
 
-# alias vim='/Applications/MacVim.app/Contents/MacOS/Vim '
-# alias vi='/Applications/MacVim.app/Contents/MacOS/Vim '
-# alias mvim='mvim --remote-tab-silent '
-# alias mvim='open -a MacVim '
+# Setup iTerm shell integration
+test -e $HOME/.iterm2_shell_integration.zsh && source $HOME/.iterm2_shell_integration.zsh && export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES || echo "iTerm sh integration not installed"
+
 
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 

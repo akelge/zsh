@@ -1,3 +1,6 @@
 [submodule "zsh.d/prompts/pure"]
 	path = zsh.d/prompts/pure
 	url = https://github.com/sindresorhus/pure.git
+[submodule "zsh.d/plugins/zsh-z"]
+	path = zsh.d/plugins/zsh-z
+	url = https://github.com/agkozak/zsh-z
