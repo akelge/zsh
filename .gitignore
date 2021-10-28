@@ -3,3 +3,4 @@ zsh.d/Darwin/99-local.zsh
 *~
 *.swp
 .DS_Store
+*.dpkg-dist

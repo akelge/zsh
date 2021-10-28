@@ -1,12 +1,12 @@
 # pyenv
-if type pyenv; then
+if whence pyenv > /dev/null; then
   export PYENV_ROOT="$HOME/.pyenv"
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
 
 # thefuck
-type thefuck && eval $(thefuck --alias)
+whence  thefuck > /dev/null && eval $(thefuck --alias)
 
 #z
-type ./plugins/zsh-z/zsh-z.plugin.zsh && source ./plugins/zsh-z/zsh-z.plugin.zsh
+[ -f $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ] && source $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh
