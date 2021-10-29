@@ -10,6 +10,8 @@ for prefix in /usr/local /opt/homebrew; do
     brew=$(whence $prefix/bin/brew)
     if [ $brew ]; then
         eval "$($brew shellenv)"
+        FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+        break
     fi
 done
 

@@ -7,6 +7,7 @@
 # Global Order: zshenv, zprofile, zshrc, zlogin
 #
 
+zmodload zsh/zprof
 # Determine zsh conf file position. On Debian/Ubuntu is /etc/zsh, on other should be /etc
 #
 [ -d /etc/zsh ] && BASE="/etc/zsh" || BASE="/etc"
