@@ -1,15 +1,27 @@
-echo
-print -P "$FX[bold]Kernel:$FX[reset] $KERNEL"
-print -P "$FX[bold]Library:$FX[reset] $LIBRARY"
+local cpu_type
 
-print -nP "\n$FX[bold]z plugin: "
-if [ -e $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ]; then
-  print -P "$FG[002]present$FX[reset]"
-else
-    print -P "$FG[001]absent$FX[reset]"
+echo
+
+if [ $KERNEL = "Darwin" ]; then
+  cpu_type=$(sysctl -n machdep.cpu.brand_string)
+elif [ $KERNEL = "Linux" ]; then
+  cpu_type=$(cat /proc/cpuinfo|grep "model name:"|cut -d: -f2|uniq)
 fi
 
-print -nP "$FX[bold]iTerm2 integration: "
+print -P "$FX[bold]Kernel:$FX[reset] $KERNEL"
+print -P "$FX[bold]CPU type: $FX[reset]$cpu_type"
+print -P "$FX[bold]Library:$FX[reset] $LIBRARY"
+
+echo
+
+if [ $HOMEBREW_PREFIX ]; then
+  print -P "$FX[bold]Homebrew enabled: $FG[002]yes$FX[reset]"
+  print -P "H$FX[bold]omebrew prefix: $FG[002]$HOMEBREW_PREFIX$FX[reset]"
+else
+  print -P "H$FX[bold]omebrew enabled: $FG[001]no$FX[reset]"
+fi
+
+print -nP "\n$FX[bold]iTerm2 integration: "
 if [ -e $HOME/.iterm2_shell_integration.zsh ]; then
   print -P "$FG[002]present$FX[reset]"
 else
@@ -27,6 +39,12 @@ for plugin in thefuck pyenv kubectl aws; do
   fi
 done
 
+print -nP "$FX[bold]zsh z: "
+if [ -e $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ]; then
+  print -P "$FG[002]present$FX[reset]"
+else
+    print -P "$FG[001]absent$FX[reset]"
+fi
 
 echo
 
