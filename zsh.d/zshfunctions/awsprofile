@@ -5,29 +5,33 @@ if [ $profile ]; then # We got a profile pattern, look for a match
   match_no=$(echo $match|wc -l) # Number of profile matching
 
   if [ $match_no -gt 1 ]; then # more than one match
-    echo "Multiple profile match:"
+    print -P "$FX[bold]Multiple profile match:"
+    print -P "$FG[003]"
     echo $match
+    print -P "$FX[reset]"
     return
   fi
 
   if [ $match ]; then # Single match, setting profile
-    echo "Activating profile $match"
+    print -P "$FX[bold]Activating profile $FG[075]$match$FX[reset]"
     export AWS_DEFAULT_PROFILE=$match
     export AWS_PROFILE=$match
     export AWS_DEFAULT_REGION=$(grep -A1 $match ~/.aws/config|grep region|cut -d" " -f3)
     export AWS_REGION=${AWS_DEFAULT_REGION}
     return
   else
-    echo "No match for $profile"
+    print -P "$FX[bold]$FG[009]No match for $profile$FX[reset]"
     return
   fi
 
 elif [ $AWS_PROFILE ]; then # no profile passed, clean up current one, logout
   unset AWS_DEFAULT_PROFILE AWS_PROFILE AWS_DEFAULT_REGION AWS_REGION
-  echo profile cleared.
+  print -P "$FX[bold]profile cleared$FX[reset]."
   return
 fi
 
-echo "Available profiles"
+print -P "$FX[bold]Available profiles"
+print -P "$FG[075]"
 grep profile ~/.aws/config | sed -E 's/\[profile (.+)\]/\1/'
+print -P "$FX[reset]"
 # vim: set ts=2 sw=2 tw=0 ft=sh :
