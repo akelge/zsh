@@ -11,12 +11,16 @@ bindkey "^X^E" edit-command-line
 
 bindkey "^S" kill-line
 bindkey "^U" backward-kill-line
+bindkey  "\e[3~" delete-char
 
 # Useful under iTerm
 bindkey  "-e" 
+bindkey  "\e[H" beginning-of-line
 bindkey  "\e[1~" beginning-of-line
+
+bindkey  "\e[F" end-of-line
 bindkey  "\e[4~" end-of-line
-bindkey  "\e[3~" delete-char
+
 bindkey  "\e[A" history-search-backward
 bindkey  "\e[B" history-search-forward
 
