@@ -14,7 +14,7 @@ while getopts ":hr:" arg; do
       remote=1
       host=$OPTARG
       ;;
-    h) help=1
+    h|*) help=1
       ;;
   esac
 done
