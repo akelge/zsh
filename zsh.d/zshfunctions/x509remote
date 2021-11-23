@@ -1,6 +1,0 @@
-if [ ! -z "$1" ]; then
-    openssl s_client -connect $1 < /dev/null | \
-      openssl x509 -noout -text 
-else
-    echo "x509remote <host:port>"
-fi

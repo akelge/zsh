@@ -16,7 +16,7 @@ while getopts ":hr:" arg; do
     r)
       remote=1
       host=$OPTARG
-      hostname=echo $host|cut -d: -f1
+      hostname=$(echo $host|cut -d: -f1)
       ;;
     h|*) help=1
       ;;
