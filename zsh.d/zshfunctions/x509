@@ -1,11 +1,11 @@
 usage() {
   echo "x509 <certfile>"
   echo "x509 -r <hostname:port>"
-  exit 0
 }
 
 [ $# -eq 0 ] && usage
 
+help=0
 remote=0
 
 while getopts ":hr:" arg; do
@@ -14,10 +14,10 @@ while getopts ":hr:" arg; do
       remote=1
       host=$OPTARG
       ;;
-    h) usage
+    h) help=1
       ;;
   esac
 done
-
+[ $help -eq 0 ] && usage && return
 [ $remote -eq 0 ] && openssl x509 -in $* -noout -text
 [ $remote -eq 1 ] && openssl s_client -connect $host < /dev/null | openssl x509 -noout -text
