@@ -1,7 +1,7 @@
 usage() {
   echo "x509 <certfile>"
   echo "x509 -r <hostname:port>"
-  return
+  exit 0
 }
 
 [ $# -eq 0 ] && usage
