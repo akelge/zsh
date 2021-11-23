@@ -19,6 +19,6 @@ while getopts ":hr:" arg; do
       ;;
   esac
 done
-[ $help -eq 1 ] && usage 
+[ $help -eq 1 ] && usage && return 0
 [ $remote -eq 0 ] && openssl x509 -in $* -noout -text
 [ $remote -eq 1 ] && openssl s_client -connect $host < /dev/null | openssl x509 -noout -text
