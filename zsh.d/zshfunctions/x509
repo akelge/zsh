@@ -16,6 +16,7 @@ while getopts ":hr:" arg; do
     r)
       remote=1
       host=$OPTARG
+      hostname=echo $host|cut -d: -f1
       ;;
     h|*) help=1
       ;;
@@ -36,7 +37,7 @@ if [ $remote -eq 0 ]; then
     return 0
   fi
 else
-  openssl s_client -connect $host < /dev/null | openssl x509 -noout -text
+  openssl s_client -connect $host -servername $hostname < /dev/null | openssl x509 -noout -text
 fi
 
 # vim: set ts=2 sw=2 tw=0 ft=sh :
