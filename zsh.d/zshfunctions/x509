@@ -4,7 +4,7 @@ usage() {
   return 0
 }
 
-[ $# -eq 0 ] && usage
+[ $# -eq 0 ] && return 0
 
 help=0
 remote=0
