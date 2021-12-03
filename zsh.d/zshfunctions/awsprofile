@@ -1,5 +1,10 @@
 profile=$1
 
+if [ ! -f ~/.aws/config ]; then
+  echo "no aws config file found, bailing out..."
+  return 1
+fi
+
 if [ $profile ]; then # We got a profile pattern, look for a match
   match=$(grep -E "\[profile .*$profile.*" ~/.aws/config | sed -E 's/\[profile (.+)\]/\1/') # Array of matching profiles
   match_no=$(echo $match|wc -l) # Number of profile matching
