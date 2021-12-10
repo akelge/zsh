@@ -540,7 +540,8 @@ prompt_mypure_async_callback() {
       if (( code == 0 )); then
         unset prompt_mypure_git_dirty
       else
-        typeset -g prompt_mypure_git_dirty="*"
+        # typeset -g prompt_mypure_git_dirty="*"
+        typeset -g prompt_mypure_git_dirty=" ∆"
       fi
 
       [[ $prev_dirty != $prompt_mypure_git_dirty ]] && do_render=1
