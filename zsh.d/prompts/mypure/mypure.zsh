@@ -135,7 +135,7 @@ prompt_mypure_set_aws() {
     if [[ "$AWS_PROFILE" =~ "$_aws_prod_profile" ]]; then
       prompt_mypure_aws_prod=1
     fi
-    prompt_mypure_aws="/$AWS_PROFILE/"
+    prompt_mypure_aws=" $AWS_PROFILE"
   fi
 }
 
