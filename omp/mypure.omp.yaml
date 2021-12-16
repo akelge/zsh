@@ -53,7 +53,7 @@ blocks:
       postfix: ""
       prefix: "\uF017 "
       style: austin
-      threshold: 3000
+      threshold: 30000
 
 - type: prompt
   alignment: right
