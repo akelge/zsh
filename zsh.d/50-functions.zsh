@@ -15,3 +15,6 @@ autoload -U $LIBRARY/zshfunctions/*(.:t)
 
 # Add zsh-hook function
 autoload -Uz add-zsh-hook
+
+# Add async support
+autoload -Uz async && async

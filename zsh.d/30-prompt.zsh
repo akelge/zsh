@@ -1,6 +1,6 @@
 fpath=($0:h/prompts $fpath)
-fpath+=$0:h/prompts/mypure
-fpath+=$0:h/prompts/pure
+# fpath+=$0:h/prompts/mypure
+# fpath+=$0:h/prompts/pure
 
 autoload -U promptinit;promptinit
 
@@ -12,7 +12,7 @@ PURE_CMD_MAX_EXEC_TIME=30
 
 # Default prompt is pure
 #
-prompt mypure
+# prompt mypure
 # prompt pure
 
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
