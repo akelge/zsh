@@ -16,9 +16,9 @@ echo
 
 if [ $HOMEBREW_PREFIX ]; then
   print -P "$FX[bold]Homebrew enabled: $FG[002]yes$FX[reset]"
-  print -P "H$FX[bold]omebrew prefix: $FG[002]$HOMEBREW_PREFIX$FX[reset]"
+  print -P "$FX[bold]Homebrew prefix: $FG[002]$HOMEBREW_PREFIX$FX[reset]"
 else
-  print -P "H$FX[bold]omebrew enabled: $FG[001]no$FX[reset]"
+  print -P "$FX[bold]Homebrew enabled: $FG[001]no$FX[reset]"
 fi
 
 print -nP "\n$FX[bold]iTerm2 integration: "
