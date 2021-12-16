@@ -1,14 +1,12 @@
-zmodload -F zsh/stat b:zstat
-zmodload zsh/datetime
 local _gitdir
 local last_fetch
 local diff
 
 cd $1
 
-_gitdir=$(git rev-parse --git-dir 2> /dev/null) || return 0
-last_fetch=$(zstat +mtime $_gitdir/FETCH_HEAD 2> /dev/null || echo 0)
-let "diff = $(strftime %s)- $last_fetch"
+gitdir=$(git rev-parse --git-dir 2> /dev/null) || return 0
+last_fetch=$(zstat +mtime $gitdir/FETCH_HEAD 2> /dev/null || echo 0)
+let "diff = $(strftime %s) - $last_fetch"
 [ $diff -gt ${GIT_FETCH_INTERVAL:-30} ] && git fetch --all -p
 
 return 0
