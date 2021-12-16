@@ -37,8 +37,8 @@ blocks:
     style: plain
     foreground: darkGray
     properties:
-      branch_ahead_icon: <#88C0D0>⇧</>
-      branch_behind_icon: <#88C0D0>⇩</>
+      branch_ahead_icon: <#88C0D0>⇧ </>
+      branch_behind_icon: <#88C0D0>⇩ </>
       branch_icon: "\uE0A0"
       display_status: true
       fetch_status: true
@@ -53,7 +53,7 @@ blocks:
       postfix: ""
       prefix: "\uF017 "
       style: austin
-      threshold: 30000
+      threshold: 3000
 
 - type: prompt
   alignment: right
