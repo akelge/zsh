@@ -109,4 +109,5 @@ blocks:
     properties:
       always_enabled: true
       prefix: ""
-      template: ❯
+      # template: ❯
+      template: "\u276F"
