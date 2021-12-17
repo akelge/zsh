@@ -48,4 +48,11 @@ fi
 
 echo
 
+print -nP "$FX[bold]oh-my-posh: "
+if type oh-my-posh > /dev/null; then
+  print -P "$FG[002]installed$FX[reset] $FX[bold]- theme: '$FG[002]$POSH_THEME'$FX[reset]"
+else
+  print -P "$FG[001]absent$FX[reset]"
+fi
+
 # vim: set ts=2 sw=2 tw=0 ft=sh :
