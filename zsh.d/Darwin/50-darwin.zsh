@@ -5,7 +5,7 @@
 # Setup brew
 # We need it here to fix the PATH
 # so we can setup pyenv and other stuff
-
+#
 for prefix in /usr/local /opt/homebrew; do
     brew=$(whence $prefix/bin/brew)
     if [ $brew ]; then

@@ -21,8 +21,6 @@ if [ $profile ]; then # We got a profile pattern, look for a match
     print -P "$FX[bold]activating profile $FG[075]$match$FX[reset]"
     export AWS_DEFAULT_PROFILE=$match
     export AWS_PROFILE=$match
-    export AWS_DEFAULT_REGION=$(grep -A1 $match ~/.aws/config|grep region|cut -d" " -f3)
-    export AWS_REGION=${AWS_DEFAULT_REGION}
     return
   else
     print -P "$FX[bold]$FG[009]no match for $profile$FX[reset]"
@@ -30,7 +28,7 @@ if [ $profile ]; then # We got a profile pattern, look for a match
   fi
 
 elif [ $AWS_PROFILE ]; then # no profile passed, clean up current one, logout
-  unset AWS_DEFAULT_PROFILE AWS_PROFILE AWS_DEFAULT_REGION AWS_REGION
+  unset AWS_DEFAULT_PROFILE AWS_PROFILE
   print -P "$FX[bold]profile cleared$FX[reset]."
   return
 fi

@@ -11,6 +11,7 @@
 # at the bottom of ~/.zshrc add `zprof >! zsh_profile` to save
 # profiling data at startup
 # zmodload zsh/zprof
+
 # Determine zsh conf file position. On Debian/Ubuntu is /etc/zsh, on other should be /etc
 #
 [ -d /etc/zsh ] && BASE="/etc/zsh" || BASE="/etc"
@@ -38,12 +39,18 @@ function loadRC {
     done
 }
 
+# Default PATH
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+
 local KERNEL=`uname -s`
 local LIBRARY=${BASE}/zsh.d
 local KERNLIB=${LIBRARY}/${KERNEL}
 
 loadRC ${KERNLIB}
 loadRC ${LIBRARY}
+
+# Add home bin to PATH
+PATH="$PATH:$HOME/bin"
 
 # Add local customization file
 if [ -w $LIBRARY ]; then

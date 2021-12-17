@@ -2,7 +2,6 @@
 # Variables
 
 ## Vars used always
-PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin:."
 MIBS=all
 LOGD=/var/log
 

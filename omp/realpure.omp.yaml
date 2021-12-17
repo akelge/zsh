@@ -14,9 +14,10 @@ blocks:
     style: plain
     foreground: yellow
     properties:
-      postfix: ' '
+      postfix: ""
       prefix: ""
-      template: '{{if .SSHSession}}@{{ .ComputerName }}{{end}}'
+      template: '{{if .SSHSession}}@{{ .ComputerName }} {{end}}'
+
 
   - type: root
     style: plain
@@ -25,6 +26,7 @@ blocks:
       postfix: ""
       prefix: ""
       root_icon: "\u26A1"
+      # root_icon: "# "
 
   - type: path
     style: plain
@@ -35,23 +37,23 @@ blocks:
 
   - type: git
     style: plain
-    foreground: darkGray
+    foreground: yellow
     properties:
-      branch_ahead_icon: <#88C0D0>⇧ </>
-      branch_behind_icon: <#88C0D0>⇩ </>
-      branch_icon: "\uE0A0"
+      branch_ahead_icon: <#88C0D0>⇡</>
+      branch_behind_icon: <#88C0D0>⇣</>
+      branch_icon: ""
       display_status: true
       fetch_status: true
       prefix: ""
-      template: '{{ .HEAD }}{{.BranchStatus}}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{if .Staging.Changed }}{{ .Staging.String }}{{ end }}'
+      template: '{{ .HEAD }}{{.BranchStatus}}{{ if .Working.Changed }}<#FF0000>* {{ .Working.String }}</>{{ end }}'
 
   - type: executiontime
     style: plain
-    foreground: darkGray
+    foreground: yellow
     properties:
       always_enabled: false
       postfix: ""
-      prefix: "\uF017 "
+      prefix: " "
       style: austin
       threshold: 30000
 
@@ -61,21 +63,21 @@ blocks:
 
   - type: aws
     style: plain
-    foreground: yellow
+    foreground: "#ffA000"
     properties:
       postfix: ""
       # prefix: " "
-      prefix: "\u2601 "
+      prefix: " "
       template: '{{if .Profile}}{{.Profile}}{{end}}'
 
   - type: kubectl
     style: plain
-    foreground: magenta
+    foreground: lightBlue
     properties:
       parse_kubeconfig: true
       postfix: ""
       prefix: " "
-      template: '{{if eq "on" .Env.KUBE_PS1_ENABLED}}ﴱ {{.Context}}/{{if .Namespace}}{{.Namespace}}{{else}}default{{end}}{{end}}'
+      template: '{{if eq "on" .Env.KUBE_PS1_ENABLED}}|{{.Context}}/{{if .Namespace}}{{.Namespace}}{{else}}default{{end}}|{{end}}'
 
   # - type: command
     # style: plain
@@ -85,7 +87,7 @@ blocks:
     # properties:
       # shell: /bin/sh
       # # command: "ifconfig utun2 > /dev/null 2>&1 && echo '\uF023' || echo ''"
-      # command: "ifconfig utun2 > /dev/null 2>&1 && echo '\u2692' || echo ''"
+      # command: "ifconfig utun2 > /dev/null 2>&1 && echo '\u2713' || echo '\u2717'"
 
 
 - type: prompt
