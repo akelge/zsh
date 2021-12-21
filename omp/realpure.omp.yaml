@@ -28,8 +28,11 @@ blocks:
       root_icon: "\u26A1"
       # root_icon: "# "
 
+
   - type: path
     style: plain
+    # style: agnoster_left
+    max_depth: 2
     foreground: lightBlue
     properties:
       prefix: ""
@@ -46,6 +49,7 @@ blocks:
       fetch_status: true
       prefix: ""
       template: '{{ .HEAD }}{{.BranchStatus}}{{ if .Working.Changed }}<#FF0000>* {{ .Working.String }}</>{{ end }}'
+      # template: '{{.BranchStatus}}{{ if .Working.Changed }}<#FF0000>* {{ .Working.String }}</>{{ end }}'
 
   - type: executiontime
     style: plain
@@ -82,12 +86,11 @@ blocks:
   # - type: command
     # style: plain
     # foreground: white
-    # prefix: ""
-    # postfix: ""
     # properties:
       # shell: /bin/sh
       # # command: "ifconfig utun2 > /dev/null 2>&1 && echo '\uF023' || echo ''"
-      # command: "ifconfig utun2 > /dev/null 2>&1 && echo '\u2713' || echo '\u2717'"
+      # # command: "ifconfig utun2 > /dev/null 2>&1 && echo '<#00FF00>\u2713</>' || echo '\u2717'"
+      # command: "ifconfig utun2 > /dev/null 2>&1 && echo '<#00FF00>\u2713</>' || echo ' '"
 
 
 - type: prompt
