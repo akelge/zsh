@@ -9,15 +9,21 @@ blocks:
   alignment: left
   newline: false
   segments:
-
   - type: session
     style: plain
     foreground: yellow
     properties:
       postfix: ""
       prefix: ""
-      template: '{{if .SSHSession}}@{{ .ComputerName }} {{end}}'
+      template: '{{if .SSHSession}}|{{ .ComputerName }}| {{end}}'
 
+  - type: text
+    style: plain
+    foreground: green
+    properties:
+      prefix: ""
+      postfix: ""
+      text: "$([ $(jobs|wc -l|xargs) -gt 0 ] && echo '\u2622 ')"
 
   - type: root
     style: plain
@@ -66,7 +72,7 @@ blocks:
 
   - type: aws
     style: plain
-    foreground: "#ffA000"
+    foreground: yellow
     properties:
       postfix: ""
       prefix: " "
@@ -77,17 +83,21 @@ blocks:
     style: plain
     foreground: lightBlue
     properties:
+      display_error: true
       parse_kubeconfig: true
       postfix: ""
       prefix: ""
-      template: '{{if eq "on" .Env.KUBE_PS1_ENABLED}} ﴱ {{.Context}}/{{if .Namespace}}{{.Namespace}}{{else}}default{{end}}{{end}}'
+      # template: '{{if eq "on" .Env.KUBE_PS1_ENABLED}} ﴱ {{.Context}}{{if .Namespace}}/{{.Namespace}}{{end}}{{end}}'
+      template: '{{if eq "on" .Env.KUBE_PS1_ENABLED}} ﴱ {{.Context}}/{{.Namespace}}{{end}}'
+      # template: '{{ .Context }}/{{ .Namespace }}'
 
   - type: command
     style: plain
-    foreground: white
+    foreground: green
     properties:
       shell: /bin/sh
-      command: "ifconfig utun2 > /dev/null 2>&1 && echo '<#00FF00>\uF023</>' || echo '\0'"
+      command: "ifconfig utun2 > /dev/null 2>&1 && echo '\uF023' || echo '\0'"
+
 
 - type: prompt
   alignment: left
@@ -112,3 +122,17 @@ blocks:
       prefix: ""
       # template: ❯
       template: "\u276F"
+
+tooltips:
+  - type: kubectl
+    style: plain
+    foreground: lightBlue
+    postfix: ""
+    prefix: ""
+    tips:
+      - kubectl
+      - k 
+      - stern
+    properties:
+      template: 'ﴱ {{.Context}}{{ if .Namespace }}/{{.Namespace}}{{end}}'
+
