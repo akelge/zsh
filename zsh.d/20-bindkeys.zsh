@@ -24,4 +24,8 @@ bindkey  "\e[4~" end-of-line
 bindkey  "\e[A" history-search-backward
 bindkey  "\e[B" history-search-forward
 
+# Required by Terminus in Sublime Text
+bindkey "\e[1;3C" forward-word
+bindkey "\e[1;3D" backward-word
+
 #  vim: set ts=4 sw=4 tw=0 ft=zsh : 
