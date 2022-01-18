@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 console_title: true
 console_title_style: template
-console_title_template: '{{if .Env.SSH_CONNECTION}}  {{ .Host }} {{end}}{{.Path}}'
+# console_title_template: "{{if .Env.SSH_CONNECTION}} {{ .HostName }} :: {{end}}{{.Folder}}"
+console_title_template: "{{if .Env.SSH_CONNECTION}}@{{ .HostName }}:{{end}}{{.Folder}}"
 final_space: false
 
 blocks:
@@ -15,7 +16,7 @@ blocks:
     properties:
       postfix: ""
       prefix: ""
-      template: '{{if .SSHSession}}|{{ .ComputerName }}| {{end}}'
+      template: '{{if .SSHSession}}|{{ .HostName }}| {{end}}'
 
   - type: text
     style: plain
@@ -36,11 +37,9 @@ blocks:
 
   - type: path
     style: plain
-    # style: agnoster_left
-    max_depth: 2
+    enable_hyperlink: false
     foreground: lightBlue
     properties:
-      prefix: ""
       style: full
 
   - type: git
