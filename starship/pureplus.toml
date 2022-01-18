@@ -19,6 +19,10 @@ $line_break\
 $python\
 $character"""
 
+# right_format = """
+# ${custom.local_title}\
+# ${custom.remote_title}"""
+
 scan_timeout = 30
 command_timeout = 500
 add_newline = false
@@ -149,7 +153,7 @@ detect_files = [
 detect_folders = []
 
 [directory]
-truncation_length = 8
+truncation_length = 5
 truncate_to_repo = false
 repo_root_style = "underline italic bold blue"
 fish_style_pwd_dir_length = 0
@@ -418,7 +422,7 @@ detect_folders = []
 symbol = '☸ '
 format = '[$symbol$context/$namespace]($style) '
 style = 'bright-blue'
-disabled = true
+disabled = false
 
 [kubernetes.context_aliases]
 
@@ -816,10 +820,19 @@ detect_folders = []
 description = "vpn status"
 command = "echo \uF023"
 when = "ifconfig utun2 > /dev/null 2>&1"
-style = "bold green"
+# format = "[$symbol($output)]($style)"  # Remove extra blank after output
+style = "green"
 
 [custom.root]
 description = "show if user is root"
 command = "echo \u26A1"
 when = "[ $USER = 'root' ]"
 style = "bright-yellow"
+
+[custom.window_title]
+description = "set window title"
+command = '[ -z $SSH_CLIENT] && print -Pn "\e]1;%2~\a" || print -Pn "\e]1;(%m) %2~\a"'
+# format = "[$symbol($output)]($style) "  # Remove extra blank after output
+format="($output)"
+when = "true"
+
