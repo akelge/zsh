@@ -29,18 +29,18 @@ add_newline = false
 
 [aws]
 # format = '[$symbol($profile )(\($region\) )(\[$duration\])]($style)'
-format = '[$symbol($profile)(/($region)) ]($style)'
+format = '[ $symbol($profile)(/($region)) ]($style)'
 # symbol = '☁️  '
 symbol = ' '
 # symbol = ' ' 
-style = 'bright-yellow'
+style = 'inverted bright-yellow'
 disabled = false
 expiration_symbol = 'X'
 
 [aws.region_aliases]
-eu-west-1 = "ire"
-eu-central-1 = "fra"
-us-east-2 = "ohio"
+eu-west-1 = "ire1"
+eu-central-1 = "fra1"
+us-east-2 = "ohio1"
 
 [azure]
 format = 'on [$symbol($subscription)]($style) '
@@ -154,7 +154,7 @@ detect_folders = []
 
 [directory]
 truncation_length = 5
-truncate_to_repo = false
+truncate_to_repo = true
 repo_root_style = "underline italic bold blue"
 fish_style_pwd_dir_length = 0
 use_logical_path = true
@@ -165,7 +165,7 @@ disabled = false
 # read_only = '🔒'
 read_only = " \u2718"
 read_only_style = 'bright-red bold'
-truncation_symbol = ''
+truncation_symbol = '.../'
 home_symbol = '~'
 
 [directory.substitutions]
@@ -420,8 +420,8 @@ detect_folders = []
 
 [kubernetes]
 symbol = '☸ '
-format = '[$symbol$context/$namespace]($style) '
-style = 'bright-blue'
+format = '[ $symbol$context/$namespace]($style) '
+style = 'inverted bold bright-blue'
 disabled = false
 
 [kubernetes.context_aliases]
@@ -746,8 +746,8 @@ detect_files = ['Package.swift']
 detect_folders = []
 
 [terraform]
-format = 'via [$symbol$workspace]($style) '
-version_format = 'v${raw}'
+format = '[$symbol$version]($style)'
+version_format = '${raw}'
 symbol = '💠 '
 style = 'bold 105'
 disabled = false
@@ -819,7 +819,7 @@ detect_folders = []
 [custom.vpn]
 description = "vpn status"
 command = "echo \uF023"
-when = "ifconfig utun2 > /dev/null 2>&1"
+when = "ifconfig utun3 > /dev/null 2>&1"
 # format = "[$symbol($output)]($style)"  # Remove extra blank after output
 style = "green"
 

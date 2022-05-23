@@ -14,13 +14,13 @@ blocks:
     style: plain
     foreground: yellow
     properties:
-      postfix: ""
       prefix: ""
+      postfix: ""
       template: '{{if .SSHSession}}|{{ .HostName }}| {{end}}'
 
   - type: text
     style: plain
-    foreground: green
+    foreground: lightBlue
     properties:
       prefix: ""
       postfix: ""
@@ -30,16 +30,18 @@ blocks:
     style: plain
     foreground: yellow
     properties:
-      postfix: ""
       prefix: ""
+      postfix: ""
       root_icon: "\u26A1"
       # root_icon: "# "
 
   - type: path
     style: plain
-    enable_hyperlink: false
     foreground: lightBlue
     properties:
+      prefix: ""
+      # style: agnoster_short
+      # max_depth: 2
       style: full
 
   - type: git
@@ -74,7 +76,8 @@ blocks:
     foreground: yellow
     properties:
       postfix: ""
-      prefix: " "
+      # prefix: " "
+      prefix: " "
       # prefix: " "
       template: '{{if .Profile}}{{.Profile}}{{end}}'
 

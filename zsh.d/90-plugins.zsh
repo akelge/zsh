@@ -9,7 +9,8 @@ fi
 whence  thefuck > /dev/null && eval $(thefuck --alias)
 
 # z
-[ -f $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ] && source $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh
+# [ -f $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ] && source $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh
+whence zoxide > /dev/null && eval eval "$(zoxide init zsh)"
 
 # kubectl/krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
