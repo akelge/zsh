@@ -29,7 +29,7 @@ alias vi="vim "
 
 alias du1="du -h --max-depth=1"
 alias psg="ps ax|grep "
-alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias myip="dig +short ANY @resolver1.opendns.com myip.opendns.com"
 
 alias delkey="ssh-keygen -R "
 
