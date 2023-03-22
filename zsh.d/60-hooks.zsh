@@ -8,20 +8,23 @@
 # - zshexit
 #
 
-# Gitfetch precmd hook
+# Async Git update
+autoload -Uz vcs_info
 
-# Empty, but required, callback function
-# We can implement logging here
-function completed_callback() {}
-
-# Create worker for async precmd
-async_start_worker _precmd
-async_register_callback _precmd completed_callback
-
-# Async invocation of gitfect on precmd worker
-function gitfetch_hook() {
-  async_job _precmd gitfetch $PWD
+_vbe_vcs_info_done() {
+  local stdout=$3
+  vcs_info_msg_0_=$stdout
+	# echo $(date +"%Y-%m-%d %H:%M:%S") $PWD info $vcs_info_msg_0_  $vcs_info_msg_1_ >> ~/vcs.log
+  zle reset-prompt
 }
 
-# Add async function to precmd hook
-add-zsh-hook precmd gitfetch_hook
+_vbe_vcs_precmd() {
+  # echo $(date +"%Y-%m-%d %H:%M:%S") $PWD pre >> ~/vcs.log
+  async_flush_jobs vcs_info
+  async_job vcs_info _vbe_vcs_info $PWD
+}
+
+async_init
+async_start_worker vcs_info
+async_register_callback vcs_info _vbe_vcs_info_done
+add-zsh-hook precmd _vbe_vcs_precmd
