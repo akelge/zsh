@@ -36,6 +36,7 @@ alias delkey="ssh-keygen -R "
 # Global Aliases
 #
 alias -g G="|grep "
+alias -g K="|kubectl neat | less"
 alias -g L="|less"
 alias -g NO="> /dev/null"
 alias -g NE="2> /dev/null"
