@@ -17,7 +17,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 if whence kubectl > /dev/null; then 
   alias k=kubectl
-  alias kp='kubectl ipick'
+  alias kk='kubectl konfig merge ~/.kube/configs/* > ~/.kube/config'
 fi
 
 # Setup iTerm shell integration
