@@ -3,6 +3,15 @@ profile=$1
 region=${1:-""}
 
 
+declare -A symRegions
+symRegions[ire1]='eu-west-1'
+symRegions[fra1]='eu-central-1'
+symRegions[ohio1]='us-east-2'
+
+lookup_region=${symRegions[$region]}
+
+[ -z $lookup_region ] || region=${lookup_region}
+
 if [ ! -f ~/.aws/config ]; then
   echo "no aws config file found, bailing out..."
   return 1
