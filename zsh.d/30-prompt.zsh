@@ -15,4 +15,4 @@ PURE_CMD_MAX_EXEC_TIME=30
 # prompt mypure
 # prompt pure
 
-#  vim: set ts=4 sw=4 tw=0 ft=zsh : 
+#  vim: set ts=4 sw=4 tw=0 ft=zsh :

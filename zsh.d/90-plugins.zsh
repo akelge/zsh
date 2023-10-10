@@ -10,12 +10,20 @@ whence  thefuck > /dev/null && eval $(thefuck --alias)
 
 # z
 # [ -f $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ] && source $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh
-whence zoxide > /dev/null && eval eval "$(zoxide init zsh)"
+if [ $(whence zoxide > /dev/null) ]; then  ## zoxide is installed
+  eval $(zoxide init zsh)
+  export Z_COMMAND=zoxide
+elif [ -f $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ]; then ## zsh-z is installed
+  source $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh
+  export Z_COMMAND=zsh-z
+else
+  echo "No zoxide or zsh-z found, z command disabled"
+fi
 
 # kubectl/krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-if whence kubectl > /dev/null; then 
+if whence kubectl > /dev/null; then
   alias k=kubectl
   alias kk='kubectl konfig merge ~/.kube/configs/* > ~/.kube/config'
 fi
