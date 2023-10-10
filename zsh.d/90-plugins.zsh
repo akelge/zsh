@@ -10,7 +10,7 @@ whence  thefuck > /dev/null && eval $(thefuck --alias)
 
 # z
 # [ -f $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ] && source $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh
-if [ $(whence zoxide > /dev/null) ]; then  ## zoxide is installed
+if whence zoxide > /dev/null; then  ## zoxide is installed
   eval $(zoxide init zsh)
   export Z_COMMAND=zoxide
 elif [ -f $LIBRARY/plugins/zsh-z/zsh-z.plugin.zsh ]; then ## zsh-z is installed
