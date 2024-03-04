@@ -10,7 +10,7 @@ LOGD=/var/log
 
 ## Vars only for interactive sessions
 SAVEHIST=10000000
-HISTFILE=~/.zsh_history
+HISTFILE=~/.history
 HISTFILESIZE=10000000
 HISTSIZE=10000000
 
