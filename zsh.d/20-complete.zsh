@@ -1,6 +1,13 @@
 #######################################################################################
 # Start autocomplete
-autoload -U compinit && compinit -u
+autoload -Uz compinit
+
+if [[ -n "$HOME/.zcompdump(#qN.mh+24)" ]]; then
+    compinit
+else
+    compinit -C
+fi
+
 autoload bashcompinit && bashcompinit
 
 # allow approximate
