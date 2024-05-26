@@ -20,22 +20,11 @@
 [ -d ~/.zsh ] && BASE=~/.zsh
 
 function loadRC {
-    if [ -d $1/zshfunctions ]; then
-        fpath=($1/zshfunctions $fpath)
-    fi
+    [ -d $1/zshfunctions ] && fpath=($1/zshfunctions $fpath)
+    [ -d $1/completions ] && fpath=($1/completions $fpath)
 
-    if [ -d $1/completions ]; then
-        fpath=($1/completions $fpath)
-    fi
-
-    # # Add local customization file
-    # if [ -w $1 ]; then
-        # [ -f $1/99-local.zsh ] || echo "# Local customizations" > $1/99-local.zsh
-    # fi
-
-    # Process all .zsh files
     for zshFile in $1/[0-9]*.zsh; do
-        . $zshFile
+        source $zshFile
     done
 }
 
