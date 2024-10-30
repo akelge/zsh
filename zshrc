@@ -6,6 +6,7 @@
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
 #
+#
 
 # Load zprof if we need to profile startup time
 # at the bottom of ~/.zshrc add `zprof >! zsh_profile` to save
@@ -33,7 +34,7 @@ for lib in $KERNLIB $LIBRARY; do
   [ -d $lib/completions ] && fpath=($lib/completions $fpath)
 
   for zshFile in $lib/[0-9]*.zsh; do
-    echo $zshFile
+    # echo $zshFile
     source $zshFile
   done
 done
