@@ -2,11 +2,12 @@
 # Start autocomplete
 autoload -Uz compinit
 
-if [[ -n "$HOME/.zcompdump(#qN.mh+24)" ]]; then
+for dump in ~/.zcompdump(N.mh+24); do
     compinit
-else
-    compinit -C
-fi
+    touch ~/.zcompdump
+done
+
+compinit -C
 
 autoload bashcompinit && bashcompinit
 

@@ -20,12 +20,12 @@
 [ -d ~/.zsh ] && BASE=~/.zsh
 
 function loadRC {
-    [ -d $1/zshfunctions ] && fpath=($1/zshfunctions $fpath)
-    [ -d $1/completions ] && fpath=($1/completions $fpath)
+  [ -d $1/zshfunctions ] && fpath=($1/zshfunctions $fpath)
+  [ -d $1/completions ] && fpath=($1/completions $fpath)
 
-    for zshFile in $1/[0-9]*.zsh; do
-        source $zshFile
-    done
+  for zshFile in $1/[0-9]*.zsh; do
+    source $zshFile
+  done
 }
 
 # Default PATH
@@ -43,6 +43,6 @@ PATH="$PATH:$HOME/bin"
 
 # Add local customization file
 if [ -w $LIBRARY ]; then
-    [ -f $LIBRARY/99-local.zsh ] || echo "# Local customizations" > $LIBRARY/99-local.zsh
+  [ -f $LIBRARY/99-local.zsh ] || echo "# Local customizations" > $LIBRARY/99-local.zsh
 fi
 
