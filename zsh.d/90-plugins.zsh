@@ -24,10 +24,5 @@ fi
 # kubectl/krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-if type kubectl > /dev/null; then
-  alias k=kubectl
-  alias kk='kubectl konfig merge ~/.kube/configs/* > ~/.kube/config'
-fi
-
 # Setup iTerm shell integration
 #test -e $HOME/.iterm2_shell_integration.zsh && source $HOME/.iterm2_shell_integration.zsh && export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES || echo "iTerm sh integration not installed"
