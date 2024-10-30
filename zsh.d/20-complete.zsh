@@ -9,7 +9,7 @@ done
 
 compinit -C
 
-# autoload bashcompinit && bashcompinit
+autoload bashcompinit && bashcompinit
 # autoload bashcompinit
 
 # allow approximate

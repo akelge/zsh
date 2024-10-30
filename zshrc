@@ -12,34 +12,31 @@
 # profiling data at startup
 zmodload zsh/zprof
 
-function loadRC {
-  [ -d $1/zshfunctions ] && fpath=($1/zshfunctions $fpath)
-  [ -d $1/completions ] && fpath=($1/completions $fpath)
-
-  for zshFile in $1/[0-9]*.zsh; do
-    source $zshFile
-  done
-}
-
 # Default PATH
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin"
 
+# Determine zsh conf file position.
 local BASE="/etc"
-# Determine zsh conf file position. On Debian/Ubuntu is /etc/zsh, on other should be /etc
+
+# On Debian/Ubuntu is /etc/zsh, on other should be /etc
 [ -d /etc/zsh ] && BASE="/etc/zsh"
 
 # If there is a .zsh directory into user's home, use that one instead (local install)
 [ -d ~/.zsh ] && BASE=~/.zsh
 
 
-local KERNEL=`uname -s`
 local LIBRARY=${BASE}/zsh.d
-local KERNLIB=${LIBRARY}/${KERNEL}
+# local KERNEL=`uname -s`
+local KERNLIB=${LIBRARY}/$(uname -s)
 
-loadRC ${KERNLIB}
-loadRC ${LIBRARY}
+# loadRC ${LIBRARY} ${KERNLIB}
+for subdir in $LIBRARY $KERNLIB; do
+  [ -d $subdir/zshfunctions ] && fsubdir=($subdir/zshfunctions $fsubdir)
+  [ -d $subdir/completions ] && fsubdir=($subdir/completions $fsubdir)
 
-# # Add local customization file
-# if [ -w $LIBRARY ]; then
-#   [ -f $LIBRARY/99-local.zsh ] || echo "# Local customizations" > $LIBRARY/99-local.zsh
-# fi
+  for zshFile in $subdir/[0-9]*.zsh; do
+    # echo $zshFile
+    source $zshFile
+  done
+done
+
