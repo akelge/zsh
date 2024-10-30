@@ -29,12 +29,11 @@ local LIBRARY=${BASE}/zsh.d
 # local KERNEL=`uname -s`
 local KERNLIB=${LIBRARY}/$(uname -s)
 
-# loadRC ${LIBRARY} ${KERNLIB}
-for subdir in $LIBRARY $KERNLIB; do
-  [ -d $subdir/zshfunctions ] && fsubdir=($subdir/zshfunctions $fsubdir)
-  [ -d $subdir/completions ] && fsubdir=($subdir/completions $fsubdir)
+for lib in $LIBRARY $KERNLIB; do
+  [ -d $lib/zshfunctions ] && fpath=($lib/zshfunctions $fpath)
+  [ -d $lib/completions ] && fpath=($lib/completions $fpath)
 
-  for zshFile in $subdir/[0-9]*.zsh; do
+  for zshFile in $lib/[0-9]*.zsh; do
     # echo $zshFile
     source $zshFile
   done
