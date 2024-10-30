@@ -10,7 +10,7 @@
 # Load zprof if we need to profile startup time
 # at the bottom of ~/.zshrc add `zprof >! zsh_profile` to save
 # profiling data at startup
-# zmodload zsh/zprof
+zmodload zsh/zprof
 
 # Determine zsh conf file position. On Debian/Ubuntu is /etc/zsh, on other should be /etc
 #

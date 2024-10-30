@@ -9,7 +9,8 @@ done
 
 compinit -C
 
-autoload bashcompinit && bashcompinit
+# autoload bashcompinit && bashcompinit
+# autoload bashcompinit
 
 # allow approximate
 zstyle ':completion:*' completer _complete _match _approximate

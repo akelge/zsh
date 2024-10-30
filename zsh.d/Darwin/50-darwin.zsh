@@ -6,14 +6,10 @@
 # We need it here to fix the PATH
 # so we can setup pyenv and other stuff
 #
-for prefix in /usr/local /opt/homebrew; do
-    brew=$(whence $prefix/bin/brew)
-    if [ $brew ]; then
-        eval "$($brew shellenv)"
-        FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-        break
-    fi
-done
+if type /opt/homebrew/bin/brew > /dev/null; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 
 export LSCOLORS="ExgxcxdxCxegedabagacad"
 
