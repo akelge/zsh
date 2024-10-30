@@ -41,8 +41,7 @@ loadRC ${LIBRARY}
 # Add home bin to PATH
 PATH="$PATH:$HOME/bin"
 
-# Add local customization file
-if [ -w $LIBRARY ]; then
-  [ -f $LIBRARY/99-local.zsh ] || echo "# Local customizations" > $LIBRARY/99-local.zsh
-fi
-
+# # Add local customization file
+# if [ -w $LIBRARY ]; then
+#   [ -f $LIBRARY/99-local.zsh ] || echo "# Local customizations" > $LIBRARY/99-local.zsh
+# fi

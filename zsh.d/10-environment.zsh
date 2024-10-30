@@ -2,7 +2,7 @@
 # Variables
 
 ## Vars used always
-MIBS=all
+# MIBS=all
 LOGD=/var/log
 
 ## If we are not interactive quit
