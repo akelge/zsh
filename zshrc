@@ -10,39 +10,32 @@
 # Load zprof if we need to profile startup time
 # at the bottom of ~/.zshrc add `zprof >! zsh_profile` to save
 # profiling data at startup
-# zmodload zsh/zprof
+zmodload zsh/zprof
 
-# Determine zsh conf file position. On Debian/Ubuntu is /etc/zsh, on other should be /etc
-#
-[ -d /etc/zsh ] && BASE="/etc/zsh" || BASE="/etc"
+# Default PATH
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin"
+
+# Determine zsh conf file position.
+local BASE="/etc"
+
+# On Debian/Ubuntu is /etc/zsh, on other should be /etc
+[ -d /etc/zsh ] && BASE="/etc/zsh"
 
 # If there is a .zsh directory into user's home, use that one instead (local install)
 [ -d ~/.zsh ] && BASE=~/.zsh
 
-function loadRC {
-  [ -d $1/zshfunctions ] && fpath=($1/zshfunctions $fpath)
-  [ -d $1/completions ] && fpath=($1/completions $fpath)
 
-  for zshFile in $1/[0-9]*.zsh; do
+local LIBRARY=${BASE}/zsh.d
+# local KERNEL=`uname -s`
+local KERNLIB=${LIBRARY}/$(uname -s)
+
+for lib in $LIBRARY $KERNLIB; do
+  [ -d $lib/zshfunctions ] && fpath=($lib/zshfunctions $fpath)
+  [ -d $lib/completions ] && fpath=($lib/completions $fpath)
+
+  for zshFile in $lib/[0-9]*.zsh; do
+    # echo $zshFile
     source $zshFile
   done
-}
-
-# Default PATH
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
-
-local KERNEL=`uname -s`
-local LIBRARY=${BASE}/zsh.d
-local KERNLIB=${LIBRARY}/${KERNEL}
-
-loadRC ${KERNLIB}
-loadRC ${LIBRARY}
-
-# Add home bin to PATH
-PATH="$PATH:$HOME/bin"
-
-# Add local customization file
-if [ -w $LIBRARY ]; then
-  [ -f $LIBRARY/99-local.zsh ] || echo "# Local customizations" > $LIBRARY/99-local.zsh
-fi
+done
 
