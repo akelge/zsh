@@ -10,7 +10,7 @@
 # Load zprof if we need to profile startup time
 # at the bottom of ~/.zshrc add `zprof >! zsh_profile` to save
 # profiling data at startup
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 # Default PATH
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin"
@@ -26,15 +26,14 @@ local BASE="/etc"
 
 
 local LIBRARY=${BASE}/zsh.d
-# local KERNEL=`uname -s`
 local KERNLIB=${LIBRARY}/$(uname -s)
 
-for lib in $LIBRARY $KERNLIB; do
+for lib in $KERNLIB $LIBRARY; do
   [ -d $lib/zshfunctions ] && fpath=($lib/zshfunctions $fpath)
   [ -d $lib/completions ] && fpath=($lib/completions $fpath)
 
   for zshFile in $lib/[0-9]*.zsh; do
-    # echo $zshFile
+    echo $zshFile
     source $zshFile
   done
 done
