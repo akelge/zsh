@@ -1,4 +1,4 @@
-fpath=($0:h/prompts $fpath)
+fpath+=$0:h/prompts
 fpath+=$0:h/prompts/mypure
 # fpath+=$0:h/prompts/pure
 

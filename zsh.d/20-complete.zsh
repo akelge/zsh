@@ -1,6 +1,6 @@
 #######################################################################################
 # Start autocomplete
-autoload -Uz compinit
+autoload -Uz compinit bashcompinit
 
 for dump in ~/.zcompdump(N.mh+24); do
     compinit
@@ -9,7 +9,7 @@ done
 
 compinit -C
 
-autoload bashcompinit && bashcompinit
+bashcompinit
 # autoload bashcompinit
 
 # allow approximate
