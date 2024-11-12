@@ -37,7 +37,7 @@ if [ $profile ]; then # We got a profile pattern, look for a match
   fi
 
   if [ $match ]; then # Single match, setting profile
-    export AWS_CLI_AUTO_PROMPT=off
+    # export AWS_CLI_AUTO_PROMPT=off
 
     # Set default profile and profile
     export AWS_DEFAULT_PROFILE=$match
@@ -48,7 +48,7 @@ if [ $profile ]; then # We got a profile pattern, look for a match
     export AWS_REGION=${region:-$AWS_DEFAULT_REGION}
 
     print -P "$FX[bold]activating profile $FG[075]$match$FX[reset]$FX[bold] on region $FG[075]$AWS_REGION$FX[reset]"
-    export AWS_CLI_AUTO_PROMPT=on
+    # export AWS_CLI_AUTO_PROMPT=on
     return
   else
     print -P "$FX[bold]$FG[009]no match for $profile$FX[reset]"

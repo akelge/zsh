@@ -40,6 +40,7 @@ alias kk='kubectl konfig merge ~/.kube/configs/* > ~/.kube/config'
 #
 alias -g G="|grep "
 alias -g K="-o yaml | kubectl neat | less"
+alias -g KK="-o yaml | less"
 alias -g L="|less"
 alias -g NO="> /dev/null"
 alias -g NE="2> /dev/null"
