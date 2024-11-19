@@ -31,7 +31,7 @@ alias ptr='host -t ptr'
 # alias psg="ps ax|grep "
 alias myip="dig +short ANY @resolver1.opendns.com myip.opendns.com"
 
-alias delkey="ssh-keygen -R "
+# alias delkey="ssh-keygen -R "
 
 alias k=kubectl
 alias kk='kubectl konfig merge ~/.kube/configs/* > ~/.kube/config'
