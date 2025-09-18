@@ -8,11 +8,15 @@ bindkey  "-e"
 autoload -U select-word-style
 select-word-style bash
 
-# History search
-autoload -Uz history-search-end
+# # History search
+# autoload -Uz history-search-end
 
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
+# zle -N history-beginning-search-backward-end history-search-end
+# zle -N history-beginning-search-forward-end history-search-end
+
+# bindkey  "\e[A" history-search-backward
+# bindkey  "\e[B" history-search-forward
+
 
 # Command line editing in $EDITOR
 autoload -z edit-command-line
@@ -30,8 +34,9 @@ bindkey  "\e[1~" beginning-of-line
 bindkey  "\e[F" end-of-line
 bindkey  "\e[4~" end-of-line
 
-bindkey  "\e[A" history-search-backward
-bindkey  "\e[B" history-search-forward
+# History search
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 # Required by Terminus in Sublime Text
 bindkey "\e[1;3C" forward-word
@@ -39,14 +44,14 @@ bindkey "\e[1;3D" backward-word
 
 
 # VI mode history search
-bindkey -M vicmd '^[[A' history-beginning-search-backward-end \
-                 '^[OA' history-beginning-search-backward-end \
-                 '^[[B' history-beginning-search-forward-end \
-                 '^[OB' history-beginning-search-forward-end
-bindkey -M viins '^[[A' history-beginning-search-backward-end \
-                 '^[OA' history-beginning-search-backward-end \
-                 '^[[B' history-beginning-search-forward-end \
-                 '^[OB' history-beginning-search-forward-end
+bindkey -M vicmd '^[[A' history-beginning-search-backward \
+                 '^[OA' history-beginning-search-backward \
+                 '^[[B' history-beginning-search-forward \
+                 '^[OB' history-beginning-search-forward
+bindkey -M viins '^[[A' history-beginning-search-backward \
+                 '^[OA' history-beginning-search-backward \
+                 '^[[B' history-beginning-search-forward \
+                 '^[OB' history-beginning-search-forward
 
 bindkey -M viins "\e[H" beginning-of-line \
                  "\e[1~" beginning-of-line \
