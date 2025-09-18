@@ -9,10 +9,10 @@ autoload -U select-word-style
 select-word-style bash
 
 # # History search
-# autoload -Uz history-search-end
+autoload -Uz history-search-end
 
-# zle -N history-beginning-search-backward-end history-search-end
-# zle -N history-beginning-search-forward-end history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
 
 # bindkey  "\e[A" history-search-backward
 # bindkey  "\e[B" history-search-forward
@@ -35,8 +35,8 @@ bindkey  "\e[F" end-of-line
 bindkey  "\e[4~" end-of-line
 
 # History search
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
 
 # Required by Terminus in Sublime Text
 bindkey "\e[1;3C" forward-word
