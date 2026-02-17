@@ -20,6 +20,9 @@ setopt NO_HIST_BEEP
 setopt LIST_TYPES
 setopt LONG_LIST_JOBS
 
+# Comments in interactive shells
+setopt INTERACTIVE_COMMENTS
+
 #setopt no_CLOBBER
 
 setopt no_BEEP
@@ -35,4 +38,4 @@ setopt AUTO_MENU
 setopt no_MENU_COMPLETE
 setopt AUTO_LIST
 
-#  vim: set ts=4 sw=4 tw=0 ft=zsh : 
+#  vim: set ts=4 sw=4 tw=0 ft=zsh :
