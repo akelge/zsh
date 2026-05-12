@@ -63,6 +63,6 @@ fi
 
 print -P "$FX[bold]available profiles"
 print -P "$FG[075]"
-grep profile ~/.aws/config | sed -E 's/\[profile (.+)\]/\1/'
+grep -E "^\[profile" ~/.aws/config | sed -E 's/\[profile (.+)\]/\1/'
 print -P "$FX[reset]"
 # vim: set ts=2 sw=2 tw=0 ft=sh :
