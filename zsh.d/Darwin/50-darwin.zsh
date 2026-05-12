@@ -18,5 +18,12 @@ alias ldd='otool -L'
 # alias skill=killall
 alias lsrebuild='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user'
 
+export RESTICPROFILE="~/.config/resticprofile"
+
+function resticprofile {
+    cd $RESTICPROFILE
+    command resticprofile $*
+    cd $OLDPWD
+}
 
 #  vim: set ts=4 sw=4 tw=0 ft=zsh :
