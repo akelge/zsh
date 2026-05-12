@@ -18,10 +18,10 @@ alias ldd='otool -L'
 # alias skill=killall
 alias lsrebuild='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user'
 
-export RESTICPROFILE="$HOME/.config/resticprofile"
+export RESTICPROFILEDIR="$HOME/.config/resticprofile"
 
 function resticprofile {
-    cd $RESTICPROFILE
+    cd $RESTICPROFILEDIR
     command resticprofile $*
     cd $OLDPWD
 }
