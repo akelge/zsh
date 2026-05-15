@@ -1,71 +1,56 @@
 #######################################################################################
-# Functions
-#
-#
-#
-#
-# Load usefule modules
+# Optimized Functions & Modules
+#######################################################################################
 
 zmodload -F zsh/stat b:zstat
 zmodload zsh/datetime
-#
-# Autoload all functions in zshfunctions
-#
+
+# 1. Prepare (but don't execute) modules
+autoload -Uz add-zsh-hook vcs_info async
+
+# 2. Autoload your custom library
+# Ensure $LIBRARY is correctly defined before this point!
 autoload -U $LIBRARY/zshfunctions/*(.:t)
 
-# Add zsh-hook function
-autoload -Uz add-zsh-hook
-
-# Add async support
-autoload -Uz async && async
-
-# Async Git update
-autoload -Uz vcs_info
-
-# 2. Callback: cosa fare quando il fetch finisce
+# 3. Callback: what to do when fetch finishes
 git_callback() {
-    # Aggiorna il prompt solo dopo che il fetch è terminato
-    # Ricarica vcs_info o il tuo sistema di prompt
-    # vcs_info 2>/dev/null
     zle reset-prompt
 }
 
-# 3. Funzione di inizializzazione worker
+# 4. Initialization: This is where we fix the "command not found"
 init_vcs_worker() {
-    # -n: crea solo se non esiste
-    # -u: permette l'invio di job unici (evita sovrapposizioni)
+    # If async_start_worker doesn't exist, we need to initialize the library
+    if ! (( $+functions[async_start_worker] )); then
+        async  # This loads the actual async functions into memory
+    fi
+
+    # Initialize the async engine if it hasn't been already
+    async_init 2>/dev/null 
+
     async_start_worker vcs_info -u -n
     async_register_callback vcs_info git_callback
 }
 
-# 2. Funzione per verificare se è necessario il fetch
+# 5. Fast Check: Use Zsh builtins instead of 'date' (No shell forks!)
 should_fetch() {
     local last_fetch_file=".git/FETCH_HEAD"
-    
-    # Se il file non esiste (mai fatto fetch), procedi
     [[ ! -f "$last_fetch_file" ]] && return 0
     
-    # Calcola la differenza in secondi (5 min = 300 sec)
-    local last_mod=$(date -r "$last_fetch_file" +%s)
-    local now=$(date +%s)
-    local diff=$(( now - last_mod ))
-    local threshold=$(( FETCH_INTERVAL_MIN * 60 ))
+    local last_mod
+    # zstat is much faster than the external 'date' command
+    zstat -A last_mod +mtime "$last_fetch_file" 2>/dev/null || return 0
+    
+    local diff=$(( EPOCHSECONDS - last_mod ))
+    local threshold=$(( ${FETCH_INTERVAL_MIN:-5} * 60 ))
 
-    if [[ $diff -gt $threshold ]]; then
-        return 0 # È passato abbastanza tempo
-    else
-        return 1 # Troppo presto
-    fi
+    (( diff > threshold ))
 }
 
-# 3. Funzione Core aggiornata
+# 6. Core Function
 check_git_status_async() {
-    # Verifica se siamo in un git repo
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        
-        # Controlla il timer prima di stressare il worker
         if should_fetch; then
-            # Se il worker è morto, lo riavviamo
+            # Attempt to run the job; if it fails (worker not started), init it
             if ! async_job vcs_info "git fetch --quiet" 2>/dev/null; then
                 init_vcs_worker
                 async_job vcs_info "git fetch --quiet"
@@ -74,6 +59,5 @@ check_git_status_async() {
     fi
 }
 
-# 5. Hook: Esegui la funzione ogni volta che cambi directory
-autoload -Uz add-zsh-hook
+# 7. Hook
 add-zsh-hook chpwd check_git_status_async

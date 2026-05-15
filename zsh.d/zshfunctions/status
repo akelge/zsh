@@ -2,10 +2,12 @@ local cpu_type
 
 echo
 
-if [ $KERNEL = "Darwin" ]; then
+KERNEL=$(uname -s)
+
+if [[ "$KERNEL" = "Darwin" ]]; then
   cpu_type=$(sysctl -n machdep.cpu.brand_string)
-elif [ $KERNEL = "Linux" ]; then
-  cpu_type=$(cat /proc/cpuinfo|grep "model name"|cut -d: -f2|uniq)
+elif [[ "$KERNEL" = "Linux" ]]; then
+  cpu_type=$(sed -n '/model name/ {s/.*: //;p;q;}' /proc/cpuinfo)
 fi
 
 print -P "$FX[bold]Kernel:$FX[reset] $KERNEL"
