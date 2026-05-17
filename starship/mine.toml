@@ -1,9 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# $all is shorthand for $username$hostname$shlvl$singularity$kubernetes$directory$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$docker_context$package$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$azure$env_var$crystal$custom$sudo$cmd_duration$line_break$jobs$battery$time$status$shell$character
-# format = '$all'
 format = """
-${custom.vpn}\
 ${custom.root}\
 $hostname\
 $jobs\
@@ -29,6 +26,8 @@ scan_timeout = 30
 command_timeout = 500
 add_newline = false
 
+continuation_prompt = '[▶▶](bright-black) '
+
 palette = 'extras'
 
 [palettes.extras]
@@ -39,15 +38,12 @@ k8s_fg = '#d0d0d0'
 k8s_bg = '#3970e4'
 
 [aws]
-# format = '[$symbol($profile )(\($region\) )(\[$duration\])]($style)'
-# format = '[$symbol ($profile)(/($region)) ]($style)'
 format = '[ $symbol($profile)(/($region)) ]($style)'
-# symbol = '☁️  '
-# symbol = ' '
-symbol = ' ' 
+symbol = ' '
 style = 'bold aws_fg bg:aws_bg'
 disabled = false
 expiration_symbol = 'X'
+force_display = true
 
 [aws.region_aliases]
 eu-west-1 = "ire1"
@@ -66,7 +62,7 @@ charging_symbol = ' '
 discharging_symbol = ' '
 unknown_symbol = ' '
 empty_symbol = ' '
-disabled = false
+disabled = true
 format = '[$symbol$percentage]($style) '
 
 [[battery.display]]
@@ -85,7 +81,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '△ '
 style = 'bold blue'
-disabled = false
+disabled = true
 detect_extensions = []
 detect_files = [
     'CMakeLists.txt',
@@ -106,7 +102,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '⚙️ '
 style = 'bold blue'
-disabled = false
+disabled = true
 detect_extensions = [
     'cbl',
     'cob',
@@ -122,14 +118,14 @@ format = 'via [$symbol$environment]($style) '
 symbol = '🅒 '
 style = 'green bold'
 ignore_base = true
-disabled = false
+disabled = true
 
 [crystal]
 format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🔮 '
 style = 'bold red'
-disabled = false
+disabled = true
 detect_extensions = ['cr']
 detect_files = ['shard.yml']
 detect_folders = []
@@ -139,7 +135,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🎯 '
 style = 'bold blue'
-disabled = false
+disabled = true
 detect_extensions = ['dart']
 detect_files = [
     'pubspec.yaml',
@@ -153,7 +149,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🦕 '
 style = 'green bold'
-disabled = false
+disabled = true
 detect_extensions = []
 detect_files = [
     'mod.ts',
@@ -168,9 +164,9 @@ truncation_length = 5
 truncate_to_repo = true
 repo_root_style = "underline italic bold blue"
 fish_style_pwd_dir_length = 0
-use_logical_path = true
+# use_logical_path = true
 format = '[$path]($style)[$read_only]($read_only_style) '
-# repo_root_format = '[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
+repo_root_format = '[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
 style = 'blue bold'
 disabled = false
 read_only = " \u2718"
@@ -200,7 +196,7 @@ version_format = 'v${raw}'
 symbol = '.NET '
 style = 'blue bold'
 heuristic = true
-disabled = false
+disabled = true
 detect_extensions = [
     'csproj',
     'fsproj',
@@ -220,7 +216,7 @@ format = 'via [$symbol($version \(OTP $otp_version\) )]($style)'
 version_format = 'v${raw}'
 symbol = '💧 '
 style = 'bold purple'
-disabled = false
+disabled = true
 detect_extensions = []
 detect_files = ['mix.exs']
 detect_folders = []
@@ -230,7 +226,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🌳 '
 style = 'cyan bold'
-disabled = false
+disabled = true
 detect_extensions = ['elm']
 detect_files = [
     'elm.json',
@@ -239,14 +235,12 @@ detect_files = [
 ]
 detect_folders = ['elm-stuff']
 
-[env_var]
-
 [erlang]
 format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = ' '
 style = 'bold red'
-disabled = false
+disabled = true
 detect_extensions = []
 detect_files = [
     'rebar.config',
@@ -263,7 +257,7 @@ disabled = false
 format = 'on [$symbol$account(@$domain)(\($region\))]($style) '
 symbol = '☁️  '
 style = 'bold blue'
-disabled = false
+disabled = true
 
 [gcloud.region_aliases]
 
@@ -326,7 +320,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🐹 '
 style = 'bold cyan'
-disabled = false
+disabled = true
 detect_extensions = ['go']
 detect_files = [
     'go.mod',
@@ -343,7 +337,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '⎈ '
 style = 'bold white'
-disabled = false
+disabled = true
 detect_extensions = []
 detect_files = [
     'helmfile.yaml',
@@ -367,7 +361,7 @@ style = 'white'
 disabled = false
 
 [java]
-disabled = false
+disabled = true
 format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 style = 'red dimmed'
@@ -406,7 +400,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = 'ஃ '
 style = 'bold purple'
-disabled = false
+disabled = true
 detect_extensions = ['jl']
 detect_files = [
     'Project.toml',
@@ -420,7 +414,7 @@ version_format = 'v${raw}'
 symbol = '🅺 '
 style = 'bold blue'
 kotlin_binary = 'kotlin'
-disabled = false
+disabled = true
 detect_extensions = [
     'kt',
     'kts',
@@ -435,32 +429,22 @@ style = 'bold k8s_fg bg:k8s_bg'
 disabled = false
 
 [[kubernetes.contexts]]
-context_pattern = "prod01.jafx-ire1.lan"
+context_pattern = "arn:aws:eks:eu-west-1:987778436636:cluster/admin"
 style = 'bold bright-yellow bg:k8s_bg'
-context_alias = "prod01"
+context_alias = "admin"
 
 [[kubernetes.contexts]]
-context_pattern = "preprod01.jafx-ire1.lan"
-context_alias = "preprod01"
-
-[[kubernetes.contexts]]
-context_pattern = "test01.jafx-ire1.lan"
-style = 'bold green bg:k8s_bg'
-context_alias = "test01"
-
-[[kubernetes.contexts]]
-context_pattern = "infra01.arr.lan"
-context_alias = "infra01"
+context_pattern = "arn:aws:eks:eu-west-1:408551328762:cluster/Eks-Sandbox"
+style = 'bold bright-yellow bg:k8s_bg'
+context_alias = "eks-sandbox"
 
 [[kubernetes.contexts]]
 context_pattern = "k3s.ifson.lan"
 context_alias = "k3s"
 
-# [kubernetes.context_aliases]
-# 'preprod01.jafx-ire1.lan' = 'preprod01'
-# 'prod01.jafx-ire1.lan' = 'prod01'
-# 'test01.jafx-ire1.lan' = 'test01'
-# 'infra01.arr.lan' = 'infra01'
+[[kubernetes.contexts]]
+context_pattern = "red01.ifson.lan"
+context_alias = "red01"
 
 [line_break]
 disabled = false
@@ -471,7 +455,7 @@ version_format = 'v${raw}'
 symbol = '🌙 '
 style = 'bold blue'
 lua_binary = 'lua'
-disabled = false
+disabled = true
 detect_extensions = ['lua']
 detect_files = ['.lua-version']
 detect_folders = ['lua']
@@ -481,14 +465,14 @@ threshold = 75
 format = 'via $symbol[$ram( | $swap)]($style) '
 style = 'white bold dimmed'
 symbol = '🐏 '
-disabled = false
+disabled = true
 
 [nim]
 format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '👑 '
 style = 'yellow bold'
-disabled = false
+disabled = true
 detect_extensions = [
     'nim',
     'nims',
@@ -503,14 +487,14 @@ symbol = '❄️  '
 style = 'bold blue'
 impure_msg = 'impure'
 pure_msg = 'pure'
-disabled = false
+disabled = true
 
 [nodejs]
 format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = ' '
 style = 'bold green'
-disabled = false
+disabled = true
 not_capable_style = 'bold red'
 detect_extensions = [
     'js',
@@ -532,7 +516,7 @@ global_switch_indicator = ''
 local_switch_indicator = '*'
 symbol = '🐫 '
 style = 'bold yellow'
-disabled = false
+disabled = true
 detect_extensions = [
     'opam',
     'ml',
@@ -556,14 +540,14 @@ detect_folders = [
 format = 'on [$symbol$cloud(\($project\))]($style) '
 symbol = '☁️  '
 style = 'bold yellow'
-disabled = false
+disabled = true
 
 [package]
 format = 'is [$symbol$version]($style) '
 symbol = '📦 '
 style = '208 bold'
 display_private = false
-disabled = false
+disabled = true
 version_format = 'v${raw}'
 
 [perl]
@@ -571,7 +555,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🐪 '
 style = '149 bold'
-disabled = false
+disabled = true
 detect_extensions = [
     'pl',
     'pm',
@@ -593,7 +577,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🐘 '
 style = '147 bold'
-disabled = false
+disabled = true
 detect_extensions = ['php']
 detect_files = [
     'composer.json',
@@ -606,14 +590,14 @@ format = 'via [$symbol$stack]($style) '
 version_format = 'v${raw}'
 symbol = ' '
 style = 'bold 5'
-disabled = false
+disabled = true
 
 [purescript]
 format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '<=> '
 style = 'bold white'
-disabled = false
+disabled = true
 detect_extensions = ['purs']
 detect_files = ['spago.dhall']
 detect_folders = []
@@ -634,16 +618,8 @@ style = 'bright-black'
 # symbol = ''
 # symbol = ''
 disabled = false
-detect_extensions = ['py']
-detect_files = [
-    'requirements.txt',
-    '.python-version',
-    'pyproject.toml',
-    'Pipfile',
-    'tox.ini',
-    'setup.py',
-    '__init__.py',
-]
+detect_extensions = []
+detect_files = []
 detect_folders = []
 
 [red]
@@ -651,7 +627,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🔺 '
 style = 'red bold'
-disabled = false
+disabled = true
 detect_extensions = [
     'red',
     'reds',
@@ -664,7 +640,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 style = 'blue bold'
 symbol = '📐 '
-disabled = false
+disabled = true
 detect_extensions = [
     'R',
     'Rd',
@@ -680,7 +656,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '💎 '
 style = 'bold red'
-disabled = false
+disabled = true
 detect_extensions = ['rb']
 detect_files = [
     'Gemfile',
@@ -697,7 +673,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🦀 '
 style = 'bold red'
-disabled = false
+disabled = true
 detect_extensions = ['rs']
 detect_files = ['Cargo.toml']
 detect_folders = []
@@ -705,7 +681,7 @@ detect_folders = []
 [scala]
 format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
-disabled = false
+disabled = true
 style = 'red bold'
 symbol = '🆂 '
 detect_extensions = [
@@ -746,7 +722,7 @@ disabled = true
 symbol = ''
 format = '[$symbol\[$env\]]($style) '
 style = 'blue bold dimmed'
-disabled = false
+disabled = true
 
 [status]
 format = '[$symbol$status]($style) '
@@ -776,7 +752,7 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '🐦 '
 style = 'bold 202'
-disabled = false
+disabled = true
 detect_extensions = ['swift']
 detect_files = ['Package.swift']
 detect_folders = []
@@ -786,7 +762,7 @@ format = '[$symbol$version]($style)'
 version_format = '${raw}'
 symbol = '💠 '
 style = 'bold 105'
-disabled = false
+disabled = true
 detect_extensions = [
     'tf',
     'tfplan',
@@ -808,14 +784,14 @@ format = '[$user]($style)'
 style_root = 'red bold'
 style_user = 'yellow bold'
 show_always = false
-disabled = false
+disabled = true
 
 [vagrant]
 format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '⍱ '
 style = 'cyan bold'
-disabled = false
+disabled = true
 detect_extensions = []
 detect_files = ['Vagrantfile']
 detect_folders = []
@@ -824,14 +800,14 @@ detect_folders = []
 symbol = ''
 style = 'bold yellow'
 format = 'vcsh [$symbol$repo]($style) '
-disabled = false
+disabled = true
 
 [vlang]
 format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = 'V '
 style = 'blue bold'
-disabled = false
+disabled = true
 detect_extensions = ['v']
 detect_files = [
     'v.mod',
@@ -845,21 +821,29 @@ format = 'via [$symbol($version )]($style)'
 version_format = 'v${raw}'
 symbol = '↯ '
 style = 'bold yellow'
-disabled = false
+disabled = true
 detect_extensions = ['zig']
 detect_files = []
 detect_folders = []
 
 [custom]
 
-[custom.vpn]
-description = "vpn status"
-command = "echo \uF023"
-# when = "ifconfig utun4 > /dev/null 2>&1"
-when = "pgrep openvpn"
-# format = "[$symbol($output)]($style)"  # Remove extra blank after output
-# style = "green"
-style = "bright-green"
+# [custom.openvpn]
+# description = "vpn status"
+# command = "echo \uF023"
+# when = "pgrep openvpn"
+# style = "bright-green"
+
+# [custom.tailscale]
+# description = "tailscale status"
+# command = "true"
+# when = "tailscale status > /dev/null"
+# # style = "bold fg:243 bg:235"
+# style = "bold fg:243 bg:blue"
+# symbol = "▼"
+# # symbol = "\uF023 "
+# # symbol = "\u2B1A"
+# # symbol = "▩"
 
 [custom.root]
 description = "show if user is root"
@@ -867,10 +851,9 @@ command = "echo \u26A1"
 when = "[ $USER = 'root' ]"
 style = "bright-yellow"
 
-[custom.window_title]
-description = "set window title"
-command = '[ -z $SSH_CLIENT] && print -Pn "\e]1;%2~\a" || print -Pn "\e]1;(%m) %2~\a"'
-# format = "[$symbol($output)]($style) "  # Remove extra blank after output
-format="($output)"
-when = "true"
-
+# [custom.window_title]
+# description = "set window title"
+# command = '[ -z $SSH_CLIENT] && print -Pn "\e]1;%2~\a" || print -Pn "\e]1;(%m) %2~\a"'
+# # format = "[$symbol($output)]($style) "  # Remove extra blank after output
+# format="($output)"
+# when = "true"
